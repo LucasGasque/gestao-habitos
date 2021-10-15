@@ -1,13 +1,5 @@
+const Providers = ({ children }) => {
+  return <>{children}</>;
+};
 
-
-const Providers = ({children}) => {
-    return(
-        <>
-            
-            {children}
-            
-        </>
-    )
-}
-
-export default Providers
+export default Providers;
