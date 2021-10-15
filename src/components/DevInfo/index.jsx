@@ -1,6 +1,6 @@
-import { Container  } from './style';
-import { FaLinkedin } from 'react-icons/fa';
-import { FaGithubSquare } from 'react-icons/fa';
+import { Container } from "./style";
+import { FaLinkedin } from "react-icons/fa";
+import { FaGithubSquare } from "react-icons/fa";
 
 const DevInfo = ( {gitHub, linkedin, img, name}) => {
     return(
@@ -25,4 +25,4 @@ const DevInfo = ( {gitHub, linkedin, img, name}) => {
     )
 }
 
-export default DevInfo
+export default DevInfo;
