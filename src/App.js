@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Providers from "./providers";
 import Routes from "./routes";
+import Header from "../src/components/Header";
 
 const App = () => {
   const [currentTheme, setCurrentTheme] = useState("light");
@@ -19,6 +20,7 @@ const App = () => {
       <Providers>
         <ThemeProvider theme={themes[currentTheme]}>
           <GlobalStyle />
+
           <ToastContainer
             position="top-right"
             autoClose={5000}
@@ -31,6 +33,7 @@ const App = () => {
             pauseOnHover
           />
           <Routes />
+          <Header />
         </ThemeProvider>
       </Providers>
     </div>
