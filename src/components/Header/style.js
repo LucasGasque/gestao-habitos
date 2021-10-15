@@ -16,15 +16,15 @@ export const Container = styled.div`
   }
 `;
 
-export const CustomButtonPurple = styled(Button)({
-  borderRadius: `5px`,
-  background: `#6C63FF`,
-  color: `#FCFCFC`,
-});
+export const CustomButtonPurple = styled(Button)`
+  border-radius: 5px;
+  background-color:#6C63FF;
+  color: #FCFCFC;
+`
 
-export const CustomButtonWhite = styled(Button)({
-  borderRadius: `5px`,
-  background: `#FCFCFC`,
-  border: `1px solid #6C63FF`,
-  color: `#6C63FF`,
-});
+export const CustomButtonWhite = styled(Button)`
+  border-radius: 5px;
+  background-color: #FCFCFC;
+  border: 1px solid #6C63FF;
+  color: #6C63FF;
+`
