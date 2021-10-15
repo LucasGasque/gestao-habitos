@@ -22,7 +22,7 @@ const Routes = () => {
         <Route path="/group">
           <Group />
         </Route>
-        <Route path="/groupsearch">
+        <Route path="/group-search">
           <GroupSearch />
         </Route>
         <Route path="/profile">
