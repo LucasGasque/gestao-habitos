@@ -1,8 +1,13 @@
 import * as yup from "yup";
 
 const schema = yup.object().shape({
-  username: yup.string().required("Campo obrigatório."),
-  email: yup.string().required("Campo obrigatório.").email("Formato inválido."),
+  username: yup
+    .string()
+    .required("Campo obrigatório."),
+  email: yup
+    .string()
+    .required("Campo obrigatório.")
+    .email("Formato inválido."),
   emailConfirm: yup
     .string()
     .required("Campo obrigatório.")
