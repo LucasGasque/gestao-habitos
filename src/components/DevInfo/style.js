@@ -11,7 +11,11 @@ export const Container = styled.div`
 
     img{
         border-radius: 50%;
-        height: 60%;
-        
+        width: 107px;
+        height: 107px;
+    }
+
+    h3{
+        font-size: 14px;
     }
 `
