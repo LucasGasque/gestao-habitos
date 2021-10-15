@@ -1,10 +1,10 @@
 import { Switch, Route } from "react-router-dom";
-import Group from "../pages/group";
-import GroupSearch from "../pages/groupSearch";
-import Home from "../pages/home";
-import Login from "../pages/login";
-import Register from "../pages/register";
-import Profile from "../pages/profile";
+import Group from "../pages/Group";
+import GroupSearch from "../pages/GroupSearch";
+import Home from "../pages/Home";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import Profile from "../pages/Profile";
 
 const Routes = () => {
   return (
