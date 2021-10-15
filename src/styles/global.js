@@ -18,6 +18,8 @@ export default createGlobalStyle`
         outline: 0;
     }
 
-    body{}
+    body{
+        font-family: 'Roboto', sans-serif;
+    }
 
 `
