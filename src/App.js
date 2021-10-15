@@ -5,6 +5,7 @@ import { useState, useCallback } from 'react'
 import { ToastContainer } from 'react-toastify';
 import Providers from './providers';
 import Routes from './routes'
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
 
@@ -12,7 +13,7 @@ const App = () => {
   const getOpositeTheme = useCallback(
     ()=> (currentTheme === 'light' ? 'dark' : 'light'),
     [currentTheme]
-  )
+  );
 
   return (
     <div >
