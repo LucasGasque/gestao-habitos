@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import GlobalStyle from "./styles/global";
 import { ThemeProvider } from "styled-components";
 import { themes } from "./styles/themes";
@@ -7,16 +6,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Providers from "./providers";
 import Routes from "./routes";
-=======
-import GlobalStyle from './styles/global'
-import { ThemeProvider } from 'styled-components';
-import { themes } from './styles/themes';
-import { useState, useCallback } from 'react'
-import { ToastContainer } from 'react-toastify';
-import Providers from './providers';
-import Routes from './routes'
-import 'react-toastify/dist/ReactToastify.css';
->>>>>>> 9bef94080c0b12b397c9ed0c562b287011e43e6d
 
 const App = () => {
   const [currentTheme, setCurrentTheme] = useState("light");
