@@ -1,15 +1,14 @@
-import Button from "@material-ui/core/Button";
-import { Container } from "./style";
+import { Container, CustomButtonPurple, CustomButtonWhite } from "./style";
 
 const Header = () => {
   return (
-    <>
+    <Container>
       <h1>Make it Habit!</h1>
       <div>
-        <Button>Login</Button>
-        <Button>Register</Button>
+        <CustomButtonPurple>Login</CustomButtonPurple>
+        <CustomButtonWhite>Register</CustomButtonWhite>
       </div>
-    </>
+    </Container>
   );
 };
 
