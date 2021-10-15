@@ -17,7 +17,7 @@ const schema = yup.object().shape({
   passwordConfirm: yup
     .string()
     .required("Campo obrigatório")
-    .oneOf([yup.ref("password"), null], "Senhas não coincidem."),
+    .oneOf([yup.ref("password"), null], "Senhas não conferem."),
 });
 
 export default schema;
