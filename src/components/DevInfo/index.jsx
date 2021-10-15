@@ -11,13 +11,13 @@ const DevInfo = ( {gitHub, linkedin, img, name}) => {
                 <a href={gitHub}>
                     <FaGithubSquare
                         color='#6e5494'
-                        size='1.5em'
+                        size='1.4375em'
                     />
                 </a>    
                 <a href={linkedin}>
                    <FaLinkedin
                     color='#0E76A8'
-                    size='1.5em'
+                    size='1.4375em'
                    />
                 </a>
             </div>
