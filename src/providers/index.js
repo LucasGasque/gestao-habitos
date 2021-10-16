@@ -1,9 +1,12 @@
-import { RegisterProvider } from "./RegisterProvider"
+import { LoginProvider } from "./Login/Login"
+import { RegisterProvider } from "./register/Register"
 
 const Providers = ({children}) => {
     return(
         <RegisterProvider>
-            {children}
+            <LoginProvider>
+                {children}
+            </LoginProvider>
         </RegisterProvider>
     );
 };

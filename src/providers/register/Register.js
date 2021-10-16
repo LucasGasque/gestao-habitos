@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { useHistory } from "react-router-dom";
-import api from "../services/api";
+import api from "../../services/api";
 import { toast } from "react-toastify";
 
 export const RegisterContext = createContext();
