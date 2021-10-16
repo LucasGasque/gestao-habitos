@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import api from "../services/api";
+import { toast } from 'react-toastify'
 
 export const LoginContext = createContext();
 
@@ -14,8 +15,9 @@ export const LoginProvider = ({ children }) => {
       const { sucess } = response.data;
       localStorage.setItem("@Login:token", JSON.stringify(sucess));
       setAuthenticated(true);
-      return history.push();
-    });
+      history.push('/dasboard');
+    })
+    .catch((_) => toast.error('Senbha ou e-mail incorretos.'))
   };
 
   return (
