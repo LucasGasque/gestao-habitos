@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import Button from "@material-ui/core/Button";
 export const Container = styled.div`
+  background: var(--white);
+  margin-top: 10px;
   width: 100%;
   height: 43px;
   display: flex;
@@ -16,16 +17,20 @@ export const Container = styled.div`
   }
 `;
 
-// export const CustomButtonPurple = styled(Button)({
-//   borderRadius: `5px`,
-//   background: `#6C63FF`,
-//   color: `#FCFCFC`,
-//   fontSize: 30,
-// });
+export const ButtonPurple = styled.button`
+  background: var(--purple);
+  border: none;
+  width: 50px;
+  color: var(--white);
+  border-radius: 5px;
+  margin-right: 10px;
+`;
 
-// export const CustomButtonWhite = styled(Button)({
-//   borderRadius: `5px`,
-//   background: `#FCFCFC`,
-//   border: `1px solid #6C63FF`,
-//   color: `#6C63FF`,
-// });
+export const ButtonWhite = styled.button`
+  background: var(--white);
+  border: 2px solid var(--purple);
+  width: 64px;
+  color: var(--purple);
+  border-radius: 5px;
+  margin-right: 10px;
+`;
