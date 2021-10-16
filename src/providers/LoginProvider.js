@@ -17,7 +17,7 @@ export const LoginProvider = ({ children }) => {
       setAuthenticated(true);
       history.push('/dasboard');
     })
-    .catch((_) => toast.error('Senbha ou e-mail incorretos.'))
+    .catch((_) => toast.error('Senha ou e-mail incorretos.'))
   };
 
   return (
