@@ -1,4 +1,4 @@
-import { LoginProvider } from "./LoginProvider"
+import { LoginProvider } from "./Login/Login"
 
 const Providers = ({children}) => {
     return(

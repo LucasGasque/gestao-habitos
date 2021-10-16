@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import Providers from "./providers";
 import Routes from "./routes";
 import 'react-toastify/dist/ReactToastify.css';
+import DeleteHabit from "./components/DeleteHabit";
 
 const App = () => {
   const [currentTheme, setCurrentTheme] = useState("light");
@@ -31,6 +32,7 @@ const App = () => {
             pauseOnHover
           />
           <Routes />
+          <DeleteHabit/>
         </ThemeProvider>
       </Providers>
     </div>
