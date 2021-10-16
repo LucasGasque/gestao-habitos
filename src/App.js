@@ -33,7 +33,6 @@ const App = () => {
             pauseOnHover
           />
           <Routes />
-          <Header />
         </ThemeProvider>
       </Providers>
     </div>

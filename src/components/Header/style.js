@@ -32,5 +32,4 @@ export const ButtonWhite = styled.button`
   width: 64px;
   color: var(--purple);
   border-radius: 5px;
-  margin-right: 10px;
 `;
