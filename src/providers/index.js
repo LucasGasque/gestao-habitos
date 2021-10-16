@@ -1,10 +1,10 @@
-import { LoginProvider } from "./LoginProvider"
+import { RegisterProvider } from "./RegisterProvider"
 
 const Providers = ({children}) => {
     return(
-        <LoginProvider>
+        <RegisterProvider>
             {children}
-        </LoginProvider>
+        </RegisterProvider>
     );
 };
 
