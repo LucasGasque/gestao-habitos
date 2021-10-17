@@ -28,7 +28,7 @@ export const HabitsProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then(() => {
+      .then((_) => {
         toast.info("Hábito criado com sucesso!");
       })
       .catch((_) => toast.error("Algo deu errado."));
