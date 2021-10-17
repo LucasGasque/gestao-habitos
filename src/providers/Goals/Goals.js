@@ -1,8 +1,8 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import api from "../../services/api";
 import { toast } from "react-toastify";
 
-export const GoalsContext = createContext;
+export const GoalsContext = createContext();
 
 export const GoalsProvider = ({ children }) => {
   const token = JSON.parse(localStorage.getItem("@Login:token"));
@@ -55,8 +55,14 @@ export const GoalsProvider = ({ children }) => {
   };
 
   return (
-      <GoalsContext.Provider value={{deleteGoal,updateGoal,createGoal,getGoal,goal}}>
-          {children}
+      <GoalsContext.Provider 
+        value={{
+          deleteGoal,
+          updateGoal,
+          createGoal,
+          getGoal,
+          goal}}>
+        {children}
       </GoalsContext.Provider>
   )
 };

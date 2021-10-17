@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-const schema = yup.object().yup.shape({
+export const schema = yup.object().shape({
   username: yup
     .string()
     .required("Campo obrigatório"),
@@ -9,4 +9,3 @@ const schema = yup.object().yup.shape({
     .required("Campo obrigatório"),
 });
 
-export default schema;

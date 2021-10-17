@@ -6,6 +6,8 @@ import { ToastContainer } from "react-toastify";
 import Providers from "./providers";
 import Routes from "./routes";
 import 'react-toastify/dist/ReactToastify.css';
+import  ThemeProvidermui  from "@mui/material/styles/ThemeProvider";
+import { muiTheme } from "./styles/muiTheme";
 
 const App = () => {
   const [currentTheme, setCurrentTheme] = useState("light");
@@ -17,6 +19,7 @@ const App = () => {
   return (
     <div>
       <Providers>
+        <ThemeProvidermui theme={muiTheme}>
         <ThemeProvider theme={themes[currentTheme]}>
           <GlobalStyle />
           <ToastContainer
@@ -32,6 +35,7 @@ const App = () => {
           />
           <Routes />
         </ThemeProvider>
+        </ThemeProvidermui>
       </Providers>
     </div>
   );
