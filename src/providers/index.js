@@ -1,17 +1,20 @@
-import { LoginProvider } from "./Login/Login"
-import { RegisterProvider } from "./register/Register"
+import { LoginProvider } from "./Login/Login";
+import { RegisterProvider } from "./register/Register";
 import { HabitsProvider } from "./Habits/Habits";
+import { GroupProvider } from "./Group/Group";
 
-const Providers = ({children}) => {
-    return(
-        <RegisterProvider>
-            <LoginProvider>
-                <HabitsProvider>
+const Providers = ({ children }) => {
+  return (
+    <RegisterProvider>
+      <LoginProvider>
+        <HabitsProvider>
+            <GroupProvider>
                 {children}
-                </HabitsProvider>
-            </LoginProvider>
-        </RegisterProvider>
-    );
+            </GroupProvider>
+        </HabitsProvider>
+      </LoginProvider>
+    </RegisterProvider>
+  );
 };
 
-export default Providers
+export default Providers;
