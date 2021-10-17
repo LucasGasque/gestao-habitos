@@ -11,7 +11,7 @@ export const RegisterProvider = ({ children }) => {
   const handleRegister = ({ username, email, password }) => {
     const user = { username, email, password };
     api
-      .post("/users", user)
+      .post("/users/", user)
       .then((response) => {
         localStorage.setItem("@Register:user", response.data);
         history.push("/login");
