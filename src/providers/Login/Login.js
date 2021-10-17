@@ -12,10 +12,10 @@ export const LoginProvider = ({ children }) => {
   const handleLogin = ({ username, password }) => {
     const user = { username, password };
     api
-      .post("/sessions", user)
+      .post("/sessions/", user)
       .then((response) => {
-        const { sucess } = response.data;
-        localStorage.setItem("@Login:token", JSON.stringify(sucess));
+        const { access } = response.data;
+        localStorage.setItem("@Login:token", JSON.stringify(access));
         setAuthenticated(true);
         history.push("/dasboard");
       })
