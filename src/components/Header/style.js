@@ -7,6 +7,8 @@ export const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  border-bottom: 1px solid var(--grey);
+  box-shadow: 0px 4px 6px 0px rgba(196, 196, 196, 0.65);
 
   h1 {
     padding-top: 3px;
