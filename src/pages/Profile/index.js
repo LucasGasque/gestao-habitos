@@ -1,5 +1,11 @@
+import HeaderProfile from "../../components/HeaderProfile";
+
 const Profile = () => {
-  return <></>;
+  return (
+    <>
+      <HeaderProfile/>
+    </>
+  );
 };
 
 export default Profile;
