@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.li`
     background-color: var(--yellow);
     width: 150px;
     height: 200px;
@@ -17,5 +17,12 @@ export const Container = styled.div`
 
     h3{
         font-size: 14px;
+        margin: 5px 0;
+    }
+`
+
+export const Redes = styled.section`
+    a{
+        margin: 0 2px;
     }
 `
