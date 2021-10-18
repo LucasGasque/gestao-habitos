@@ -1,12 +1,13 @@
-import { Container, ButtonPurple, ButtonWhite } from "./style";
+import { Container } from "./style";
+import Button from "@mui/material/Button";
 
 const Header = () => {
   return (
     <Container>
       <h1>Make it Habit!</h1>
       <div>
-        <ButtonPurple>Login</ButtonPurple>
-        <ButtonWhite>Register</ButtonWhite>
+        <Button>Login</Button>
+        <Button>Register</Button>
       </div>
     </Container>
   );
