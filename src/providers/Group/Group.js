@@ -1,0 +1,119 @@
+import { createContext, useState, useEffect } from "react";
+import api from "../../services/api";
+import { toast } from "react-toastify";
+
+export const GroupContext = createContext();
+
+export const GroupProvider = ({ children }) => {
+  const token = JSON.parse(localStorage.getItem("@Login:token"));
+
+  const [infoGroup, setInfoGroup] = useState();
+  const [subscriptions, setSubscriptions] = useState();
+  const [groups, setGroups] = useState([]);
+  const [selectedGroup, setSelectedGroup] = useState();
+  const [page, setPage] = useState(
+    "https://kenzie-habits.herokuapp.com/groups/"
+  );
+
+  useEffect(() => {
+    if (token) {
+      api
+        .get("/groups/subscriptions/", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => setSubscriptions(response.data))
+        .catch((err) => console.log(err));
+    }
+  }, [subscriptions]);
+
+  useEffect(() => {
+    if (token) {
+      if (page !== null) {
+        fetch(`${page}`)
+          .then((response) => response.json())
+          .then((response) => {
+            setGroups([...groups, ...response.results]);
+            setPage(response.next);
+          })
+          .catch((err) => console.log(err));
+      }
+    }
+  }, [groups]);
+
+  const getGroup = (id) => {
+    api
+      .get(`/groups/${id}/`)
+      .then((response) => setSelectedGroup(response.data));
+  };
+
+  const createGroup = (data) => {
+    api
+      .post("/groups/", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setInfoGroup(response.data);
+        toast.info("Grupo criado com sucesso!");
+      })
+      .catch((_) => toast.info("Algo deu errado."));
+  };
+
+  const updateGroup = (id, data) => {
+    api
+      .patch(`/groups/${id}/`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((_) => toast.info("Grupo atualizado com sucesso!"))
+      .catch((_) => toast.info("Algo deu errado."));
+  };
+
+  const subscribeGroup = (id) => {
+    api
+      .post(
+        `/groups/${id}/subscribe/`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((_) => toast.info("Foi inscrito com sucesso!"))
+      .catch((_) => toast.info("Algo deu errado."));
+  };
+
+  const unsubscribeGroup = (id) => {
+    api
+      .delete(`/groups/${id}/unsubscribe/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((_) => toast.info("Se desinscreveu com sucesso!"))
+      .catch((_) => toast.info("Algo deu errado."));
+  };
+
+  return (
+    <GroupContext.Provider
+      value={{
+        unsubscribeGroup,
+        subscribeGroup,
+        updateGroup,
+        createGroup,
+        getGroup,
+        infoGroup,
+        selectedGroup,
+        groups,
+        subscriptions,
+      }}
+    >
+      {children}
+    </GroupContext.Provider>
+  );
+};

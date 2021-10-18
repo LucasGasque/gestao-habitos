@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'https://habit-docs.vercel.app/'
+    baseURL: 'https://kenzie-habits.herokuapp.com/'
 })
 
 export default api

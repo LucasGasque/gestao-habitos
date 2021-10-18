@@ -3,10 +3,18 @@ import { ThemeProvider } from "styled-components";
 import { themes } from "./styles/themes";
 import { useState, useCallback } from "react";
 import { ToastContainer } from "react-toastify";
+<<<<<<< HEAD
 import "react-toastify/dist/ReactToastify.css";
 import Providers from "./providers";
 import Routes from "./routes";
 import Header from "../src/components/Header";
+=======
+import Providers from "./providers";
+import Routes from "./routes";
+import 'react-toastify/dist/ReactToastify.css';
+import  ThemeProvidermui  from "@mui/material/styles/ThemeProvider";
+import { muiTheme } from "./styles/muiTheme";
+>>>>>>> develop
 
 const App = () => {
   const [currentTheme, setCurrentTheme] = useState("light");
@@ -18,6 +26,7 @@ const App = () => {
   return (
     <div>
       <Providers>
+        <ThemeProvidermui theme={muiTheme}>
         <ThemeProvider theme={themes[currentTheme]}>
           <GlobalStyle />
 
@@ -34,6 +43,7 @@ const App = () => {
           />
           <Routes />
         </ThemeProvider>
+        </ThemeProvidermui>
       </Providers>
     </div>
   );

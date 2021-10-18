@@ -17,6 +17,7 @@ export const Container = styled.div`
   }
 `;
 
+<<<<<<< HEAD
 export const ButtonPurple = styled.button`
   background: var(--purple);
   border: none;
@@ -33,3 +34,17 @@ export const ButtonWhite = styled.button`
   color: var(--purple);
   border-radius: 5px;
 `;
+=======
+export const CustomButtonPurple = styled(Button)`
+  border-radius: 5px;
+  background-color:#6C63FF;
+  color: #FCFCFC;
+`
+
+export const CustomButtonWhite = styled(Button)`
+  border-radius: 5px;
+  background-color: #FCFCFC;
+  border: 1px solid #6C63FF;
+  color: #6C63FF;
+`
+>>>>>>> develop
