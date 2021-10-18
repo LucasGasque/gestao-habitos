@@ -14,6 +14,6 @@ export const Container = styled.div`
     height: 20px;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
   }
 `;
-
