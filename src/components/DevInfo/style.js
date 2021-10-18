@@ -17,9 +17,12 @@ export const Container = styled.li`
 
     h3{
         font-size: 14px;
+        margin: 5px 0;
     }
 `
 
 export const Redes = styled.section`
-
+    a{
+        margin: 0 2px;
+    }
 `

@@ -2,10 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
 
-    div{
-        
-    }
-
     ul{
         display: flex;
         flex-direction: row;
@@ -29,7 +25,27 @@ export const Container = styled.div`
        padding: 0 10px;
     }
 
+`;
 
+export const Img = styled.img`
+    width: 198px;
+    height: 159px;
+    background-color: white;
+
+    :first-child{
+        width: 277px;
+        height:208px;
+    }
+
+    @media (min-width: 768px){
+        width: 370px;
+        height: 296px;
+
+        :first-child{
+            width: 450px;
+            height: 377px;
+        }        
+    }
 `;
 
 export const Box = styled.div`
@@ -59,7 +75,48 @@ export const Box = styled.div`
         background-color: var(--yellow);
     }
 
-`
+    @media (min-width:768px){
+        height: 456px;
+        flex-direction: row;
+
+        h2{
+            display: none;
+        }
+
+        h1{
+            max-width: 400px;
+        }
+
+        p{
+            max-width: 350px;
+        }
+
+        :nth-child(2){
+            flex-direction: row-reverse;
+        }
+
+        :nth-child(6){
+            flex-direction: row-reverse;
+        }
+
+        :nth-child(8){
+            flex-direction: column;
+        }
+    }
+`;
+
+export const Article = styled.article`
+    h2{
+        display: none;
+    }
+
+    @media (min-width:768px){
+        h2{
+            display: block;
+            margin: 20px;
+        }
+    }
+`;
 
 export const Ondas = styled.div`
     width: 100%;
@@ -76,5 +133,4 @@ export const Ondas = styled.div`
     :nth-child(7){
         background-color: var(--blue);
     }
-
-`
+`;
