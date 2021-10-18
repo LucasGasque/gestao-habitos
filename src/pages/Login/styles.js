@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Box = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,5 +68,9 @@ export const Container = styled.div`
             box-shadow: 0px 0px 1px 1px #f5f5f5;
         }
     }
+`
+
+export const Container = styled.section`
+
 `
 

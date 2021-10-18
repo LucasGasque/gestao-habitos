@@ -1,11 +1,12 @@
 import { LoginContext } from "../../providers/Login/Login";
-import { Container } from "./styles";
+import { Container, Box } from "./styles";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup'
 import { schema } from '../../validations/LoginSchema'
 import { TextField, Button } from '@mui/material'
 import { useHistory } from "react-router";
+import Header from "../../components/Header";
 
 const Login = () => {
 
@@ -22,6 +23,8 @@ const Login = () => {
 
     return (
         <Container>
+            <Header/>
+            <Box>
             <img src='' alt='login'/>
             <form
                 onSubmit={handleSubmit(handleLogin)}
@@ -73,6 +76,7 @@ const Login = () => {
                     </button>    
                 </p>
             </form>
+            </Box>
         </Container>
     )
 }

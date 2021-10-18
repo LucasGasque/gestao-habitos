@@ -1,6 +1,7 @@
 import { Container, Ondas, Box, Img, Article } from "./style";
 import lucas from '../../img/devs/lucas.jpg'
 import DevInfo from '../../components/DevInfo/index'
+import Header from '../../components/Header/index'
 
 const Home = () => {
 
@@ -12,51 +13,64 @@ const Home = () => {
   ]
 
   return (
-    <Container>
-      <Box>
-        <h1>Pequenas mudanças geram grandes resultados!</h1>
-        <Img src='' alt='img'/>
-      </Box>
-      <Box>
-        <h2>Crie habitos</h2>
-        <Img src="" alt="img" />
-        <Article>
-          <h2>Crie habitos</h2>
-          <p>Crie cards para cada hábito que deseja desenvolver, e acompanhe seu desempenho com o passar dos dias.</p>
-        </Article>
-      </Box>
-      <Ondas/>
-      <Box>
-        <h2>Participe de grupos</h2>
-        <Img src="" alt="img" />
-        <Article>
-          <h2>Participe de grupos</h2>
-          <p>Entre em grupos com pessoas que possuem metas similares às suas, e se impulsionem juntos para alcançar os objetivos definidos pelo grupo.</p>
-        </Article>
-      </Box>
-      <Ondas/>
-      <Box>
-        <h2>Mude sua vida</h2>
-        <Img src="" alt="img" />
-        <Article>
-          <h2>Mude sua vida</h2>
-          <p>Crie cards para cada hábito que deseja desenvolver, e acompanhe seu desempenho com o passar dos dias.</p>
-        </Article>
-      </Box>
-      <Ondas/>
-      <Box>
-        <h2>Desenvolvido por</h2>
-        <ul>
-          {devs.map((dev, index)=><DevInfo
-            key={index}
-            gitHub={dev.github}
-            linkedin={dev.linkedin}
-            img={dev.img}
-            name={dev.name}
-          />)}
-        </ul>
-      </Box>
-    </Container>
+    <>
+      <Header/>
+      <Container>
+        <Box>
+          <span>
+            <h1>Pequenas mudanças geram grandes resultados!</h1>
+            <Img src='' alt='img'/>
+          </span>
+        </Box>
+        <Box>
+          <span>
+            <h2>Crie habitos</h2>
+            <Img src="" alt="img" />
+            <Article>
+              <h2>Crie habitos</h2>
+              <p>Crie cards para cada hábito que deseja desenvolver,  e  acompanhe seu desempenho com o passar dos dias.</p>
+            </Article>
+          </span>
+        </Box>
+        <Ondas/>
+        <Box>
+          <span>
+            <h2>Participe de grupos</h2>
+            <Img src="" alt="img" />
+            <Article>
+              <h2>Participe de grupos</h2>
+              <p>Entre em grupos com pessoas que possuem metas    similares às suas, e se impulsionem juntos para   alcançar   os objetivos definidos pelo grupo.</p>
+            </Article>
+          </span>
+        </Box>
+        <Ondas/>
+        <Box>
+          <span>
+            <h2>Mude sua vida</h2>
+            <Img src="" alt="img" />
+            <Article>
+              <h2>Mude sua vida</h2>
+              <p>Crie cards para cada hábito que deseja desenvolver,  e  acompanhe seu desempenho com o passar dos dias.</p>
+            </Article>
+          </span>
+        </Box>
+        <Ondas/>
+        <Box>
+          <span>
+            <h2>Desenvolvido por</h2>
+            <ul>
+              {devs.map((dev, index)=><DevInfo
+                key={index}
+                gitHub={dev.github}
+                linkedin={dev.linkedin}
+                img={dev.img}
+                name={dev.name}
+              />)}
+            </ul>
+          </span>
+        </Box>
+      </Container>
+    </>
   );
 };
 
