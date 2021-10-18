@@ -26,7 +26,7 @@ export const Container = styled.div`
         width: 288px;
         height: 320px;
         border-radius:5px;
-        box-shadow: 0px 0px 1px 1px var(--grey);
+        box-shadow: 0px 0px 1px 1px #f5f5f5;
     }
 
     p{
@@ -56,11 +56,16 @@ export const Container = styled.div`
         flex-wrap: wrap;
         justify-content: space-around;
 
+        form{
+            width: 370px;
+            height: 334px;
+        }
+
         img{
             display: block;
             width: 498px;
             height: 358px;
-            box-shadow: 0px 0px 1px 1px var(--grey);
+            box-shadow: 0px 0px 1px 1px #f5f5f5;
         }
     }
 `
