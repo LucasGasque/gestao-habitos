@@ -1,10 +1,10 @@
 import * as yup from "yup";
 
 export const schema = yup.object().shape({
-  username: yup
+  title: yup
     .string()
     .required("Campo obrigatório"),
-  password: yup
-    .string()
+  date: yup
+    .date()
     .required("Campo obrigatório"),
 });
