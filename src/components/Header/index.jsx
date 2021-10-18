@@ -12,6 +12,7 @@ const Header = () => {
       <h1>Make it Habit!</h1>
       <div>
         <Button
+          className="groundPurple"
           variant="outlined"
           color="primary"
           onClick={() => sendTo("/login")}
@@ -19,6 +20,7 @@ const Header = () => {
           Login
         </Button>
         <Button
+          className="groundWhite"
           variant="outlined"
           color="primary"
           onClick={() => sendTo("/register")}
