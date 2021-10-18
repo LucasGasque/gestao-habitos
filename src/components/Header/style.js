@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { Button } from "@material-ui/core";
 export const Container = styled.div`
+  background: var(--white);
+  margin-top: 10px;
   width: 100%;
   height: 43px;
   display: flex;
@@ -13,18 +14,6 @@ export const Container = styled.div`
     height: 20px;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
   }
 `;
-
-export const CustomButtonPurple = styled(Button)`
-  border-radius: 5px;
-  background-color:#6C63FF;
-  color: #FCFCFC;
-`
-
-export const CustomButtonWhite = styled(Button)`
-  border-radius: 5px;
-  background-color: #FCFCFC;
-  border: 1px solid #6C63FF;
-  color: #6C63FF;
-`
