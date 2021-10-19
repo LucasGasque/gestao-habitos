@@ -1,9 +1,12 @@
 import { Container } from "./style";
 import Button from "@mui/material/Button";
 import { useHistory } from "react-router";
+import { useParams } from "react-router-dom";
 
 const Header = () => {
   const history = useHistory();
+  const url = useParams();
+  console.log(url);
   const sendTo = (path) => {
     history.push(path);
   };
@@ -25,7 +28,7 @@ const Header = () => {
           color="primary"
           onClick={() => sendTo("/register")}
         >
-          Register
+          Cadastro
         </Button>
       </div>
     </Container>
