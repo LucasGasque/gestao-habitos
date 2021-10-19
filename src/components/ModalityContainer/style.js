@@ -11,6 +11,7 @@ export const Container = styled.div`
         background-color: var(--yellow);
         height: 27px;
         border-bottom: 1px solid var(--black);
+        border-radius: 5px 5px 0 0;
     }
 
     p{
@@ -24,6 +25,7 @@ export const Container = styled.div`
         height: 21px;
         background-color: var(--white);
         border-top: 1px solid var(--black);
+        border-radius: 0 0 5px 5px;
     }
 `
 

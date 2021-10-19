@@ -1,15 +1,24 @@
 import HeaderProfile from "../../components/HeaderProfile";
 import MenuBar from "../../components/MenuBar";
-import { Container } from "./style";
+import { Container, Box } from "./style";
+import ModalityContainer from '../../components/ModalityContainer'
 
 const Profile = () => {
   return (
     <>
     <HeaderProfile/>
     <Container>
-      <div>
+      <Box>
+        <ModalityContainer title='Hábitos'>
 
-      </div>
+        </ModalityContainer>
+        <ModalityContainer title='Objetivos'>
+
+        </ModalityContainer>
+        <ModalityContainer title='Atividades'>
+
+        </ModalityContainer>
+      </Box>
     </Container>
     <MenuBar/>
     </>

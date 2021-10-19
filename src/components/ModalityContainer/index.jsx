@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const ModalityContainer = ({title, children}) =>{
 
-    const [show, setShow] = useState(false)
+    const [show, setShow] = useState(false);
 
     return(
         <Container>
@@ -29,4 +29,4 @@ const ModalityContainer = ({title, children}) =>{
     )
 }
 
-export default ModalityContainer
+export default ModalityContainer;
