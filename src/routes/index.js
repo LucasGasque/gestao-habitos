@@ -4,7 +4,7 @@ import GroupSearch from "../pages/GroupSearch";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import Profile from "../pages/Profile";
+import Profile from "../pages/Profile/index";
 
 const Routes = () => {
   return (

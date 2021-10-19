@@ -4,6 +4,7 @@ export const Container = styled.div`
   width: 100%;
   height: 43px;
   display: flex;
+  position: fixed;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
@@ -16,6 +17,7 @@ export const Container = styled.div`
     height: 22px;
     font-size: 17px;
     text-align: center;
+    cursor: pointer;
   }
 
   div {
@@ -45,7 +47,7 @@ export const Container = styled.div`
     }
   }
 
-  @media (min-width: 728px) {
+  @media (min-width: 768px) {
     height: 66.19px;
 
     h1 {

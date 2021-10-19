@@ -1,5 +1,5 @@
 import { Container } from "./style";
-import { BsFillGearFill } from 'react-icons/bs'
+import { BsFillGearFill } from 'react-icons/bs';
 import { useContext } from "react";
 import { LoginContext } from "../../providers/Login/Login";
 
