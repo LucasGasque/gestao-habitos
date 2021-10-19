@@ -10,16 +10,12 @@ import {
   RegisterTitle,
   Link,
   Image,
-  ContainerHeader,
 } from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
 const Register = () => {
-  const history = useHistory();
   const { handleRegister } = useContext(RegisterContext);
-
-  const goToLogin = () => history.push("/login");
 
   const {
     register,
@@ -31,9 +27,7 @@ const Register = () => {
 
   return (
     <>
-      <ContainerHeader>
-        <Header />
-      </ContainerHeader>
+      <Header />
       <Container>
         <Image src="" alt="register" />
         <Form onSubmit={handleSubmit(handleRegister)}>
@@ -70,7 +64,7 @@ const Register = () => {
           />
           <TextField
             {...register("password")}
-            type='password'
+            type="password"
             sx={{ width: 270 }}
             size="small"
             variant="outlined"
@@ -81,7 +75,7 @@ const Register = () => {
           />
           <TextField
             {...register("passwordConfirm")}
-            type='password'
+            type="password"
             sx={{ width: 270 }}
             size="small"
             variant="outlined"

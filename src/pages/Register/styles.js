@@ -71,7 +71,3 @@ export const Container = styled.section`
     }
   }
 `;
-
-export const ContainerHeader = styled.div`
-  max-width: 1170px;
-`;

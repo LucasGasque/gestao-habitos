@@ -7,9 +7,12 @@ import { LoginContext } from "../Login/Login";
 export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
-  const { token } = useContext(LoginContext);
-
   const [habits, setHabits] = useState([]);
+  const [visible, setVisible] = useState(false);
+  const { token, userId } = useContext(LoginContext);
+
+  const difficulties = ["Fácil", "Normal", "Díficil", "Muito díficil"];
+  const frequencies = ["Diário", "Semanal", "Mensal", "Anual"];
 
   useEffect(() => {
     if (token) {
@@ -37,7 +40,17 @@ export const HabitsProvider = ({ children }) => {
     }
   };
 
-  const createHabits = (data) => {
+  const createHabits = ({ title, category, difficulty, frequency }) => {
+    const data = {
+      title,
+      category,
+      difficulty,
+      frequency,
+      achieved: false,
+      how_much_achieved: 0,
+      user: userId,
+    };
+
     api
       .post("/habits/", data, {
         headers: {
@@ -46,6 +59,7 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((_) => {
         toast.info("Hábito criado com sucesso!");
+        setVisible(false);
         getHabits();
       })
       .catch((_) => toast.error("Algo deu errado."));
@@ -74,7 +88,16 @@ export const HabitsProvider = ({ children }) => {
 
   return (
     <HabitsContext.Provider
-      value={{ habits, createHabits, deleteHabit, updateHabit }}
+      value={{
+        createHabits,
+        deleteHabit,
+        difficulties,
+        frequencies,
+        updateHabit,
+        habits,
+        visible,
+        setVisible,
+      }}
     >
       {children}
     </HabitsContext.Provider>

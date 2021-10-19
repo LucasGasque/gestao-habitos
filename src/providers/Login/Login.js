@@ -81,7 +81,7 @@ export const LoginProvider = ({ children }) => {
         const idAvatar = avImgs[randomNumber()];
 
         localStorage.setItem(
-          "@MakeItHabit!: ID",
+          "@MakeItHabit!:ID",
           JSON.stringify(tokenDecoded.user_id)
         );
         localStorage.setItem("@Login:token", JSON.stringify(access));

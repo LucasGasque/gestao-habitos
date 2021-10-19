@@ -1,5 +1,6 @@
 import HeaderProfile from "../../components/HeaderProfile";
 import MenuBar from "../../components/MenuBar";
+import CreateHabit from '../../components/CreateHabit'
 import { Container, Box, Head } from "./style";
 import ModalityContainer from '../../components/ModalityContainer';
 import CardList from '../../components/CardsList';
@@ -42,6 +43,7 @@ const Profile = () => {
       </Box>
     </Container>
     <MenuBar/>
+    <CreateHabit/>
     </>
   );
 };

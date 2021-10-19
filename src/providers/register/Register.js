@@ -14,7 +14,6 @@ export const RegisterProvider = ({ children }) => {
       .post("/users/", user)
       .then((response) => {
         toast.success("Conta criada com sucesso!")
-        localStorage.setItem("@Register:user", response.data);
         history.push("/login");
       })
       .catch((_) => toast.error("Erro ao criar a conta. Use outro e-mail."));
