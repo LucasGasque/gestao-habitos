@@ -10,19 +10,31 @@ import { useHistory } from 'react-router';
 
 const MenuBar = () => {
 
-    const { avatar, handleLogOut, user } =  useContext(LoginContext);
-    const history = useHistory()
+    const { 
+        avatar,
+        handleLogOut,
+        user 
+    } =  useContext(LoginContext);
+    const history = useHistory();
+    const highlight = {
+        '' : 1,
+        '/profile' : 2,
+        '/group-search' : 3,
+        '/group' : 4,
+    }
 
     return(
         <Container>
             <User>
                 <img src={avatar} alt="avatar" />
-                <h1>{user.username}</h1>
+                <h1>{user}</h1>
                 <GearButton>
                     <BsFillGearFill size='2.5em'/>
                 </GearButton>
             </User>
-            <Box>
+            <Box
+                num={highlight[history.location.pathname]}
+            >
                 <GraphButton>
                     <FiPieChart size='2.5em'/>
                     <p>Gráficos</p>

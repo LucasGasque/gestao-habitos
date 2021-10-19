@@ -25,8 +25,12 @@ export const LoginContext = createContext();
 export const LoginProvider = ({ children }) => {
   const history = useHistory();
   const [authenticated, setAuthenticated] = useState(false);
-  const [avatar, setAvatar] = useState(av1);
-  const [user, setUser] = useState({ username: "Lucas" });
+  const [avatar, setAvatar] = useState(
+    JSON.parse(localStorage.getItem("@avatar")) || av1
+  );
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("@user")) || ""
+  );
   const [userId, setUserId] = useState(
     JSON.parse(localStorage.getItem("@MakeItHabit!:ID")) || ""
   );
@@ -74,6 +78,7 @@ export const LoginProvider = ({ children }) => {
       .then((response) => {
         const { access } = response.data;
         const tokenDecoded = jwt_decode(access);
+        const idAvatar = avImgs[randomNumber()];
 
         localStorage.setItem(
           "@MakeItHabit!: ID",
@@ -83,10 +88,12 @@ export const LoginProvider = ({ children }) => {
 
         setAuthenticated(true);
 
-        setAvatar(avImgs[randomNumber]);
-        localStorage.setItem("@avatar", JSON.stringify(avatar));
+        setUser(username);
+        setAvatar(idAvatar);
+        localStorage.setItem("@avatar", JSON.stringify(idAvatar));
+        localStorage.setItem("@user", JSON.stringify(username));
 
-        history.push("/dasboard");
+        history.push("/profile");
       })
       .catch((_) => toast.error("Senha ou e-mail incorretos."));
   };
@@ -94,9 +101,12 @@ export const LoginProvider = ({ children }) => {
   const handleLogOut = () => {
     localStorage.removeItem("@Login:token");
     localStorage.removeItem("@avatar");
+    localStorage.removeItem("@user");
     localStorage.removeItem("@MakeItHabit!:ID");
 
     setAuthenticated(false);
+    setUser("");
+
     history.push("/login");
   };
 
