@@ -1,19 +1,18 @@
 import { createContext, useState, useEffect } from "react";
 import api from "../../services/api";
 import { toast } from "react-toastify";
-import { useContext } from 'react'
-import { LoginContext } from '../../providers/Login/Login'
+import { useContext } from "react";
+import { LoginContext } from "../Login/Login";
 
 export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
+  const [habits, setHabits] = useState([]);
+  const [visible, setVisible] = useState(false);
+  const { token, userId } = useContext(LoginContext);
 
-  const [habits, setHabits] = useState();
-  const [visible, setVisible] = useState(true)
-  const {token, userId} = useContext(LoginContext)
-
-  const difficulties = ['Fácil', 'Normal', 'Díficil', 'Muito díficil']
-  const frequencies = ['Diário', 'Semanal','Mensal','Anual']
+  const difficulties = ["Fácil", "Normal", "Díficil", "Muito díficil"];
+  const frequencies = ["Diário", "Semanal", "Mensal", "Anual"];
 
   useEffect(() => {
     if (token) {
@@ -26,10 +25,32 @@ export const HabitsProvider = ({ children }) => {
         .then((response) => setHabits(response.data))
         .catch((_) => toast.error("Algo deu errado."));
     }
-  }, [habits]);
+  }, []);
 
-  const createHabits = ({title, category, difficulty,frequency}) => {
-    const data = {title, category, difficulty, frequency, achieved:false, how_much_achieved:100, user:userId}
+  const getHabits = () => {
+    if (token) {
+      api
+        .get("/habits/personal/", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => setHabits(response.data))
+        .catch((_) => toast.error("Algo deu errado."));
+    }
+  };
+
+  const createHabits = ({ title, category, difficulty, frequency }) => {
+    const data = {
+      title,
+      category,
+      difficulty,
+      frequency,
+      achieved: false,
+      how_much_achieved: 0,
+      user: userId,
+    };
+
     api
       .post("/habits/", data, {
         headers: {
@@ -38,7 +59,8 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((_) => {
         toast.info("Hábito criado com sucesso!");
-        setVisible(false)
+        setVisible(false);
+        getHabits();
       })
       .catch((_) => toast.error("Algo deu errado."));
   };
@@ -50,6 +72,7 @@ export const HabitsProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
+      .then((_) => getHabits())
       .catch((_) => toast.error("Algo deu errado."));
   };
 
@@ -64,7 +87,18 @@ export const HabitsProvider = ({ children }) => {
   };
 
   return (
-    <HabitsContext.Provider value={{ createHabits, deleteHabit, difficulties, frequencies, updateHabit, visible, setVisible }}>
+    <HabitsContext.Provider
+      value={{
+        createHabits,
+        deleteHabit,
+        difficulties,
+        frequencies,
+        updateHabit,
+        habits,
+        visible,
+        setVisible,
+      }}
+    >
       {children}
     </HabitsContext.Provider>
   );

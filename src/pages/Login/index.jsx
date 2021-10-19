@@ -22,8 +22,9 @@ const Login = () => {
     });
 
     return (
+        <>
+        <Header/>
         <Container>
-            <Header/>
             <Box>
             <img src='' alt='login'/>
             <form
@@ -78,7 +79,8 @@ const Login = () => {
             </form>
             </Box>
         </Container>
-    )
-}
+        </>
+    );
+};
 
-export default Login
+export default Login;
