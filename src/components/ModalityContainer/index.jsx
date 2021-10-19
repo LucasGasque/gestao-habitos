@@ -1,4 +1,4 @@
-import { Container, ArrowButton, Box } from "./style";
+import { Container, ArrowButton, Box, Title, Bottom } from "./style";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { useState } from "react";
@@ -8,15 +8,15 @@ const ModalityContainer = ({ title, children }) => {
 
   return (
     <Container>
-      <div>
+      <Title>
         <p>{title}</p>
-      </div>
+      </Title>
       <Box show={show}>{children}</Box>
-      <div>
+      <Bottom>
         <ArrowButton onClick={() => setShow(!show)}>
           {!show ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
         </ArrowButton>
-      </div>
+      </Bottom>
     </Container>
   );
 };
