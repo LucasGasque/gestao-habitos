@@ -4,14 +4,16 @@ import { useHistory } from "react-router";
 
 const Header = () => {
   const history = useHistory();
+
   const sendTo = (path) => {
     history.push(path);
   };
   return (
     <Container>
-      <h1>Make it Habit!</h1>
+      <h1 onClick={() => sendTo("/")}>Make it Habit!</h1>
       <div>
         <Button
+          className="groundPurple"
           variant="outlined"
           color="primary"
           onClick={() => sendTo("/login")}
@@ -19,11 +21,12 @@ const Header = () => {
           Login
         </Button>
         <Button
+          className="groundWhite"
           variant="outlined"
           color="primary"
           onClick={() => sendTo("/register")}
         >
-          Register
+          Cadastro
         </Button>
       </div>
     </Container>
