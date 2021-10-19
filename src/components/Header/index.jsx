@@ -4,12 +4,13 @@ import { useHistory } from "react-router";
 
 const Header = () => {
   const history = useHistory();
+
   const sendTo = (path) => {
     history.push(path);
   };
   return (
     <Container>
-      <h1>Make it Habit!</h1>
+      <h1 onClick={() => sendTo("/")}>Make it Habit!</h1>
       <div>
         <Button
           className="groundPurple"
@@ -25,7 +26,7 @@ const Header = () => {
           color="primary"
           onClick={() => sendTo("/register")}
         >
-          Register
+          Cadastro
         </Button>
       </div>
     </Container>
