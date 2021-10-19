@@ -6,7 +6,7 @@ export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
   const token = JSON.parse(localStorage.getItem("@Login:token"));
-  const [habits, setHabits] = useState();
+  const [habits, setHabits] = useState([]);
 
   useEffect(() => {
     if (token) {
@@ -19,7 +19,7 @@ export const HabitsProvider = ({ children }) => {
         .then((response) => setHabits(response.data))
         .catch((_) => toast.error("Algo deu errado."));
     }
-  }, [habits]);
+  }, []);
 
   const createHabits = (data) => {
     api
@@ -55,7 +55,9 @@ export const HabitsProvider = ({ children }) => {
   };
 
   return (
-    <HabitsContext.Provider value={{ createHabits, deleteHabit, updateHabit }}>
+    <HabitsContext.Provider
+      value={{ habits, createHabits, deleteHabit, updateHabit }}
+    >
       {children}
     </HabitsContext.Provider>
   );

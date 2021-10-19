@@ -1,6 +1,7 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import api from "../../services/api";
 import { toast } from "react-toastify";
+import { LoginContext } from "../Login/Login";
 
 export const GroupContext = createContext();
 
@@ -8,12 +9,14 @@ export const GroupProvider = ({ children }) => {
   const token = JSON.parse(localStorage.getItem("@Login:token"));
 
   const [infoGroup, setInfoGroup] = useState();
-  const [subscriptions, setSubscriptions] = useState();
+  const [subscriptions, setSubscriptions] = useState([]);
   const [groups, setGroups] = useState([]);
   const [selectedGroup, setSelectedGroup] = useState();
   const [page, setPage] = useState(
     "https://kenzie-habits.herokuapp.com/groups/"
   );
+
+  const { tokenLogin } = useContext(LoginContext);
 
   useEffect(() => {
     if (token) {
@@ -26,7 +29,7 @@ export const GroupProvider = ({ children }) => {
         .then((response) => setSubscriptions(response.data))
         .catch((err) => console.log(err));
     }
-  }, [subscriptions]);
+  }, [token]);
 
   useEffect(() => {
     if (token) {
@@ -40,7 +43,18 @@ export const GroupProvider = ({ children }) => {
           .catch((err) => console.log(err));
       }
     }
-  }, [groups]);
+  }, []);
+
+  const getSubscriptions = () => {
+    api
+      .get("/groups/subscriptions/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => setSubscriptions(response.data))
+      .catch((err) => console.log(err));
+  };
 
   const getGroup = (id) => {
     api
@@ -102,6 +116,7 @@ export const GroupProvider = ({ children }) => {
   return (
     <GroupContext.Provider
       value={{
+        getSubscriptions,
         unsubscribeGroup,
         subscribeGroup,
         updateGroup,
