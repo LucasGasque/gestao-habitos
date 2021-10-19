@@ -8,6 +8,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-around;
   box-shadow: 0px 4px 6px 0px rgba(196, 196, 196, 0.65);
+  position: fixed;
 
   h1 {
     padding-top: 3px;
