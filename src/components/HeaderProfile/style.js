@@ -21,6 +21,19 @@ export const Container = styled.header`
         padding: 0;
     }
 
+    h1{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 130px;
+        font-size:22px;
+        color: var(--black);
+    }
+
+    h2{
+        display: none;
+    }
+
     button{
         background-color: transparent;
         border: none;
@@ -39,7 +52,20 @@ export const Container = styled.header`
     }
 
     @media (min-width: 768px){
-        display: none;
+        justify-content:center;  
+        padding-left: 268px;
+        background-color: transparent;
+        border-bottom: 1px solid #F0F0F0;
+        height: 75px;
+
+        img, h1, button{
+            display: none;
+        }
+
+        h2{
+            display: block;
+            color: var(--black);
+        }
     }
 
 `
