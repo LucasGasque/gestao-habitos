@@ -16,6 +16,12 @@ const MenuBar = () => {
         user 
     } =  useContext(LoginContext);
     const history = useHistory();
+    const highlight = {
+        '' : 1,
+        '/profile' : 2,
+        '/group-search' : 3,
+        '/group' : 4,
+    }
 
     return(
         <Container>
@@ -26,7 +32,9 @@ const MenuBar = () => {
                     <BsFillGearFill size='2.5em'/>
                 </GearButton>
             </User>
-            <Box>
+            <Box
+                num={highlight[history.location.pathname]}
+            >
                 <GraphButton>
                     <FiPieChart size='2.5em'/>
                     <p>Gráficos</p>
