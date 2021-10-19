@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 export default createGlobalStyle`
     :root{
         --grey: #505C6E;
+        --greyLessOpacity: rgba(80,92,110,.5);
         --black: #212121;
         --green: #CAFFA1;
         --purple:#6C63FF;

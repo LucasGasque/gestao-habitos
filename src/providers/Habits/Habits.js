@@ -1,12 +1,19 @@
 import { createContext, useState, useEffect } from "react";
 import api from "../../services/api";
 import { toast } from "react-toastify";
+import { useContext } from 'core-js/library/fn/reflect/es7/metadata'
+import { LoginContext } from '../../providers/Login/Login'
 
 export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
-  const token = JSON.parse(localStorage.getItem("@Login:token"));
+
   const [habits, setHabits] = useState();
+  const [visible, setVisible] = useState(true)
+  const {token, userId} = useContext(LoginContext)
+
+  const difficulties = ['Fácil', 'Normal', 'Díficil', 'Muito díficil']
+  const frequencies = ['Diário', 'Semanal','Mensal','Anual']
 
   useEffect(() => {
     if (token) {
@@ -21,7 +28,8 @@ export const HabitsProvider = ({ children }) => {
     }
   }, [habits]);
 
-  const createHabits = (data) => {
+  const createHabits = ({title, category, difficulty,frequency}) => {
+    const data = {title, category, difficulty, frequency, achieved:false, how_much_achieved:100, user:userId}
     api
       .post("/habits/", data, {
         headers: {
@@ -30,6 +38,7 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((_) => {
         toast.info("Hábito criado com sucesso!");
+        setVisible(false)
       })
       .catch((_) => toast.error("Algo deu errado."));
   };
@@ -55,7 +64,7 @@ export const HabitsProvider = ({ children }) => {
   };
 
   return (
-    <HabitsContext.Provider value={{ createHabits, deleteHabit, updateHabit }}>
+    <HabitsContext.Provider value={{ createHabits, deleteHabit, difficulties, frequencies, updateHabit, visible, setVisible }}>
       {children}
     </HabitsContext.Provider>
   );
