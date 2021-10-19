@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import api from "../../services/api";
 import { toast } from "react-toastify";
@@ -23,9 +23,9 @@ export const LoginContext = createContext();
 
 export const LoginProvider = ({ children }) => {
   const history = useHistory();
-  const [authenticated, setAuthenticated] = useState(true);
+  const [ authenticated, setAuthenticated] = useState(false);
   const [ avatar , setAvatar] = useState(av1);
-
+  const [ user, setUser ] = useState({username : 'Lucas'})
   const randomNumber = () => Math.floor(Math.random() * (17)) + 1;
   const avImgs = {
     1 : av1,
@@ -55,17 +55,33 @@ export const LoginProvider = ({ children }) => {
         localStorage.setItem("@Login:token", JSON.stringify(access));
         setAuthenticated(true);
         setAvatar(avImgs[randomNumber])
+        localStorage.setItem('@avatar', JSON.stringify(avatar))
         history.push("/dasboard");
       })
       .catch((_) => toast.error("Senha ou e-mail incorretos."));
   };
+
+  const handleLogOut = () => {
+    setAuthenticated(false)
+    localStorage.removeItem('@Login:token')
+    localStorage.removeItem('@avatar')
+    history.push('/login')
+  }
+
+  useEffect(() => {
+    setAvatar(
+      JSON.parse(localStorage.getItem('@avatar')) || av1
+    )
+  },[])
 
   return (
     <LoginContext.Provider 
       value={{ 
         authenticated,
         handleLogin,
-        avatar
+        handleLogOut,
+        avatar,
+        user
       }}>
       {children}
     </LoginContext.Provider>
