@@ -27,8 +27,9 @@ export const Container = styled.header`
         color: white;
         width: 20px;
         margin-right: 20px;
+        transition: 0.1s;
     }
-
+    
     button:hover{
         color: var(--black);
     }
