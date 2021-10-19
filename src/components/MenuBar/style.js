@@ -69,6 +69,10 @@ export const Box = styled.section`
         transform: scale(95%);
     }
 
+    button:nth-child(${props => props.num}){
+        color: var(--darkPurple);
+    }
+    
     @media (min-width: 768px){
         height: 100%;
         background-color: var(--purple);
@@ -89,7 +93,10 @@ export const Box = styled.section`
         button:hover{
             color: var(--white)
         }
-        
+
+        button:nth-child(${props => props.num}){
+            color: var(--white);
+        }
     }     
 `    
 
