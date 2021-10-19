@@ -1,10 +1,10 @@
 import styled from "styled-components";
 export const Container = styled.div`
   background: var(--white);
-  position: fixed;
   width: 100%;
   height: 43px;
   display: flex;
+  position: fixed;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
@@ -16,6 +16,7 @@ export const Container = styled.div`
     height: 22px;
     font-size: 17px;
     text-align: center;
+    cursor: pointer;
   }
 
   div {
