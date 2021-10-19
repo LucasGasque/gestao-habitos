@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import api from "../../services/api";
 import { toast } from "react-toastify";
-import { useContext } from 'core-js/library/fn/reflect/es7/metadata'
+import { useContext } from 'react'
 import { LoginContext } from '../../providers/Login/Login'
 
 export const HabitsContext = createContext();
