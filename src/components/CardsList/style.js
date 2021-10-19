@@ -10,7 +10,8 @@ export const FilterContainer = styled.div`
   width: 100%;
   padding: 5px;
   display: flex;
-  justify-content: space-between;
+  justify-content: ${(props) =>
+    props.type === "habit" ? "space-between" : "flex-start"};
 `;
 
 export const CardContainer = styled.div`

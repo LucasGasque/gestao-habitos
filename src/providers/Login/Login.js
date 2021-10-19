@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
 import api from "../../services/api";
 import { toast } from "react-toastify";
@@ -18,7 +19,6 @@ import av13 from "../../img/avatars/13.png";
 import av14 from "../../img/avatars/14.png";
 import av15 from "../../img/avatars/15.png";
 import av16 from "../../img/avatars/16.png";
-import { useEffect } from "react";
 
 export const LoginContext = createContext();
 
@@ -26,6 +26,10 @@ export const LoginProvider = ({ children }) => {
   const history = useHistory();
   const [authenticated, setAuthenticated] = useState(false);
   const [avatar, setAvatar] = useState(av1);
+  const [user, setUser] = useState({ username: "Lucas" });
+  const [userId, setUserId] = useState(
+    JSON.parse(localStorage.getItem("@MakeItHabit!:ID")) || ""
+  );
 
   const [token, setToken] = useState(
     JSON.parse(localStorage.getItem("@Login:token")) || ""
@@ -33,6 +37,14 @@ export const LoginProvider = ({ children }) => {
 
   useEffect(() => {
     setToken(JSON.parse(localStorage.getItem("@Login:token")) || "");
+  }, [authenticated]);
+
+  useEffect(() => {
+    setAvatar(JSON.parse(localStorage.getItem("@avatar")) || av1);
+  }, []);
+
+  useEffect(() => {
+    setUserId(JSON.parse(localStorage.getItem("@MakeItHabit!:ID")) || "");
   }, [authenticated]);
 
   const randomNumber = () => Math.floor(Math.random() * 17) + 1;
@@ -61,12 +73,31 @@ export const LoginProvider = ({ children }) => {
       .post("/sessions/", user)
       .then((response) => {
         const { access } = response.data;
+        const tokenDecoded = jwt_decode(access);
+
+        localStorage.setItem(
+          "@MakeItHabit!: ID",
+          JSON.stringify(tokenDecoded.user_id)
+        );
         localStorage.setItem("@Login:token", JSON.stringify(access));
+
         setAuthenticated(true);
+
         setAvatar(avImgs[randomNumber]);
+        localStorage.setItem("@avatar", JSON.stringify(avatar));
+
         history.push("/dasboard");
       })
       .catch((_) => toast.error("Senha ou e-mail incorretos."));
+  };
+
+  const handleLogOut = () => {
+    localStorage.removeItem("@Login:token");
+    localStorage.removeItem("@avatar");
+    localStorage.removeItem("@MakeItHabit!:ID");
+
+    setAuthenticated(false);
+    history.push("/login");
   };
 
   return (
@@ -74,8 +105,11 @@ export const LoginProvider = ({ children }) => {
       value={{
         authenticated,
         handleLogin,
+        handleLogOut,
         avatar,
+        user,
         token,
+        userId,
       }}
     >
       {children}

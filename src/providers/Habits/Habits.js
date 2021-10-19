@@ -1,11 +1,14 @@
 import { createContext, useState, useEffect } from "react";
 import api from "../../services/api";
 import { toast } from "react-toastify";
+import { useContext } from "react";
+import { LoginContext } from "../Login/Login";
 
 export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
-  const token = JSON.parse(localStorage.getItem("@Login:token"));
+  const { token } = useContext(LoginContext);
+
   const [habits, setHabits] = useState([]);
 
   useEffect(() => {
@@ -21,6 +24,19 @@ export const HabitsProvider = ({ children }) => {
     }
   }, []);
 
+  const getHabits = () => {
+    if (token) {
+      api
+        .get("/habits/personal/", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => setHabits(response.data))
+        .catch((_) => toast.error("Algo deu errado."));
+    }
+  };
+
   const createHabits = (data) => {
     api
       .post("/habits/", data, {
@@ -30,6 +46,7 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((_) => {
         toast.info("Hábito criado com sucesso!");
+        getHabits();
       })
       .catch((_) => toast.error("Algo deu errado."));
   };
@@ -41,6 +58,7 @@ export const HabitsProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
+      .then((_) => getHabits())
       .catch((_) => toast.error("Algo deu errado."));
   };
 

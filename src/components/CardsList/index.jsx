@@ -1,20 +1,22 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Container, FilterContainer } from "./style";
+import { CardContainer, Container, FilterContainer } from "./style";
 import { Button } from "@material-ui/core";
 import { HabitsContext } from "../../providers/Habits/Habits";
 import { GroupContext } from "../../providers/Group/Group";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 
-const CardsList = ({ type, pageType, groupId, children }) => {
+const CardsList = ({ type, pageType, groupData, children }) => {
   const [loadedContent, setLoadedContent] = useState([]);
   const [filteredContent, setFilteredContent] = useState([]);
 
+  const categories = ["Saúde", "Dinheiro"];
+
   const [finished, setFinished] = useState(false);
-  const [categoryFilter, setCategoryFilter] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState(null);
 
   const { habits } = useContext(HabitsContext);
   const { subscriptions } = useContext(GroupContext);
-
-  console.log(filteredContent);
 
   useEffect(() => {
     if (pageType === "user" && type === "habit") {
@@ -39,12 +41,27 @@ const CardsList = ({ type, pageType, groupId, children }) => {
       setFilteredContent(activities);
     }
     if (pageType === "group" && type === "goal") {
+      setLoadedContent(groupData.goals);
+      setFilteredContent(
+        groupData.goals.filter((goal) => goal.achieved === false)
+      );
     }
     if (pageType === "group" && type === "activity") {
+      setFilteredContent(groupData.activities);
     }
-  }, [habits, subscriptions]);
+  }, [habits, subscriptions, groupData]);
 
-  const handleFilter = (category) => {};
+  useEffect(() => {
+    setFilteredContent(
+      loadedContent
+        .filter((content) => content.achieved === finished)
+        .filter((content) =>
+          categoryFilter === null
+            ? content
+            : content.category === categoryFilter
+        )
+    );
+  }, [finished, categoryFilter]);
 
   const handleFinished = () => {
     setFinished(!finished);
@@ -55,34 +72,49 @@ const CardsList = ({ type, pageType, groupId, children }) => {
       {type === "activity" ? (
         "Calendar"
       ) : (
-        <FilterContainer>
+        <FilterContainer type={type}>
           {finished ? (
-            <>
-              <Button
-                onClick={handleFinished}
-                size="small"
-                variant="outlined"
-                color="primary"
-              >
-                Em andamento
-              </Button>
-              <p>Filter</p>
-            </>
+            <Button
+              onClick={handleFinished}
+              size="small"
+              variant="outlined"
+              color="primary"
+            >
+              Em andamento
+            </Button>
           ) : (
-            <>
-              <Button
-                onClick={handleFinished}
-                color="primary"
-                size="small"
-                variant="contained"
-              >
-                Finalizados
-              </Button>
-              <p>Filter</p>
-            </>
+            <Button
+              onClick={handleFinished}
+              color="primary"
+              size="small"
+              variant="contained"
+            >
+              Finalizados
+            </Button>
+          )}
+          {type === "habit" ? (
+            <Autocomplete
+              value={categoryFilter}
+              onChange={(event, newValue) => {
+                setCategoryFilter(newValue);
+              }}
+              id="controllable-states-demo"
+              options={categories}
+              size="small"
+              sx={{ width: 110 }}
+              renderInput={(params) => <TextField {...params} label="Filtro" />}
+            />
+          ) : (
+            ""
           )}
         </FilterContainer>
       )}
+      <CardContainer>
+        {filteredContent.map((content) => (
+          <div></div>
+        ))}
+        {children}
+      </CardContainer>
     </Container>
   );
 };

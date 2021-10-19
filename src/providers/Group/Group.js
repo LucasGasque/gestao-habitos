@@ -6,7 +6,7 @@ import { LoginContext } from "../Login/Login";
 export const GroupContext = createContext();
 
 export const GroupProvider = ({ children }) => {
-  const token = JSON.parse(localStorage.getItem("@Login:token"));
+  const { token } = useContext(LoginContext);
 
   const [infoGroup, setInfoGroup] = useState();
   const [subscriptions, setSubscriptions] = useState([]);
@@ -15,8 +15,6 @@ export const GroupProvider = ({ children }) => {
   const [page, setPage] = useState(
     "https://kenzie-habits.herokuapp.com/groups/"
   );
-
-  const { tokenLogin } = useContext(LoginContext);
 
   useEffect(() => {
     if (token) {
@@ -71,6 +69,7 @@ export const GroupProvider = ({ children }) => {
       })
       .then((response) => {
         setInfoGroup(response.data);
+        getSubscriptions();
         toast.info("Grupo criado com sucesso!");
       })
       .catch((_) => toast.info("Algo deu errado."));
@@ -98,7 +97,10 @@ export const GroupProvider = ({ children }) => {
           },
         }
       )
-      .then((_) => toast.info("Foi inscrito com sucesso!"))
+      .then((_) => {
+        getSubscriptions();
+        toast.info("Foi inscrito com sucesso!");
+      })
       .catch((_) => toast.info("Algo deu errado."));
   };
 
@@ -109,7 +111,10 @@ export const GroupProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((_) => toast.info("Se desinscreveu com sucesso!"))
+      .then((_) => {
+        getSubscriptions();
+        toast.info("Se desinscreveu com sucesso!");
+      })
       .catch((_) => toast.info("Algo deu errado."));
   };
 
