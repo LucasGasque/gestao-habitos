@@ -31,9 +31,7 @@ const Register = () => {
 
   return (
     <>
-      <ContainerHeader>
         <Header />
-      </ContainerHeader>
       <Container>
         <Image src="" alt="register" />
         <Form onSubmit={handleSubmit(handleRegister)}>
