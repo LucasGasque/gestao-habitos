@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import api from "../../services/api";
 import { toast } from "react-toastify";
@@ -24,9 +24,9 @@ export const LoginContext = createContext();
 export const LoginProvider = ({ children }) => {
   const history = useHistory();
   const [ authenticated, setAuthenticated] = useState(false);
-  const [ avatar , setAvatar] = useState(av1);
-  const [ user, setUser ] = useState({username : 'Lucas'})
-  const randomNumber = () => Math.floor(Math.random() * (17)) + 1;
+  const [ avatar , setAvatar] = useState(JSON.parse(localStorage.getItem('@avatar')) || av1);
+  const [ user, setUser ] = useState(JSON.parse(localStorage.getItem('@user')) || '')
+  const randomNumber =()=> Math.floor(Math.random() * (17)) + 1;
   const avImgs = {
     1 : av1,
     2 : av2,
@@ -52,27 +52,26 @@ export const LoginProvider = ({ children }) => {
       .post("/sessions/", user)
       .then((response) => {
         const { access } = response.data;
+        const idAvatar = avImgs[randomNumber()]
         localStorage.setItem("@Login:token", JSON.stringify(access));
+        setUser(username)
         setAuthenticated(true);
-        setAvatar(avImgs[randomNumber])
-        localStorage.setItem('@avatar', JSON.stringify(avatar))
-        history.push("/dasboard");
+        setAvatar(idAvatar)
+        localStorage.setItem('@avatar', JSON.stringify(idAvatar))
+        localStorage.setItem('@user', JSON.stringify(username))
+        history.push("/profile");
       })
       .catch((_) => toast.error("Senha ou e-mail incorretos."));
   };
 
   const handleLogOut = () => {
     setAuthenticated(false)
+    setUser('')
     localStorage.removeItem('@Login:token')
     localStorage.removeItem('@avatar')
+    localStorage.removeItem('@user')
     history.push('/login')
   }
-
-  useEffect(() => {
-    setAvatar(
-      JSON.parse(localStorage.getItem('@avatar')) || av1
-    )
-  },[])
 
   return (
     <LoginContext.Provider 

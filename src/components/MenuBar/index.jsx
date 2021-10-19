@@ -10,14 +10,18 @@ import { useHistory } from 'react-router';
 
 const MenuBar = () => {
 
-    const { avatar, handleLogOut, user } =  useContext(LoginContext);
-    const history = useHistory()
+    const { 
+        avatar,
+        handleLogOut,
+        user 
+    } =  useContext(LoginContext);
+    const history = useHistory();
 
     return(
         <Container>
             <User>
                 <img src={avatar} alt="avatar" />
-                <h1>{user.username}</h1>
+                <h1>{user}</h1>
                 <GearButton>
                     <BsFillGearFill size='2.5em'/>
                 </GearButton>
