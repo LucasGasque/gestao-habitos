@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 export const CategoriesContext = createContext();
 
-export const ActivitiesProvieder = ({ children }) => {
+export const CategoriesProvider = ({ children }) => {
   const [categories, setCategories] = useState([
     "Estudo",
     "Alimentação",

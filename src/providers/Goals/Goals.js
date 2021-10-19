@@ -10,6 +10,7 @@ export const GoalsProvider = ({ children }) => {
   const { token } = useContext(LoginContext);
 
   const [goal, setGoal] = useState();
+  const [newGoalVisible, setNewGoalVisible] = useState(false);
 
   const getGoal = (id) => {
     api
@@ -27,6 +28,7 @@ export const GoalsProvider = ({ children }) => {
       })
       .then((_) => {
         toast.info("Objetivo criado com sucesso!");
+        setNewGoalVisible(false);
       })
       .catch((_) => toast.error("Algo deu errado."));
   };
@@ -64,6 +66,8 @@ export const GoalsProvider = ({ children }) => {
         updateGoal,
         createGoal,
         getGoal,
+        newGoalVisible,
+        setNewGoalVisible,
         goal,
       }}
     >
