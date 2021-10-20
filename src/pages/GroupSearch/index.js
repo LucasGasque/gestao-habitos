@@ -3,6 +3,7 @@ import MenuBar from '../../components/MenuBar';
 import { TextField } from "@mui/material";
 import { useContext, useState } from "react";
 import { GroupContext } from'../../providers/Group/Group';
+import GroupCard from '../../components/GroupCard'
 
 const GroupSearch = () => {
 
@@ -14,6 +15,8 @@ const GroupSearch = () => {
       groups.filter(({ name }) => name.toLowerCase().includes(loweredInput))
     );
   };
+
+  console.log(groups)
 
   return (
     <>
@@ -29,7 +32,15 @@ const GroupSearch = () => {
           />
         </SearchBox>
         <ul>
-          {filteredGroups.map((group,index)=> <li>{group.name}</li>)}
+          {filteredGroups.map((group,index)=> 
+            <GroupCard 
+              key={index}
+              name={group.name}
+              goals={group.goals}
+              users={group.users_on_group}
+              id={group.id}
+            />
+          )}
         </ul>
       </Container>
       <MenuBar/>
