@@ -15,7 +15,7 @@ import { useContext } from "react";
 import { useState } from "react";
 
 const CardHabit = ({ id, title, category, dificulty, data }) => {
-  const { updateHabit, getHabits } = useContext(HabitsContext);
+  const { updateHabit } = useContext(HabitsContext);
   const [progress, setProgress] = useState("0");
 
   const HandleAchieved = () => {
