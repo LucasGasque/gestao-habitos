@@ -5,6 +5,6 @@ export const schema = yup.object().shape({
     .string()
     .required("Campo obrigatório"),
   date: yup
-    .date()
+    .string()
     .required("Campo obrigatório"),
 });

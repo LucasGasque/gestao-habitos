@@ -7,6 +7,7 @@ import CardList from '../../components/CardsList';
 import { useContext } from "react";
 import { HabitsContext } from "../../providers/Habits/Habits";
 import DeleteModal from '../../components/DeleteModal'
+import CreateActivity from '../../components/CreateActivity'
 
 const Profile = () => {
 
@@ -45,6 +46,7 @@ const Profile = () => {
     </Container>
     <MenuBar/>
     <CreateHabit/>
+    <CreateActivity/>
     </>
   );
 };
