@@ -5,7 +5,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Profile from "../pages/Profile";
-import CardHabit from "../components/CardHabit/index";
+import MyGroups from '../pages/MyGroups'
 
 const Routes = () => {
   return (
@@ -20,6 +20,10 @@ const Routes = () => {
         <Route path="/register">
           <Register />
         </Route>
+        <Route path="/my-groups">
+          <MyGroups />
+        </Route>
+        <Route path="/group">
         <Route path="/group/:id">
           <Group />
         </Route>
@@ -28,9 +32,6 @@ const Routes = () => {
         </Route>
         <Route path="/profile">
           <Profile />
-        </Route>
-        <Route path="/habit">
-          <CardHabit></CardHabit>
         </Route>
       </Switch>
     </>
