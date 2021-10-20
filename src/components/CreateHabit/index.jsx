@@ -5,6 +5,7 @@ import { TextField, Button, Autocomplete } from "@mui/material";
 import { schema } from "../../validations/CreateHabitSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import { CategoriesContext } from "../../providers/Categories/Categories";
 
 const CreateHabit = () => {
   const {
@@ -15,11 +16,18 @@ const CreateHabit = () => {
     resolver: yupResolver(schema),
   });
 
-  const { createHabits, visible, setVisible, difficulties, frequencies } =
-    useContext(HabitsContext);
+  const {
+    createHabits,
+    newHabitVisible,
+    setNewHabitVisible,
+    difficulties,
+    frequencies,
+  } = useContext(HabitsContext);
+
+  const { categories } = useContext(CategoriesContext);
 
   return (
-    visible && (
+    newHabitVisible && (
       <Container>
         <Modal onSubmit={handleSubmit(createHabits)}>
           <h2>Criar novo hábito</h2>
@@ -36,7 +44,7 @@ const CreateHabit = () => {
             disableClearable
             disablePortal
             size="small"
-            options={["Heric"]}
+            options={categories}
             sx={{ width: 260 }}
             renderInput={(params) => (
               <TextField
@@ -90,7 +98,7 @@ const CreateHabit = () => {
               Criar
             </Button>
             <Button
-              onClick={() => setVisible(false)}
+              onClick={() => setNewHabitVisible(false)}
               sx={{ width: 260 }}
               size="small"
               variant="outlined"

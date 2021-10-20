@@ -3,6 +3,7 @@ import { CardContainer, Container, FilterContainer } from "./style";
 import { Button } from "@material-ui/core";
 import { HabitsContext } from "../../providers/Habits/Habits";
 import { GroupContext } from "../../providers/Group/Group";
+import { CategoriesContext } from "../../providers/Categories/Categories";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
@@ -10,7 +11,7 @@ const CardsList = ({ type, pageType, groupData, children }) => {
   const [loadedContent, setLoadedContent] = useState([]);
   const [filteredContent, setFilteredContent] = useState([]);
 
-  const categories = ["Saúde", "Dinheiro"];
+  const { categories } = useContext(CategoriesContext);
 
   const [finished, setFinished] = useState(false);
   const [categoryFilter, setCategoryFilter] = useState(null);
@@ -98,10 +99,12 @@ const CardsList = ({ type, pageType, groupData, children }) => {
               onChange={(event, newValue) => {
                 setCategoryFilter(newValue);
               }}
+              selectOnFocus
+              blurOnSelect
               id="controllable-states-demo"
               options={categories}
               size="small"
-              sx={{ width: 110 }}
+              sx={{ width: 115 }}
               renderInput={(params) => <TextField {...params} label="Filtro" />}
             />
           ) : (
