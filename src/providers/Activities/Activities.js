@@ -61,7 +61,6 @@ export const ActivitiesProvider = ({ children }) => {
         createActivities,
         visibleCreateAct,
         setVisibleCreateAct,
-
       }}
     >
       {children}
