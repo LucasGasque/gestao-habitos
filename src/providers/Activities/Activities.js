@@ -35,7 +35,7 @@ export const ActivitiesProvider = ({ children }) => {
       .catch((_) => toast.error("Algo deu errado."));
   };
 
-  const deleteActivities = (id) => {
+  const deleteActivity = (id) => {
     api
       .delete(`/activities/${id}/`, {
         headers: {
@@ -50,7 +50,7 @@ export const ActivitiesProvider = ({ children }) => {
 
   return (
     <ActivitiesContext.Provider
-      value={{ deleteActivities, updateActivities, createActivities }}
+      value={{ deleteActivity, updateActivities, createActivities }}
     >
       {children}
     </ActivitiesContext.Provider>

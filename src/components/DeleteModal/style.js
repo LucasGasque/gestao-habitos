@@ -1,55 +1,38 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    background-color: var(--white);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--greyLessOpacity);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+`
+
+export const Modal = styled.form`
+    width: 290px;
+    min-height: 140px;
+    background: var(--white);
     border-radius: 5px;
-    width: 190px;
-    height: 150px;
     border: 1px solid var(--grey);
-    display:flex;
-    flex-direction: column;
+    display: flex;
+    flex-flow: column nowrap;
     align-items: center;
     justify-content: space-around;
-    position: fixed;
-    top :50%;
-    left: 50%;
-    margin-top: -75px;
-    margin-left: -85px;
-
-    h2{
-        font-size: 22px;
+    
+    h2 {
+        font-size: 1.5em;
+        color: var(--black);
+        margin: 15px 0;
     }
 
-    div{
+    div {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
+        width: 85%;
     }
-
-    button{
-        height: 25px;
-        border-radius: 5px;
-        width: 140px;
-    }
-
-`
-
-export const DeleteButton = styled.button`
-    background-color: var(--purple);
-    border: 2px solid var(--purple);
-    margin-bottom: 5px;
-    color:var(--white) ;
-
-    :hover{
-        box-shadow: 2px 2px 2px 2px;
-    }
-`
-
-export const CancelButton = styled.button`
-    background-color: var(--white);
-    border: 2px solid var(--purple);
-    color: var(--purple);
-
-    :hover{
-        box-shadow: 2px 2px 2px 2px;
-    }
-`
+` 
