@@ -20,7 +20,7 @@ const Routes = () => {
         <Route path="/register">
           <Register />
         </Route>
-        <Route path="/group">
+        <Route path="/group/:id">
           <Group />
         </Route>
         <Route path="/group-search">
