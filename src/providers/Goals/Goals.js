@@ -34,8 +34,9 @@ export const GoalsProvider = ({ children }) => {
   };
 
   const updateGoal = (id, data) => {
+    const titleObj = {title: data.newTitle}
     api
-      .patch(`/goals/${id}/`, data, {
+      .patch(`/goals/${id}/`, titleObj, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

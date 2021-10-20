@@ -27,8 +27,9 @@ export const ActivitiesProvider = ({ children }) => {
   };
 
   const updateActivities = (id, data) => {
+    const titleObj = {title: data.newTitle}
     api
-      .patch(`/activities/${id}/`, data, {
+      .patch(`/activities/${id}/`, titleObj, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
