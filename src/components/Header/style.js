@@ -7,10 +7,19 @@ export const Container = styled.div`
   position: fixed;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
-  box-shadow: 0px 4px 6px 0px rgba(196, 196, 196, 0.65);
-  position: fixed;
+  justify-content: center;
+  box-shadow: 0px 0px 30px -10px rgba(0, 0, 0, 0.25);
 
+  @media (min-width: 768px) {
+    height: 66.19px;
+  }
+`;
+
+export const Content = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 16px;
   h1 {
     padding-top: 3px;
     width: 120px;
@@ -46,10 +55,9 @@ export const Container = styled.div`
       padding: 0;
     }
   }
-
   @media (min-width: 768px) {
-    height: 66.19px;
-
+    max-width: 1170px;
+    padding: 0;
     h1 {
       width: 239px;
       height: 35.73px;

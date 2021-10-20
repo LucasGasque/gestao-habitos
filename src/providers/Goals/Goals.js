@@ -10,6 +10,7 @@ export const GoalsProvider = ({ children }) => {
   const { token } = useContext(LoginContext);
 
   const [goal, setGoal] = useState();
+  const [newGoalVisible, setNewGoalVisible] = useState(false);
 
   const getGoal = (id) => {
     api
@@ -18,7 +19,8 @@ export const GoalsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const createGoal = (data) => {
+  const createGoal = ({ title, difficulty }, group) => {
+    const data = { title, difficulty, how_much_achieved: 0, group};
     api
       .post("/goals/", data, {
         headers: {
@@ -27,6 +29,7 @@ export const GoalsProvider = ({ children }) => {
       })
       .then((_) => {
         toast.info("Objetivo criado com sucesso!");
+        setNewGoalVisible(false);
       })
       .catch((_) => toast.error("Algo deu errado."));
   };
@@ -64,6 +67,8 @@ export const GoalsProvider = ({ children }) => {
         updateGoal,
         createGoal,
         getGoal,
+        newGoalVisible,
+        setNewGoalVisible,
         goal,
       }}
     >
