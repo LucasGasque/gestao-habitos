@@ -42,13 +42,13 @@ const CardsList = ({ type, pageType, groupData, children }) => {
       setFilteredContent(activities);
     }
     if (pageType === "group" && type === "goal") {
-      setLoadedContent(groupData.goals);
+      setLoadedContent(groupData?.goals);
       setFilteredContent(
-        groupData.goals.filter((goal) => goal.achieved === false)
+        groupData?.goals.filter((goal) => goal.achieved === false)
       );
     }
     if (pageType === "group" && type === "activity") {
-      setFilteredContent(groupData.activities);
+      setFilteredContent(groupData?.activities);
     }
   }, [habits, subscriptions, groupData]);
 
@@ -113,7 +113,7 @@ const CardsList = ({ type, pageType, groupData, children }) => {
         </FilterContainer>
       )}
       <CardContainer>
-        {filteredContent.map((content) => (
+        {filteredContent?.map((content) => (
           <div></div>
         ))}
         {children}

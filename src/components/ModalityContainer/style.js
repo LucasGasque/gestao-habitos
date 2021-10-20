@@ -12,14 +12,21 @@ export const Container = styled.div`
     text-align: center;
     line-height: 27px;
   }
-`
+  @media (min-width: 768px) {
+    width: ${(props) => (props.pageType === "Group" ? "500px" : "254px")};
+    max-width: 35vw;
+  }
+  @media (min-width: 1040px) {
+    max-width: 30vw;
+  }
+`;
 
 export const Title = styled.div`
   background-color: var(--yellow);
   height: 27px;
   border-bottom: 1px solid var(--black);
   border-radius: 5px 5px 0 0;
-`
+`;
 
 export const ArrowButton = styled(Button)`
   width: 100%;
@@ -31,8 +38,8 @@ export const Box = styled.section`
   transition: 0.5s;
   overflow: hidden;
 
-  @media (min-width: 1050px){
-    height:75vh;
+  @media (min-width: 1050px) {
+    height: 75vh;
   }
 `;
 
@@ -42,7 +49,7 @@ export const Bottom = styled.div`
   border-top: 1px solid var(--black);
   border-radius: 0 0 5px 5px;
 
-  @media (min-width: 1050px){
+  @media (min-width: 1050px) {
     display: none;
   }
-`
+`;

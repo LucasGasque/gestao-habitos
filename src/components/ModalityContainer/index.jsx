@@ -3,15 +3,17 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { useState } from "react";
 
-const ModalityContainer = ({ title, children }) => {
+const ModalityContainer = ({ title, pageType = null, children }) => {
   const [show, setShow] = useState(false);
 
   return (
-    <Container>
+    <Container pageType={pageType}>
       <Title>
         <p>{title}</p>
       </Title>
-      <Box show={show}>{children}</Box>
+      <Box pageType={pageType} show={show}>
+        {children}
+      </Box>
       <Bottom>
         <ArrowButton onClick={() => setShow(!show)}>
           {!show ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
