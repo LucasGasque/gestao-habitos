@@ -1,15 +1,19 @@
 import { createContext } from "react";
-import { useContext } from "react";
-import { toast } from "react";
+import { useContext, useState } from "react";
+import { toast } from "react-toastify";
 import api from "../../services/api";
 import { LoginContext } from "../Login/Login";
 
 export const ActivitiesContext = createContext();
 
 export const ActivitiesProvider = ({ children }) => {
-  const { token } = useContext(LoginContext);
+  const [newActivityVisible, setNewActivityVisible] = useState(false);
 
-  const createActivities = (data) => {
+  const { token } = useContext(LoginContext);
+  const [visibleCreateAct, setVisibleCreateAct] = useState(false);
+
+  const createActivities = ({ title, date }, group) => {
+    const data = { title, realization_time: date, group };
     api
       .post("/activities/", data, {
         headers: {
@@ -18,6 +22,7 @@ export const ActivitiesProvider = ({ children }) => {
       })
       .then((_) => {
         toast.info("Atividade criada com sucesso!");
+        setVisibleCreateAct(false);
       })
       .catch((_) => toast.error("Algo deu errado."));
   };
@@ -35,7 +40,7 @@ export const ActivitiesProvider = ({ children }) => {
       .catch((_) => toast.error("Algo deu errado."));
   };
 
-  const deleteActivities = (id) => {
+  const deleteActivity = (id) => {
     api
       .delete(`/activities/${id}/`, {
         headers: {
@@ -50,7 +55,13 @@ export const ActivitiesProvider = ({ children }) => {
 
   return (
     <ActivitiesContext.Provider
-      value={{ deleteActivities, updateActivities, createActivities }}
+      value={{
+        deleteActivity,
+        updateActivities,
+        createActivities,
+        visibleCreateAct,
+        setVisibleCreateAct,
+      }}
     >
       {children}
     </ActivitiesContext.Provider>

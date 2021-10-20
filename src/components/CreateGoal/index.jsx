@@ -1,13 +1,13 @@
 import { Container, DivButton, Modal } from "./styles";
 import { useContext } from "react";
-import { HabitsContext} from "../../providers/Habits/Habits";
-import {CategoriesContext } from '../../providers/Categories/Categories'
+import { HabitsContext } from "../../providers/Habits/Habits";
+import { GoalsContext } from "../../providers/Goals/Goals";
 import { TextField, Button, Autocomplete } from "@mui/material";
-import { schema } from "../../validations/CreateHabitSchema";
+import { schema } from "../../validations/CreateGoalScheme";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-const CreateHabit = () => {
+const CreateGoal = () => {
   const {
     register,
     handleSubmit,
@@ -16,21 +16,16 @@ const CreateHabit = () => {
     resolver: yupResolver(schema),
   });
 
-  const {
-    createHabits,
-    newHabitVisible,
-    setNewHabitVisible,
-    difficulties,
-    frequencies,
-  } = useContext(HabitsContext);
+  const { difficulties } = useContext(HabitsContext);
 
-  const { categories } = useContext(CategoriesContext);
+  const { createGoal, newGoalVisible, setNewGoalVisible } =
+    useContext(GoalsContext);
 
   return (
-    newHabitVisible && (
+    newGoalVisible && (
       <Container>
-        <Modal onSubmit={handleSubmit(createHabits)}>
-          <h2>Criar novo hábito</h2>
+        <Modal onSubmit={handleSubmit(createGoal)}>
+          <h2>Criar novo objetivo</h2>
 
           <TextField
             sx={{ width: 260 }}
@@ -39,22 +34,6 @@ const CreateHabit = () => {
             {...register("title")}
             error={!!errors.title}
             helperText={errors.title?.message}
-          />
-          <Autocomplete
-            disableClearable
-            disablePortal
-            size="small"
-            options={categories}
-            sx={{ width: 260 }}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Categoria"
-                {...register("category")}
-                error={!!errors.category}
-                helperText={errors.category?.message}
-              />
-            )}
           />
           <Autocomplete
             disableClearable
@@ -72,22 +51,6 @@ const CreateHabit = () => {
               />
             )}
           />
-          <Autocomplete
-            disableClearable
-            disablePortal
-            size="small"
-            options={frequencies}
-            sx={{ width: 260 }}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Frequência"
-                {...register("frequency")}
-                error={!!errors.frequency}
-                helperText={errors.frequency?.message}
-              />
-            )}
-          />
           <DivButton>
             <Button
               type="submit"
@@ -98,7 +61,7 @@ const CreateHabit = () => {
               Criar
             </Button>
             <Button
-              onClick={() => setNewHabitVisible(false)}
+              onClick={() => setNewGoalVisible(false)}
               sx={{ width: 260 }}
               size="small"
               variant="outlined"
@@ -112,4 +75,4 @@ const CreateHabit = () => {
   );
 };
 
-export default CreateHabit;
+export default CreateGoal;

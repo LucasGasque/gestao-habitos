@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+    padding-top: 43px;
 
     ul{
         display: flex;
@@ -8,6 +9,12 @@ export const Container = styled.div`
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
+    }
+
+    h4{
+        margin: 5px 0;
+        text-decoration: underline;
+        display: none;
     }
 
     h1{
@@ -23,6 +30,14 @@ export const Container = styled.div`
     p{
        font-size: 18px;
        padding: 0 10px;
+    }
+
+    @media (min-width: 768px){
+        padding-top: 66px;
+
+        h4{
+            display: block;
+        }
     }
 `;
 
@@ -48,27 +63,32 @@ export const Img = styled.img`
 `;
 
 export const Box = styled.div`
-
+    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    height: 424px;
     width: 100%;
-    text-align: center;
 
     span{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-        height: 424px;
+        min-height: 424px;
         width: 100%;
+    }
+
+    p{
         text-align: center;
     }
 
     :nth-child(2){
         background-color: var(--green);
+
+        img{
+            background-color: var(--green);
+        }
     }
 
     :nth-child(4){
@@ -85,11 +105,18 @@ export const Box = styled.div`
     }
 
     @media (min-width:768px){
-
         span{
             max-width: 1170px;
-            height: 456px;
             flex-direction: row;
+        }
+
+        :last-child span{
+            flex-direction: column;
+        }
+
+        p{
+            text-align: start;
+            padding: 0;
         }
 
         :nth-child(2) span:nth-child(1){
@@ -124,7 +151,7 @@ export const Article = styled.article`
     @media (min-width:768px){
         h2{
             display: block;
-            margin: 20px;
+            margin: 0 0 20px 0;
         }
     }
 `;
@@ -145,3 +172,75 @@ export const Ondas = styled.div`
         background-color: var(--blue);
     }
 `;
+
+export const BoxMain = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    padding: 10px;
+
+    span{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        min-height: 424px;
+        width: 100%;
+    }
+
+    section{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        justify-content: space-around;
+    }
+
+    h4{
+        margin: 5px 0;
+        text-decoration: underline;
+    }
+
+    h1{
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    strong{
+        color:var(--purple);
+    }
+
+    p{
+        font-size: 16px;
+        padding: 0;
+        margin: 5px 0;
+    }
+
+    img{
+        width: 277px;
+        height: 208px;
+    }
+
+    @media (min-width:768px){
+        span{
+            max-width: 1170px;
+            flex-direction: row;
+        }
+
+        h1{
+            max-width: 400px;
+        }
+
+        p{
+            max-width: 350px;
+            margin: 20px 0;
+        }
+
+        img{
+            width: 585px;
+            height: 490px;
+        }
+    }
+`
