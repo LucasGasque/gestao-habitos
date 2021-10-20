@@ -66,12 +66,11 @@ export const ContainerDate = styled.div`
 
 export const CointainerProgress = styled.div`
   margin: 0 auto;
-  width: 214px;
+  width: 210px;
   height: 5px;
   background-color: var(--white);
 
   div {
-    width: 20%;
     background-color: #61d891;
     height: 5px;
   }

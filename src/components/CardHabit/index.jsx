@@ -12,16 +12,32 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import DoneIcon from "@mui/icons-material/Done";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { useContext } from "react";
+import { useState } from "react";
 
-const CardHabit = ({
-  id,
-  title,
-  category,
-  dificulty,
-  how_much_achieved,
-  data,
-}) => {
-  const { deleteHabit, updateHabit } = useContext(HabitsContext);
+const CardHabit = ({ id, title, category, dificulty, data }) => {
+  const { updateHabit, getHabits } = useContext(HabitsContext);
+  const [progress, setProgress] = useState("0");
+
+  const HandleAchieved = () => {
+    if (Number(progress) < 210) {
+      setProgress((Number(progress) + 10).toString());
+      if (Number(progress) <= 42) {
+        updateHabit({ how_much_achieved: 10 });
+      } else if (Number(progress) <= 84) {
+        updateHabit({ how_much_achieved: 20 });
+      } else if (Number(progress) <= 126) {
+        updateHabit({ how_much_achieved: 30 });
+      } else if (Number(progress) <= 168) {
+        updateHabit({ how_much_achieved: 40 });
+      } else if (Number(progress) > 168) {
+        updateHabit({ how_much_achieved: 50 });
+      }
+    }
+    if (Number(progress) === 210) {
+      updateHabit({ how_much_achieved: 50, achieved: true });
+    }
+  };
+
   return (
     <>
       <ContainerCard>
@@ -30,7 +46,7 @@ const CardHabit = ({
           <ContainerButtons>
             <CardButton>
               <DeleteIcon
-                onClick={() => deleteHabit(id)}
+                onClick={() => {}}
                 sx={{ width: "18px", color: "white", opacity: "50%" }}
               />
             </CardButton>
@@ -42,6 +58,7 @@ const CardHabit = ({
             </CardButton>
             <CardButton>
               <DoneIcon
+                onClick={HandleAchieved}
                 sx={{ width: "18px", color: "white", opacity: "50%" }}
               />
             </CardButton>
@@ -54,7 +71,7 @@ const CardHabit = ({
         </ContainerDate>
 
         <CointainerProgress>
-          <div></div>
+          <div style={{ width: `${progress}px` }}></div>
         </CointainerProgress>
       </ContainerCard>
     </>
