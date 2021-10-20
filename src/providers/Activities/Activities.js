@@ -38,7 +38,7 @@ export const ActivitiesProvider = ({ children }) => {
       .catch((_) => toast.error("Algo deu errado."));
   };
 
-  const deleteActivities = (id) => {
+  const deleteActivity = (id) => {
     api
       .delete(`/activities/${id}/`, {
         headers: {

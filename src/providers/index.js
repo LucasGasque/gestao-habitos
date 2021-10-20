@@ -5,6 +5,7 @@ import { GoalsProvider } from "./Goals/Goals";
 import { GroupProvider } from "./Group/Group";
 import { ActivitiesProvider } from "./Activities/Activities";
 import { CategoriesProvider } from "./Categories/Categories";
+import { DeleteModalProvider } from "./DeleteModal/DeleteModal";
 
 const Providers = ({ children }) => {
   return (
@@ -14,7 +15,9 @@ const Providers = ({ children }) => {
           <GoalsProvider>
             <GroupProvider>
               <ActivitiesProvider>
-                <CategoriesProvider>{children}</CategoriesProvider>
+                <CategoriesProvider>
+                  <DeleteModalProvider>{children}</DeleteModalProvider>
+                </CategoriesProvider>
               </ActivitiesProvider>
             </GroupProvider>
           </GoalsProvider>

@@ -6,6 +6,7 @@ import ModalityContainer from "../../components/ModalityContainer";
 import CardList from "../../components/CardsList";
 import { useContext } from "react";
 import { HabitsContext } from "../../providers/Habits/Habits";
+import DeleteModal from '../../components/DeleteModal'
 import AddNewCard from "../../components/AddNewCard";
 
 const Profile = () => {
