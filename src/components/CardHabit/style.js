@@ -16,6 +16,13 @@ export const ContainerHeaderCard = styled.div`
   justify-content: space-between;
 `;
 
+export const ContainerImage = styled.div`
+  width: 22px;
+  height: 22px;
+  border-radius: 100px;
+  background-color: #969da8; ;
+`;
+
 export const ContainerButtons = styled.div`
   width: 72px;
   display: flex;
@@ -32,4 +39,23 @@ export const CardButton = styled.div`
   width: 20px;
   height: 20px;
   margin-right: 3px;
+`;
+
+export const ContainerDate = styled.div`
+  margin-left: 11px;
+  display: flex;
+  flex-direction: column;
+  width: 117px;
+  height: 41px;
+`;
+
+export const CointainerProgress = styled.div`
+  width: 214px;
+  height: 5px;
+  background-color: var(--white);
+
+  div {
+    width: 10%;
+    background-color: var(--green);
+  }
 `;

@@ -3,17 +3,19 @@ import {
   ContainerButtons,
   ContainerHeaderCard,
   CardButton,
+  ContainerImage,
+  ContainerDate,
+  CointainerProgress,
 } from "./style";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DoneIcon from "@mui/icons-material/Done";
-import { fontSize, height } from "@mui/system";
 
-const CardHabit = () => {
+const CardHabit = ({ goal, img, nivel }) => {
   return (
     <>
       <ContainerCard>
         <ContainerHeaderCard>
-          <img></img>
+          <ContainerImage>{img}</ContainerImage>
           <ContainerButtons>
             <CardButton>
               <DeleteIcon sx={{ width: "18px" }} />
@@ -23,6 +25,15 @@ const CardHabit = () => {
             </CardButton>
           </ContainerButtons>
         </ContainerHeaderCard>
+
+        <ContainerDate>
+          <h3>{goal}</h3>
+          <p>{nivel}</p>
+        </ContainerDate>
+
+        <CointainerProgress>
+          <div></div>
+        </CointainerProgress>
       </ContainerCard>
     </>
   );
