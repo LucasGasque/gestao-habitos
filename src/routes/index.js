@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Profile from "../pages/Profile";
+import CardHabit from "../components/CardHabit/index";
 
 const Routes = () => {
   return (
@@ -27,6 +28,9 @@ const Routes = () => {
         </Route>
         <Route path="/profile">
           <Profile />
+        </Route>
+        <Route path="/habit">
+          <CardHabit></CardHabit>
         </Route>
       </Switch>
     </>
