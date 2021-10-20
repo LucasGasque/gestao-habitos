@@ -11,7 +11,7 @@ export const Form = styled.form`
   height: 460px;
   @media (min-width: 768px) {
     & {
-      width: 400px;
+      width: 370px;
       height: 500px;
     }
   }
@@ -41,8 +41,8 @@ export const Link = styled.span`
 `;
 
 export const Image = styled.img`
-  width: 500px;
-  height: 500px;
+  width: 430px;
+  height: 398px;
   display: none;
   @media (min-width: 768px) {
     & {
@@ -59,15 +59,17 @@ export const Container = styled.section`
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+  padding: 0 16px;
 
   @media (min-width: 768px) {
     & {
       flex-flow: row-reverse nowrap;
-      justify-content: space-around;
+      justify-content: space-between;
+      padding: 0 70px;
     }
 
     ${Image} {
-      display:block;
+      display: block;
     }
   }
 `;

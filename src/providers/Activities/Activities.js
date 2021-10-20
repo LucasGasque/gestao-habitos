@@ -7,6 +7,8 @@ import { LoginContext } from "../Login/Login";
 export const ActivitiesContext = createContext();
 
 export const ActivitiesProvider = ({ children }) => {
+  const [newActivityVisible, setNewActivityVisible] = useState(false);
+
   const { token } = useContext(LoginContext);
   const [visibleCreateAct, setVisibleCreateAct] = useState(false);
 
@@ -59,6 +61,7 @@ export const ActivitiesProvider = ({ children }) => {
         createActivities,
         visibleCreateAct,
         setVisibleCreateAct,
+
       }}
     >
       {children}

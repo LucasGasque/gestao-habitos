@@ -4,15 +4,10 @@ import { TextField, Button } from "@mui/material";
 import { schema } from "../../validations/RegisterSchema";
 import { useContext } from "react";
 import Header from "../../components/Header";
-import {
-  Container,
-  Form,
-  RegisterTitle,
-  Link,
-  Image,
-} from "./styles";
+import { Container, Form, RegisterTitle, Link, Image } from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import registerSVG from "../../img/svgs/RegisterSVG.svg";
 
 const Register = () => {
   const { handleRegister } = useContext(RegisterContext);
@@ -29,7 +24,7 @@ const Register = () => {
     <>
       <Header />
       <Container>
-        <Image src="" alt="register" />
+        <Image src={registerSVG} alt="register" />
         <Form onSubmit={handleSubmit(handleRegister)}>
           <RegisterTitle>Cadastro</RegisterTitle>
           <TextField
