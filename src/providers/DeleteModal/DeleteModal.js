@@ -10,7 +10,7 @@ export const DeleteModalProvider = ({ children }) => {
   const { deleteGoal } = useContext(GoalsContext);
   const { deleteActivity } = useContext(ActivitiesContext);
 
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   const ModalHabit = {
     title: "Deletar hábito?",

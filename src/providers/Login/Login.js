@@ -51,7 +51,7 @@ export const LoginProvider = ({ children }) => {
     setUserId(JSON.parse(localStorage.getItem("@MakeItHabit!:ID")) || "");
   }, [authenticated]);
 
-  const randomNumber = () => Math.floor(Math.random() * 17) + 1;
+  const randomNumber = () => Math.floor(Math.random() * 16) + 1;
   const avImgs = {
     1: av1,
     2: av2,
