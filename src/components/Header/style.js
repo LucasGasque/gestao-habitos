@@ -27,6 +27,7 @@ export const Content = styled.div`
     font-size: 17px;
     text-align: center;
     cursor: pointer;
+    font-family: "Fredoka One";
   }
 
   div {

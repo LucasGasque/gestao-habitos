@@ -5,7 +5,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Profile from "../pages/Profile";
-import MyGroups from '../pages/MyGroups'
+import MyGroups from "../pages/MyGroups";
 
 const Routes = () => {
   return (
@@ -23,7 +23,6 @@ const Routes = () => {
         <Route path="/my-groups">
           <MyGroups />
         </Route>
-        <Route path="/group">
         <Route path="/group/:id">
           <Group />
         </Route>
