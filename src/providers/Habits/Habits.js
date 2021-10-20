@@ -9,6 +9,7 @@ export const HabitsContext = createContext();
 export const HabitsProvider = ({ children }) => {
   const [habits, setHabits] = useState([]);
   const [visible, setVisible] = useState(false);
+  const [deleteVisible, setDeleteVisible] = useState(true)
   const { token, userId } = useContext(LoginContext);
 
   const difficulties = ["Fácil", "Normal", "Díficil", "Muito díficil"];

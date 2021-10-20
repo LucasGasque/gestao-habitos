@@ -1,6 +1,7 @@
 import { Container, DivButton, Modal } from "./styles";
 import { useContext } from "react";
-import { HabitsContext } from "../../providers/Habits/Habits";
+import { HabitsContext} from "../../providers/Habits/Habits";
+import {CategoriesContext } from '../../providers/Categories/Categories'
 import { TextField, Button, Autocomplete } from "@mui/material";
 import { schema } from "../../validations/CreateHabitSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -17,6 +18,8 @@ const CreateHabit = () => {
 
   const { createHabits, visible, setVisible, difficulties, frequencies } =
     useContext(HabitsContext);
+    
+    const {categories} = useContext(CategoriesContext)
 
   return (
     visible && (
@@ -36,7 +39,7 @@ const CreateHabit = () => {
             disableClearable
             disablePortal
             size="small"
-            options={["Heric"]}
+            options={categories}
             sx={{ width: 260 }}
             renderInput={(params) => (
               <TextField
