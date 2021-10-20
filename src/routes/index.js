@@ -24,6 +24,7 @@ const Routes = () => {
           <MyGroups />
         </Route>
         <Route path="/group">
+        <Route path="/group/:id">
           <Group />
         </Route>
         <Route path="/group-search">
