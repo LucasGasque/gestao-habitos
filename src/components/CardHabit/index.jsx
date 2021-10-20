@@ -7,28 +7,50 @@ import {
   ContainerDate,
   CointainerProgress,
 } from "./style";
+import { HabitsContext } from "../../providers/Habits/Habits";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DoneIcon from "@mui/icons-material/Done";
+import SettingsIcon from "@mui/icons-material/Settings";
+import { useContext } from "react";
 
-const CardHabit = ({ goal, img, nivel }) => {
+const CardHabit = ({
+  id,
+  title,
+  category,
+  dificulty,
+  how_much_achieved,
+  data,
+}) => {
+  const { deleteHabit, updateHabit } = useContext(HabitsContext);
   return (
     <>
       <ContainerCard>
         <ContainerHeaderCard>
-          <ContainerImage>{img}</ContainerImage>
+          <ContainerImage></ContainerImage>
           <ContainerButtons>
             <CardButton>
-              <DeleteIcon sx={{ width: "18px" }} />
+              <DeleteIcon
+                onClick={() => deleteHabit(id)}
+                sx={{ width: "18px", color: "white", opacity: "50%" }}
+              />
             </CardButton>
             <CardButton>
-              <DoneIcon sx={{ width: "18px" }} />
+              <SettingsIcon
+                onClick={() => updateHabit(id, data)}
+                sx={{ width: "18px", color: "white", opacity: "50%" }}
+              />
+            </CardButton>
+            <CardButton>
+              <DoneIcon
+                sx={{ width: "18px", color: "white", opacity: "50%" }}
+              />
             </CardButton>
           </ContainerButtons>
         </ContainerHeaderCard>
 
         <ContainerDate>
-          <h3>{goal}</h3>
-          <p>{nivel}</p>
+          <h3>{title}</h3>
+          <p>{dificulty}</p>
         </ContainerDate>
 
         <CointainerProgress>
