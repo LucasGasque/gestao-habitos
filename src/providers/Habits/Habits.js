@@ -8,7 +8,7 @@ export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
   const [habits, setHabits] = useState([]);
-  const [visible, setVisible] = useState(false);
+  const [newHabitVisible, setNewHabitVisible] = useState(false);
   const { token, userId } = useContext(LoginContext);
 
   const difficulties = ["Fácil", "Normal", "Díficil", "Muito díficil"];
@@ -59,7 +59,7 @@ export const HabitsProvider = ({ children }) => {
       })
       .then((_) => {
         toast.info("Hábito criado com sucesso!");
-        setVisible(false);
+        setNewHabitVisible(false);
         getHabits();
       })
       .catch((_) => toast.error("Algo deu errado."));
@@ -95,8 +95,8 @@ export const HabitsProvider = ({ children }) => {
         frequencies,
         updateHabit,
         habits,
-        visible,
-        setVisible,
+        newHabitVisible,
+        setNewHabitVisible,
       }}
     >
       {children}

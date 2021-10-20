@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { useContext } from "react";
 import { toast } from "react";
 import api from "../../services/api";
@@ -7,6 +7,8 @@ import { LoginContext } from "../Login/Login";
 export const ActivitiesContext = createContext();
 
 export const ActivitiesProvider = ({ children }) => {
+  const [newActivityVisible, setNewActivityVisible] = useState(false);
+
   const { token } = useContext(LoginContext);
 
   const createActivities = (data) => {
@@ -18,6 +20,7 @@ export const ActivitiesProvider = ({ children }) => {
       })
       .then((_) => {
         toast.info("Atividade criada com sucesso!");
+        setNewActivityVisible(false);
       })
       .catch((_) => toast.error("Algo deu errado."));
   };
@@ -50,7 +53,13 @@ export const ActivitiesProvider = ({ children }) => {
 
   return (
     <ActivitiesContext.Provider
-      value={{ deleteActivity, updateActivities, createActivities }}
+      value={{
+        deleteActivities,
+        updateActivities,
+        createActivities,
+        newActivityVisible,
+        setNewActivityVisible,
+      }}
     >
       {children}
     </ActivitiesContext.Provider>
