@@ -24,8 +24,10 @@ export const HabitsProvider = ({ children }) => {
         })
         .then((response) => setHabits(response.data))
         .catch((_) => toast.error("Algo deu errado."));
+    } else {
+      setHabits([]);
     }
-  }, []);
+  }, [token]);
 
   const getHabits = () => {
     if (token) {
@@ -77,14 +79,14 @@ export const HabitsProvider = ({ children }) => {
   };
 
   const updateHabit = async (id, data) => {
-    const titleObj = {title: data.newTitle}
+    const titleObj = { title: data.newTitle };
     api
-      .patch(`/habits/${id}/`,titleObj, {
+      .patch(`/habits/${id}/`, titleObj, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((_) => toast.success('Hábito atualizado'))
+      .then((_) => toast.success("Hábito atualizado"))
       .catch((_) => toast.error("Algo deu errado."));
     getHabits();
   };

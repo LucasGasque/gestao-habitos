@@ -1,14 +1,10 @@
 import { Container, Redes } from "./style";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithubSquare } from "react-icons/fa";
-import Aos from "aos";
-import "aos/dist/aos.css";
-import { useEffect } from "react";
 
-const DevInfo = ({ gitHub, linkedin, img, name, animation }) => {
-  useEffect(() => Aos.init({ duration: 1000 }), []);
+const DevInfo = ({ gitHub, linkedin, img, name }) => {
   return (
-    <Container data-aos={animation}>
+    <Container>
       <img src={img} alt={name} />
       <h3>{name}</h3>
       <Redes>

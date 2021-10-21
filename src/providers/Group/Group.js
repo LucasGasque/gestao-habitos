@@ -31,6 +31,8 @@ export const GroupProvider = ({ children }) => {
         })
         .then((response) => setSubscriptions(response.data))
         .catch((err) => console.log(err));
+    } else {
+      setSubscriptions([]);
     }
   }, [token]);
 
@@ -59,7 +61,7 @@ export const GroupProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const getGroup = ({id}) => {
+  const getGroup = ({ id }) => {
     api
       .get(`/groups/${id}/`)
       .then((response) => setSelectedGroup(response.data));

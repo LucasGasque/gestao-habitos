@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import waves from "../../img/svgs/waveVector.svg";
 
 export const Container = styled.div`
   padding-top: 43px;
@@ -103,8 +104,26 @@ export const Box = styled.div`
   :nth-child(8) {
     background-color: var(--yellow);
   }
+  :last-child {
+    position: relative;
+  }
+  :last-child::before {
+    content: "";
+    top: -2%;
+    left: 0;
+    width: 100%;
+    position: absolute;
+    min-height: 60px;
+    background: url(${waves});
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
 
   @media (min-width: 768px) {
+    :last-child::before {
+      top: -7%;
+      min-height: 110px;
+    }
     span {
       max-width: 1170px;
       flex-direction: row;
@@ -240,5 +259,15 @@ export const BoxMain = styled.div`
       width: 585px;
       height: 490px;
     }
+  }
+`;
+
+export const LottieContainer = styled.div`
+  width: 250px;
+  height: 200px;
+
+  @media (min-width: 768px) {
+    width: 430px;
+    height: 330px;
   }
 `;

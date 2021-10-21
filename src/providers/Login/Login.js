@@ -24,7 +24,7 @@ export const LoginContext = createContext();
 
 export const LoginProvider = ({ children }) => {
   const history = useHistory();
-  const [authenticated, setAuthenticated] = useState(false);
+
   const [avatar, setAvatar] = useState(
     JSON.parse(localStorage.getItem("@avatar")) || av1
   );
@@ -38,6 +38,8 @@ export const LoginProvider = ({ children }) => {
   const [token, setToken] = useState(
     JSON.parse(localStorage.getItem("@Login:token")) || ""
   );
+
+  const [authenticated, setAuthenticated] = useState(token || false);
 
   useEffect(() => {
     setToken(JSON.parse(localStorage.getItem("@Login:token")) || "");
@@ -110,6 +112,7 @@ export const LoginProvider = ({ children }) => {
     localStorage.removeItem("@user");
     localStorage.removeItem("@MakeItHabit!:ID");
 
+    setToken("");
     setAuthenticated(false);
     setUser("");
 
