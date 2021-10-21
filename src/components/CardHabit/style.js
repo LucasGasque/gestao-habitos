@@ -3,12 +3,13 @@ import styled from "styled-components";
 export const ContainerCard = styled.div`
   margin: 0 auto;
   border-radius: 5px;
-  width: 238px;
+  width: 100%;
   height: 117px;
   background-color: var(--grey);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  padding: 5px;
 `;
 
 export const ContainerHeaderCard = styled.div`
@@ -17,13 +18,20 @@ export const ContainerHeaderCard = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  box-sizing: border-box;
 `;
 
 export const ContainerImage = styled.div`
-  width: 22px;
-  height: 22px;
-  border-radius: 100px;
-  background-color: #969da8; ;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  img {
+    width: 40px;
+  }
 `;
 
 export const ContainerButtons = styled.div`
@@ -42,25 +50,30 @@ export const CardButton = styled.div`
   width: 20px;
   height: 20px;
   margin-left: 5px;
+  > :first-child {
+    cursor: pointer;
+  }
 `;
 
 export const ContainerDate = styled.div`
-  margin-top: 10px;
-  margin-left: 11px;
   display: flex;
   flex-direction: column;
-  width: 117px;
-  height: 41px;
+  width: 100%;
+  height: 40px;
+  text-align: left;
+  margin-left: 10px;
 
   h3 {
-    font-size: 14px;
+    font-size: 18px;
     color: var(--white);
-    margin-bottom: 3px;
   }
 
   p {
     font-size: 10px;
-    color: var(--white);
+    color: rgba(255, 255, 255, 0.5);
+    text-align: left;
+    line-height: 10px;
+    font-weight: normal;
   }
 `;
 
