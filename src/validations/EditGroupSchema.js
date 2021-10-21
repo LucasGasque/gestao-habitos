@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 export const schema = yup.object().shape({
-  newCategory: yup
+  category: yup
     .string()
     .required("Campo obrigatório"),
 });

@@ -10,6 +10,8 @@ export const GroupProvider = ({ children }) => {
 
   const [infoGroup, setInfoGroup] = useState();
   const [newGroupVisible, setNewGroupVisible] = useState(false);
+  const [editGroupVisible, setEditGroupVisible] = useState(true);
+
   const [subscriptions, setSubscriptions] = useState([]);
   const [groups, setGroups] = useState([]);
   const [selectedGroup, setSelectedGroup] = useState();
@@ -71,24 +73,27 @@ export const GroupProvider = ({ children }) => {
       .then((response) => {
         setInfoGroup(response.data);
         getSubscriptions();
-        setNewGroupVisible(false)
+        setNewGroupVisible(false);
         toast.info("Grupo criado com sucesso!");
       })
       .catch((_) => toast.info("Algo deu errado."));
   };
 
-  const updateGroup = (id, data) => {
+  const updateGroup = ({ id }, data) => {
     api
       .patch(`/groups/${id}/`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((_) => toast.info("Grupo atualizado com sucesso!"))
+      .then((_) => {
+        toast.info("Grupo atualizado com sucesso!");
+        setEditGroupVisible(false);
+      })
       .catch((_) => toast.info("Algo deu errado."));
   };
 
-  const subscribeGroup = (id) => {
+  const subscribeGroup = ({ id }) => {
     api
       .post(
         `/groups/${id}/subscribe/`,
@@ -106,7 +111,7 @@ export const GroupProvider = ({ children }) => {
       .catch((_) => toast.info("Algo deu errado."));
   };
 
-  const unsubscribeGroup = (id) => {
+  const unsubscribeGroup = ({ id }) => {
     api
       .delete(`/groups/${id}/unsubscribe/`, {
         headers: {
@@ -135,6 +140,8 @@ export const GroupProvider = ({ children }) => {
         subscriptions,
         newGroupVisible,
         setNewGroupVisible,
+        editGroupVisible,
+        setEditGroupVisible,
       }}
     >
       {children}
