@@ -4,7 +4,7 @@ export const Container = styled.div`
   margin: 0 auto;
   border-radius: 5px;
   width: 100%;
-  height: 117px;
+  min-height: 117px;
   background-color: var(--grey);
   display: flex;
   flex-direction: column;
@@ -28,6 +28,7 @@ export const ContainerImage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 5px;
   background-color: rgba(255, 255, 255, 0.5);
   img {
     width: 40px;
@@ -67,18 +68,21 @@ export const ContainerDate = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 40px;
+  min-height: 40px;
   text-align: left;
-  margin-left: 10px;
+  margin-left: 5px;
   h3 {
     font-size: 18px;
     color: var(--white);
+    width: 80%;
+    word-break: break-all;
   }
   p {
     font-size: 12px;
     color: rgba(255, 255, 255, 0.5);
     text-align: left;
     line-height: 10px;
+    width: 80%;
     font-weight: normal;
   }
 `;

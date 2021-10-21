@@ -10,7 +10,6 @@ import ActivityCard from "../ActivityCard/";
 import CardHabit from "../CardHabit";
 
 const CardsList = ({ type, pageType, groupData, children }) => {
-  const [loadedContent, setLoadedContent] = useState([]);
   const [filteredContent, setFilteredContent] = useState([]);
   const { categories } = useContext(CategoriesContext);
   const [finished, setFinished] = useState(false);
@@ -20,7 +19,6 @@ const CardsList = ({ type, pageType, groupData, children }) => {
 
   useEffect(() => {
     if (pageType === "user" && type === "habit") {
-      setLoadedContent(habits);
       handleFilter(habits);
     }
     if (pageType === "user" && type === "goal") {
@@ -29,7 +27,6 @@ const CardsList = ({ type, pageType, groupData, children }) => {
         goals = [...goals, ...group.goals];
       });
 
-      setLoadedContent(goals);
       setFilteredContent(goals.filter((goal) => goal.achieved === finished));
     }
     if (pageType === "user" && type === "activity") {
@@ -41,7 +38,6 @@ const CardsList = ({ type, pageType, groupData, children }) => {
       setFilteredContent(activities);
     }
     if (pageType === "group" && type === "goal") {
-      setLoadedContent(groupData?.goals);
       setFilteredContent(
         groupData?.goals.filter((goal) => goal.achieved === finished)
       );
@@ -49,11 +45,7 @@ const CardsList = ({ type, pageType, groupData, children }) => {
     if (pageType === "group" && type === "activity") {
       setFilteredContent(groupData?.activities);
     }
-  }, [habits, subscriptions, groupData]);
-
-  useEffect(() => {
-    handleFilter(loadedContent);
-  }, [finished, categoryFilter]);
+  }, [habits, subscriptions, groupData, finished, categoryFilter]);
 
   const handleFinished = () => {
     setFinished(!finished);
@@ -116,30 +108,18 @@ const CardsList = ({ type, pageType, groupData, children }) => {
         </FilterContainer>
       )}
       <CardContainer>
-        {type === 'habit' && 
+        {type === "habit" &&
           filteredContent?.map((content, index) => (
-          <CardHabit 
-            key={index}
-            content={content}
-            type={type}
-          />
-        ))}
+            <CardHabit key={index} content={content} type={type} />
+          ))}
         {type === "goal" &&
           filteredContent?.map((content, index) => (
-          <CardHabit 
-            key={index}
-            content={content}
-            type={type}
-          />
-        ))}
+            <CardHabit key={index} content={content} type={type} />
+          ))}
         {type === "activity" &&
-          filteredContent?.map(content => (
-            <ActivityCard  
-              type={type}
-              content={content} 
-              key={content.id}
-            />
-        ))}
+          filteredContent?.map((content) => (
+            <ActivityCard type={type} content={content} key={content.id} />
+          ))}
         {children}
       </CardContainer>
     </Container>
