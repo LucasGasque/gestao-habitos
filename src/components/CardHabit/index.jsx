@@ -95,7 +95,7 @@ const CardHabit = ({ content, type }) => {
         </ContainerDate>
 
         <CointainerProgress>
-          <div style={{ width: `${progress * 10}px` }}></div>
+          <div style={{ width: `calc(100% / 21 * ${progress})` }}></div>
         </CointainerProgress>
       </ContainerCard>
       <DeleteModal

@@ -14,7 +14,7 @@ export const ContainerCard = styled.div`
 
 export const ContainerHeaderCard = styled.div`
   margin: 0 auto;
-  width: 214px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -79,7 +79,7 @@ export const ContainerDate = styled.div`
 
 export const CointainerProgress = styled.div`
   margin: 0 auto;
-  width: 210px;
+  width: 100%;
   height: 5px;
   background-color: var(--white);
 
