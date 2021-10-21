@@ -6,7 +6,7 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 
 const DevInfo = ({ gitHub, linkedin, img, name, animation }) => {
-  useEffect(() => Aos.init({ duration: 1300 }), []);
+  useEffect(() => Aos.init({ duration: 1000 }), []);
   return (
     <Container data-aos={animation}>
       <img src={img} alt={name} />
