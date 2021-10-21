@@ -25,4 +25,14 @@ export default createGlobalStyle`
         background-color: var(---white);
     }
 
-`
+    ::-webkit-scrollbar {
+        width: 8px;          
+    }
+
+  
+    ::-webkit-scrollbar-thumb {
+        background-color: var(--purple);  
+        border-radius: 20px;      
+        border: 3px solid var(--white);  
+    }
+`;
