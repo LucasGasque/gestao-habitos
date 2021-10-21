@@ -5,8 +5,8 @@ import { EditModalContext } from "../../providers/EditModal/EditModal";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-const EditModal = ({ type, id }) => {
-  const { defineTitle, defineEdit, defineSchema, editVisible, setEditVisible } =
+const EditModal = ({ type, id, editVisible, setEditVisible}) => {
+  const { defineTitle, defineEdit, defineSchema } =
     useContext(EditModalContext);
 
   const {
