@@ -36,7 +36,7 @@ export const ArrowButton = styled(Button)`
 export const Box = styled.section`
   height: ${(props) => (props.show ? "242px" : "0")};
   transition: 0.5s;
-  overflow: hidden;
+  overflow-y: auto;
 
   @media (min-width: 1050px) {
     height: 75vh;

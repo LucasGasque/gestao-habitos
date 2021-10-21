@@ -8,10 +8,16 @@ import { TextField, Button } from "@mui/material";
 import { useHistory } from "react-router";
 import Header from "../../components/Header";
 import loginSVG from "../../img/svgs/LoginSVG.svg";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+import {Redirect} from 'react-router-dom'
 
 const Login = () => {
   const history = useHistory();
-  const { handleLogin } = useContext(LoginContext);
+  const { handleLogin, authenticated } = useContext(LoginContext);
+
+  useEffect(() => Aos.init({ duration: 2000 }), []);
 
   const {
     register,
@@ -21,13 +27,15 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
 
+  if (authenticated) return <Redirect to="/profile" />;
+
   return (
     <>
       <Header />
       <Container>
         <Box>
-          <img src={loginSVG} alt="login" />
-          <form onSubmit={handleSubmit(handleLogin)}>
+          <img data-aos="fade-right" src={loginSVG} alt="login" />
+          <form data-aos="fade-left" onSubmit={handleSubmit(handleLogin)}>
             <h1>Login</h1>
             <TextField
               sx={{

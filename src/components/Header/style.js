@@ -8,6 +8,7 @@ export const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  z-index: 10;
   box-shadow: 0px 0px 30px -10px rgba(0, 0, 0, 0.25);
 
   @media (min-width: 768px) {

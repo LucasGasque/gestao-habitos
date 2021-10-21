@@ -15,11 +15,11 @@ const CreateActivity = () => {
     resolver: yupResolver(schema),
   });
 
-  const { createActivities, visibleCreateAct, setVisibleCreateAct } =
+  const { createActivities, newActivityVisible, setNewActivityVisible } =
     useContext(ActivitiesContext);
 
   return (
-    visibleCreateAct && (
+    newActivityVisible && (
       <Container>
         <Modal onSubmit={handleSubmit(createActivities)}>
           <h2>Criar nova atividade</h2>
@@ -51,7 +51,7 @@ const CreateActivity = () => {
               Criar
             </Button>
             <Button
-              onClick={() => setVisibleCreateAct(false)}
+              onClick={() => setNewActivityVisible(false)}
               sx={{ width: 260 }}
               size="small"
               variant="outlined"

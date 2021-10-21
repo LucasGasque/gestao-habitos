@@ -1,5 +1,6 @@
 import { RegisterContext } from "../../providers/register/Register";
-import { useHistory, Redirect } from "react-router-dom";
+import { LoginContext } from "../../providers/Login/Login";
+import { Redirect } from "react-router-dom";
 import { TextField, Button } from "@mui/material";
 import { schema } from "../../validations/RegisterSchema";
 import { useContext } from "react";
@@ -8,9 +9,15 @@ import { Container, Form, RegisterTitle, Link, Image } from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import registerSVG from "../../img/svgs/RegisterSVG.svg";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const Register = () => {
   const { handleRegister } = useContext(RegisterContext);
+  const { authenticated } = useContext(LoginContext);
+
+  useEffect(() => Aos.init({ duration: 2000 }), []);
 
   const {
     register,
@@ -20,12 +27,14 @@ const Register = () => {
     resolver: yupResolver(schema),
   });
 
+  if (authenticated) return <Redirect to="/profile" />;
+
   return (
     <>
       <Header />
       <Container>
-        <Image src={registerSVG} alt="register" />
-        <Form onSubmit={handleSubmit(handleRegister)}>
+        <Image data-aos="fade-left" src={registerSVG} alt="register" />
+        <Form data-aos="fade-right" onSubmit={handleSubmit(handleRegister)}>
           <RegisterTitle>Cadastro</RegisterTitle>
           <TextField
             {...register("username")}

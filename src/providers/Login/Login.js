@@ -51,6 +51,12 @@ export const LoginProvider = ({ children }) => {
     setUserId(JSON.parse(localStorage.getItem("@MakeItHabit!:ID")) || "");
   }, [authenticated]);
 
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem("@Login:token"));
+
+    return token && setAuthenticated(true);
+  }, [authenticated]);
+
   const randomNumber = () => Math.floor(Math.random() * 16) + 1;
   const avImgs = {
     1: av1,

@@ -8,8 +8,13 @@ import jogging from "../../img/svgs/jogging.svg";
 import check_box from "../../img/svgs/check_box.svg";
 import animationData from "../../img/svgs/lottie/jog.json";
 import Lottie from "react-lottie";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const Home = () => {
+  useEffect(() => Aos.init({ duration: 2000 }), []);
+
   const history = useHistory();
   const devs = [
     {
@@ -53,7 +58,7 @@ const Home = () => {
       <Container>
         <BoxMain>
           <span>
-            <section>
+            <section data-aos="fade-right">
               <h4>Faça acontecer</h4>
               <h1>
                 <strong>Make it</strong> Habit te ajuda a criar novos e
@@ -84,8 +89,8 @@ const Home = () => {
         <Box>
           <span>
             <h2>Crie habitos</h2>
-            <Img src={check_box} alt="img" />
-            <Article>
+            <Img data-aos="fade-right" src={check_box} alt="img" />
+            <Article data-aos="fade-right">
               <h4>Organize-se!</h4>
               <h2>Crie habitos</h2>
               <p>
@@ -97,7 +102,7 @@ const Home = () => {
         </Box>
         <Ondas />
         <Box>
-          <span>
+          <span data-aos="fade-left">
             <h2>Participe de grupos</h2>
             <Img src="" alt="img" />
             <Article>
@@ -115,8 +120,8 @@ const Home = () => {
         <Box>
           <span>
             <h2>Mude sua vida</h2>
-            <Img src="" alt="img" />
-            <Article>
+            <Img data-aos="fade-right" src="" alt="img" />
+            <Article data-aos="fade-right">
               <h4>Evolua!</h4>
               <h2>Mude sua vida</h2>
               <p>
