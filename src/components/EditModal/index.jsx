@@ -19,6 +19,7 @@ const EditModal = ({ type, id, editVisible, setEditVisible}) => {
 
   const onSubmit = (data) => {
     defineEdit(type, id, data)
+    setEditVisible(false)
   }
 
   return (

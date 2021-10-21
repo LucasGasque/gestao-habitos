@@ -12,11 +12,13 @@ import { useContext, useState } from "react";
 import { CategoriesContext } from "../../providers/Categories/Categories";
 import DeleteModal from "../DeleteModal";
 import Moment from "react-moment";
+import EditModal from '../EditModal'
 
 const ActivityCard = ({ content, type }) => {
   const { categoriesPictures } = useContext(CategoriesContext);
 
   const [deleteVisible, setDeleteVisible] = useState(false);
+  const [editVisible, setEditVisible] = useState(false)
 
   return (
     <>
@@ -37,7 +39,7 @@ const ActivityCard = ({ content, type }) => {
             </CardButton>
             <CardButton>
               <SettingsIcon
-                onClick={() => ""}
+                onClick={() => setEditVisible(true)}
                 sx={{ width: "18px", color: "white"}}
               />
             </CardButton>
@@ -54,6 +56,12 @@ const ActivityCard = ({ content, type }) => {
       <DeleteModal
         deleteVisible={deleteVisible}
         setDeleteVisible={setDeleteVisible}
+        type={type}
+        id={content.id}
+      />
+      <EditModal
+        editVisible={editVisible}
+        setEditVisible={setEditVisible}
         type={type}
         id={content.id}
       />
