@@ -59,7 +59,7 @@ export const GroupProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const getGroup = (id) => {
+  const getGroup = ({id}) => {
     api
       .get(`/groups/${id}/`)
       .then((response) => setSelectedGroup(response.data));
@@ -95,7 +95,7 @@ export const GroupProvider = ({ children }) => {
       .catch((_) => toast.info("Algo deu errado."));
   };
 
-  const subscribeGroup = ({ id }) => {
+  const subscribeGroup = (id) => {
     api
       .post(
         `/groups/${id}/subscribe/`,
@@ -113,7 +113,7 @@ export const GroupProvider = ({ children }) => {
       .catch((_) => toast.info("Algo deu errado."));
   };
 
-  const unsubscribeGroup = ({ id }) => {
+  const unsubscribeGroup = (id) => {
     api
       .delete(`/groups/${id}/unsubscribe/`, {
         headers: {
