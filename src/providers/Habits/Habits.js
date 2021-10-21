@@ -24,8 +24,10 @@ export const HabitsProvider = ({ children }) => {
         })
         .then((response) => setHabits(response.data))
         .catch((_) => toast.error("Algo deu errado."));
+    } else {
+      setHabits([]);
     }
-  }, []);
+  }, [token]);
 
   const getHabits = () => {
     if (token) {

@@ -1,4 +1,12 @@
-import { Container, Ondas, Box, Img, Article, BoxMain } from "./style";
+import {
+  Container,
+  Ondas,
+  Box,
+  Img,
+  Article,
+  BoxMain,
+  LottieContainer,
+} from "./style";
 import { Button } from "@mui/material";
 import lucas from "../../img/devs/lucas.jpg";
 import DevInfo from "../../components/DevInfo/index";
@@ -8,6 +16,7 @@ import check_box from "../../img/svgs/check_box.svg";
 import joggingAnimationData from "../../img/svgs/lottie/jog.json";
 import groupAnimationData from "../../img/svgs/lottie/groupLottie.json";
 import evolveAnimationData from "../../img/svgs/lottie/evolveLottie.json";
+import habitsAnimationData from "../../img/svgs/lottie/habitsLottie.json";
 import Lottie from "react-lottie";
 import Aos from "aos";
 import "aos/dist/aos.css";
@@ -70,6 +79,15 @@ const Home = () => {
     },
   };
 
+  const defaultOptionsHabits = {
+    loop: true,
+    autoplay: true,
+    animationData: habitsAnimationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
   return (
     <>
       <Header />
@@ -97,19 +115,18 @@ const Home = () => {
               </Button>
             </section>
             <div data-aos="fade-left">
-              <Lottie
-                speed={0.85}
-                options={defaultOptionsJogging}
-                height={450}
-                width={500}
-              />
+              <LottieContainer>
+                <Lottie speed={0.85} options={defaultOptionsJogging} />
+              </LottieContainer>
             </div>
           </span>
         </BoxMain>
         <Box>
           <span>
             <h2>Crie habitos</h2>
-            <Img data-aos="fade-right" src={check_box} alt="img" />
+            <LottieContainer>
+              <Lottie speed={0.85} options={defaultOptionsHabits} />
+            </LottieContainer>
             <Article data-aos="fade-right">
               <h4>Organize-se!</h4>
               <h2>Crie habitos</h2>
@@ -124,12 +141,9 @@ const Home = () => {
         <Box>
           <span data-aos="fade-left">
             <h2>Participe de grupos</h2>
-            <Lottie
-              speed={0.85}
-              options={defaultOptionsGroup}
-              height={450}
-              width={500}
-            />
+            <LottieContainer>
+              <Lottie speed={0.85} options={defaultOptionsGroup} />
+            </LottieContainer>
             <Article>
               <h4>Interaja!</h4>
               <h2>Participe de grupos</h2>
@@ -145,12 +159,9 @@ const Home = () => {
         <Box>
           <span data-aos="fade-right">
             <h2>Mude sua vida</h2>
-            <Lottie
-              speed={0.85}
-              options={defaultOptionsEvolve}
-              height={450}
-              width={500}
-            />
+            <LottieContainer>
+              <Lottie speed={0.85} options={defaultOptionsEvolve} />
+            </LottieContainer>
             <Article data-aos="fade-right">
               <h4>Evolua!</h4>
               <h2>Mude sua vida</h2>
@@ -176,7 +187,6 @@ const Home = () => {
                   linkedin={dev.linkedin}
                   img={dev.img}
                   name={dev.name}
-                  animation={index < 2 ? "flip-right" : "flip-left"}
                 />
               ))}
             </ul>

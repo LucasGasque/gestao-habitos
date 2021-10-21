@@ -31,6 +31,8 @@ export const GroupProvider = ({ children }) => {
         })
         .then((response) => setSubscriptions(response.data))
         .catch((err) => console.log(err));
+    } else {
+      setSubscriptions([]);
     }
   }, [token]);
 
