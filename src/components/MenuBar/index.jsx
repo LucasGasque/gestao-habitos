@@ -1,14 +1,16 @@
 import { LoginContext } from "../../providers/Login/Login";
 import { Container, Box, Button, GraphButton, GearButton, User } from "./style";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { HiUserGroup, HiUser } from "react-icons/hi";
 import { BiSearchAlt } from "react-icons/bi";
 import { IoMdLogOut } from "react-icons/io";
 import { FiPieChart } from "react-icons/fi";
 import { BsFillGearFill } from "react-icons/bs";
 import { useHistory } from "react-router";
+import EditUser from "../EditUser";
 
 const MenuBar = () => {
+  const [userVisible, setUserVisible] = useState(false);
   const { avatar, handleLogOut, user } = useContext(LoginContext);
   const history = useHistory();
   const highlight = {
@@ -23,7 +25,7 @@ const MenuBar = () => {
       <User>
         <img src={avatar} alt="avatar" />
         <h1>{user}</h1>
-        <GearButton>
+        <GearButton onClick={() => setUserVisible(true)}>
           <BsFillGearFill size="2.5em" />
         </GearButton>
       </User>
@@ -49,6 +51,7 @@ const MenuBar = () => {
           <p>Sair</p>
         </Button>
       </Box>
+      <EditUser userVisible={userVisible} setUserVisible={setUserVisible} />
     </Container>
   );
 };
