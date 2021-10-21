@@ -53,6 +53,14 @@ export const CardButton = styled.div`
   > :first-child {
     cursor: pointer;
   }
+
+  :hover{
+    background-color:var(--purple);
+  }
+
+  :active{
+    transform: scale(95%);
+  }
 `;
 
 export const ContainerDate = styled.div`

@@ -32,13 +32,13 @@ const ActivityCard = ({ content, type }) => {
             <CardButton>
               <DeleteIcon
                 onClick={() => setDeleteVisible(true)}
-                sx={{ width: "18px", color: "white", opacity: "50%" }}
+                sx={{ width: "18px", color: "white"}}
               />
             </CardButton>
             <CardButton>
               <SettingsIcon
                 onClick={() => ""}
-                sx={{ width: "18px", color: "white", opacity: "50%" }}
+                sx={{ width: "18px", color: "white"}}
               />
             </CardButton>
           </ContainerButtons>

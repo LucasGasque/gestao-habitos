@@ -71,19 +71,19 @@ const CardHabit = ({ content, type }) => {
             <CardButton>
               <DeleteIcon
                 onClick={() => setDeleteVisible(true)}
-                sx={{ width: "18px", color: "white", opacity: "50%" }}
+                sx={{ width: "18px", color: "white"}}
               />
             </CardButton>
             <CardButton>
               <SettingsIcon
                 onClick={() => updateHabit(content.id, content.data)}
-                sx={{ width: "18px", color: "white", opacity: "50%" }}
+                sx={{ width: "18px", color: "white"}}
               />
             </CardButton>
             <CardButton>
               <DoneIcon
                 onClick={progress < 21 ? HandleAchieved : ""}
-                sx={{ width: "18px", color: "white", opacity: "50%" }}
+                sx={{ width: "18px", color: "white"}}
               />
             </CardButton>
           </ContainerButtons>
