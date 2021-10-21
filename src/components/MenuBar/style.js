@@ -18,6 +18,7 @@ export const Container = styled.aside`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  z-index: 2;
 
   p {
     display: none;

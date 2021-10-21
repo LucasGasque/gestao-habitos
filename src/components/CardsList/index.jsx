@@ -17,7 +17,6 @@ const CardsList = ({ type, pageType, groupData, children }) => {
   const [categoryFilter, setCategoryFilter] = useState(null);
   const { habits } = useContext(HabitsContext);
   const { subscriptions } = useContext(GroupContext);
-  console.log(habits)
 
   useEffect(() => {
     if (pageType === "user" && type === "habit") {
