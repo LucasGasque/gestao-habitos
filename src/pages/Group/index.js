@@ -15,26 +15,25 @@ import ModalityContainer from "../../components/ModalityContainer";
 import CardsList from "../../components/CardsList";
 import { BsFillGearFill } from "react-icons/bs";
 import { LoginContext } from "../../providers/Login/Login";
+import AddNewCard from "../../components/AddNewCard";
 
 const Group = () => {
   const { id } = useParams();
   const { getGroup, selectedGroup } = useContext(GroupContext);
   const { categoriesPictures } = useContext(CategoriesContext);
-  const { user, userId } = useContext(LoginContext);
+  const { userId } = useContext(LoginContext);
 
   const { subscribeGroup, unsubscribeGroup } = useContext(GroupContext);
 
-  const [isSub, setIsSub] = useState(selectedGroup?.users?.includes(user));
+  const [isSub, setIsSub] = useState(
+    selectedGroup?.users_on_group.some((user) => user.id === userId)
+  );
   const [isCreator, setIsCreator] = useState(
     selectedGroup?.creator.id === userId
   );
 
-  console.log(selectedGroup?.creator);
-  console.log(user);
-  console.log(isCreator);
-
   useEffect(() => {
-    if (selectedGroup?.users?.includes(user)) {
+    if (selectedGroup?.users_on_group.some((user) => user.id === userId)) {
       setIsSub(true);
     }
     if (selectedGroup?.creator.id === userId) {
@@ -110,18 +109,14 @@ const Group = () => {
       </Content>
       <CardListContainer>
         <ModalityContainer pageType="Group" title="Objetivos">
-          <CardsList
-            type="goal"
-            pageType="group"
-            groupData={selectedGroup}
-          ></CardsList>
+          <CardsList type="goal" pageType="group" groupData={selectedGroup}>
+            {isSub && <AddNewCard type="goal" />}
+          </CardsList>
         </ModalityContainer>
         <ModalityContainer pageType="Group" title="Atividades">
-          <CardsList
-            type="activity"
-            pageType="group"
-            groupData={selectedGroup}
-          ></CardsList>
+          <CardsList type="activity" pageType="group" groupData={selectedGroup}>
+            {isSub && <AddNewCard type="activity" />}
+          </CardsList>
         </ModalityContainer>
       </CardListContainer>
       <MenuBar />
