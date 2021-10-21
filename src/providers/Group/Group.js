@@ -8,6 +8,7 @@ export const GroupContext = createContext();
 export const GroupProvider = ({ children }) => {
   const { token } = useContext(LoginContext);
 
+  const [loadingGroups, setLoadingGroups] = useState(false);
   const [infoGroup, setInfoGroup] = useState();
   const [newGroupVisible, setNewGroupVisible] = useState(false);
   const [editGroupVisible, setEditGroupVisible] = useState(true);
@@ -15,9 +16,10 @@ export const GroupProvider = ({ children }) => {
   const [subscriptions, setSubscriptions] = useState([]);
   const [groups, setGroups] = useState([]);
   const [selectedGroup, setSelectedGroup] = useState();
-  const [page, setPage] = useState(
+  const [nextPage, setNextPage] = useState(
     "https://kenzie-habits.herokuapp.com/groups/"
   );
+  const [hasNextPage, setHasNextPage] = useState(true);
 
   useEffect(() => {
     if (token) {
@@ -34,12 +36,12 @@ export const GroupProvider = ({ children }) => {
 
   useEffect(() => {
     if (token) {
-      if (page !== null) {
-        fetch(`${page}`)
+      if (nextPage !== null) {
+        fetch(`${nextPage}`)
           .then((response) => response.json())
           .then((response) => {
             setGroups([...groups, ...response.results]);
-            setPage(response.next);
+            setNextPage(response.next);
           })
           .catch((err) => console.log(err));
       }
@@ -125,6 +127,23 @@ export const GroupProvider = ({ children }) => {
       .catch((_) => toast.info("Algo deu errado."));
   };
 
+  const getNextPage = () => {
+    if (token) {
+      if (nextPage !== null) {
+        setLoadingGroups(true);
+        api
+          .get(`${nextPage}`)
+          .then((response) => {
+            setGroups([...groups, ...response.data.results]);
+            setNextPage(response.data.next);
+            setHasNextPage(response.data.next !== null);
+          })
+          .catch((err) => console.log(err));
+        setLoadingGroups(false);
+      }
+    }
+  };
+
   return (
     <GroupContext.Provider
       value={{
@@ -138,6 +157,9 @@ export const GroupProvider = ({ children }) => {
         selectedGroup,
         groups,
         subscriptions,
+        getNextPage,
+        hasNextPage,
+        loadingGroups,
         newGroupVisible,
         setNewGroupVisible,
         editGroupVisible,
