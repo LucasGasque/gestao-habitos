@@ -13,7 +13,7 @@ const MyGroups = () => {
   const { subscriptions, setNewGroupVisible } = useContext(GroupContext);
   const { authenticated } = useContext(LoginContext);
 
-   if (!authenticated) return <Redirect to="/login" />;
+  if (!authenticated) return <Redirect to="/login" />;
 
   return (
     <>
