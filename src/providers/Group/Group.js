@@ -10,6 +10,7 @@ export const GroupProvider = ({ children }) => {
 
   const [loadingGroups, setLoadingGroups] = useState(false);
   const [infoGroup, setInfoGroup] = useState();
+  const [newGroupVisible, setNewGroupVisible] = useState(false);
   const [subscriptions, setSubscriptions] = useState([]);
   const [groups, setGroups] = useState([]);
   const [selectedGroup, setSelectedGroup] = useState();
@@ -72,6 +73,7 @@ export const GroupProvider = ({ children }) => {
       .then((response) => {
         setInfoGroup(response.data);
         getSubscriptions();
+        setNewGroupVisible(false)
         toast.info("Grupo criado com sucesso!");
       })
       .catch((_) => toast.info("Algo deu errado."));
@@ -153,6 +155,8 @@ export const GroupProvider = ({ children }) => {
         getNextPage,
         hasNextPage,
         loadingGroups,
+        newGroupVisible,
+        setNewGroupVisible,
       }}
     >
       {children}

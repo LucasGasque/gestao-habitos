@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
   height: auto;
+  position: relative;
 `;
 
 export const FilterContainer = styled.div`
@@ -17,4 +18,8 @@ export const FilterContainer = styled.div`
 export const CardContainer = styled.div`
   width: 100%;
   padding: 5px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 `;

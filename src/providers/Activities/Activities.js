@@ -10,7 +10,6 @@ export const ActivitiesProvider = ({ children }) => {
   const [newActivityVisible, setNewActivityVisible] = useState(false);
 
   const { token } = useContext(LoginContext);
-  const [visibleCreateAct, setVisibleCreateAct] = useState(false);
 
   const createActivities = ({ title, date }, group) => {
     const data = { title, realization_time: date, group };
@@ -22,14 +21,15 @@ export const ActivitiesProvider = ({ children }) => {
       })
       .then((_) => {
         toast.info("Atividade criada com sucesso!");
-        setVisibleCreateAct(false);
+        setNewActivityVisible(false);
       })
       .catch((_) => toast.error("Algo deu errado."));
   };
 
   const updateActivities = (id, data) => {
+    const titleObj = {title: data.newTitle}
     api
-      .patch(`/activities/${id}/`, data, {
+      .patch(`/activities/${id}/`, titleObj, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -59,8 +59,8 @@ export const ActivitiesProvider = ({ children }) => {
         deleteActivity,
         updateActivities,
         createActivities,
-        visibleCreateAct,
-        setVisibleCreateAct,
+        newActivityVisible,
+        setNewActivityVisible,
       }}
     >
       {children}

@@ -20,7 +20,7 @@ export const GoalsProvider = ({ children }) => {
   };
 
   const createGoal = ({ title, difficulty }, group) => {
-    const data = { title, difficulty, how_much_achieved: 0, group};
+    const data = { title, difficulty, how_much_achieved: 0, group };
     api
       .post("/goals/", data, {
         headers: {
@@ -35,8 +35,9 @@ export const GoalsProvider = ({ children }) => {
   };
 
   const updateGoal = (id, data) => {
+    const titleObj = {title: data.newTitle}
     api
-      .patch(`/goals/${id}/`, data, {
+      .patch(`/goals/${id}/`, titleObj, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
