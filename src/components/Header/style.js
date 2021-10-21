@@ -19,13 +19,13 @@ export const Container = styled.div`
 export const Content = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   padding: 0 16px;
   h1 {
-    padding-top: 3px;
     width: 120px;
     height: 22px;
-    font-size: 17px;
+    font-size: 18px;
     text-align: center;
     cursor: pointer;
     font-family: "Fredoka One";
@@ -37,11 +37,10 @@ export const Content = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-
   }
   @media (min-width: 768px) {
     max-width: 1170px;
-  
+
     h1 {
       width: auto;
       height: 35.73px;
