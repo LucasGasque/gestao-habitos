@@ -1,12 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ActivitiesContext } from "../../providers/Activities/Activities";
 import { GoalsContext } from "../../providers/Goals/Goals";
 import { HabitsContext } from "../../providers/Habits/Habits";
 
 import CreateHabit from "../CreateHabit";
+import CreateGoal from "../CreateGoal";
+import CreateActivity from "../CreateActivity";
 import { Container } from "./style";
 
-function AddNewCard({ type }) {
+function AddNewCard({type, id}) {
   const { setNewHabitVisible } = useContext(HabitsContext);
   const { setNewGoalVisible } = useContext(GoalsContext);
   const { setNewActivityVisible } = useContext(ActivitiesContext);
@@ -22,7 +24,7 @@ function AddNewCard({ type }) {
       <Container onClick={() => visibilityFunctions[type](true)}>
         <p>Add new {type}</p>
       </Container>
-      <CreateHabit />
+      {type === 'goal' ? <CreateGoal group={id}/> : type === 'habit' ? <CreateHabit/> : <CreateActivity group={id}/>}
     </>
   );
 }
