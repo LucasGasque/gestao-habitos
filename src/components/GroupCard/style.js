@@ -38,8 +38,7 @@ export const Container = styled.div`
 export const Box = styled.div`
   display: flex;
   flex-direction: row;
-  background-color: red;
-
+  
   h2 {
     font-size: 18px;
     font-weight: bold;

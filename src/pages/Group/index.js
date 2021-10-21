@@ -23,7 +23,6 @@ const Group = () => {
   const { getGroup, selectedGroup } = useContext(GroupContext);
   const { categoriesPictures } = useContext(CategoriesContext);
   const { user, userId, authenticated } = useContext(LoginContext);
-  const { userId } = useContext(LoginContext);
   const { subscribeGroup, unsubscribeGroup } = useContext(GroupContext);
   const [isSub, setIsSub] = useState(
     selectedGroup?.users_on_group.some((user) => user.id === userId)

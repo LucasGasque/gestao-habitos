@@ -78,7 +78,7 @@ export const HabitsProvider = ({ children }) => {
 
   const updateHabit = async (id, data) => {
     api
-      .patch(`/habits/${id}/`,titleObj, {
+      .patch(`/habits/${id}/`,data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
