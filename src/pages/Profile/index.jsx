@@ -1,16 +1,12 @@
 import HeaderProfile from "../../components/HeaderProfile";
 import MenuBar from "../../components/MenuBar";
 import CreateHabit from "../../components/CreateHabit";
-import { Container, Box, Head } from "./style";
+import { Container, Box } from "./style";
 import ModalityContainer from "../../components/ModalityContainer";
 import CardList from "../../components/CardsList";
 import { useContext } from "react";
-import { HabitsContext } from "../../providers/Habits/Habits";
 import { LoginContext } from "../../providers/Login/Login";
-import DeleteModal from "../../components/DeleteModal";
-import CreateActivity from "../../components/CreateActivity";
 import AddNewCard from "../../components/AddNewCard";
-import EditModal from '../../components/EditModal';
 import {Redirect} from 'react-router-dom';
 
 const Profile = () => {
@@ -38,7 +34,6 @@ const Profile = () => {
       </Container>
       <MenuBar />
       <CreateHabit />
-      <CreateActivity />
     </>
   );
 };

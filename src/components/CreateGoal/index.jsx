@@ -7,7 +7,7 @@ import { schema } from "../../validations/CreateGoalScheme";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-const CreateGoal = () => {
+const CreateGoal = ({group}) => {
   const {
     register,
     handleSubmit,
@@ -21,10 +21,14 @@ const CreateGoal = () => {
   const { createGoal, newGoalVisible, setNewGoalVisible } =
     useContext(GoalsContext);
 
+  const handleGoal = (data) => {
+    createGoal(data, group);
+  };
+
   return (
     newGoalVisible && (
       <Container>
-        <Modal onSubmit={handleSubmit(createGoal)}>
+        <Modal onSubmit={handleSubmit(handleGoal)}>
           <h2>Criar novo objetivo</h2>
 
           <TextField

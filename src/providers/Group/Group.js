@@ -59,7 +59,7 @@ export const GroupProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const getGroup = ({id}) => {
+  const getGroup = (id) => {
     api
       .get(`/groups/${id}/`)
       .then((response) => setSelectedGroup(response.data));
