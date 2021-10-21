@@ -15,10 +15,11 @@ const Header = () => {
         <div>
           <Button
             sx={{
-              marginRight: '10px',
+              marginRight: "10px",
             }}
             variant="contained"
             color="primary"
+            size="small"
             onClick={() => sendTo("/login")}
           >
             Login
@@ -26,6 +27,7 @@ const Header = () => {
           <Button
             variant="outlined"
             color="primary"
+            size="small"
             onClick={() => sendTo("/register")}
           >
             Cadastro

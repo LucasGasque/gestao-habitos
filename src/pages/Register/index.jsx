@@ -34,7 +34,7 @@ const Register = () => {
       <Header />
       <Container>
         <Image data-aos="fade-left" src={registerSVG} alt="register" />
-        <Form data-aos="fade-right" onSubmit={handleSubmit(handleRegister)}>
+        <Form data-aos="zoom-in-up" onSubmit={handleSubmit(handleRegister)}>
           <RegisterTitle>Cadastro</RegisterTitle>
           <TextField
             {...register("username")}

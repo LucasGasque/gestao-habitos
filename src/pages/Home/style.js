@@ -1,6 +1,28 @@
 import styled, { keyframes } from "styled-components";
 import waves from "../../img/svgs/waveVector.svg";
 
+const appearFromRight = keyframes`
+from {
+  opacity: 0;
+  transform: translateX(20px)
+}
+to {
+  opacity: 1;
+  transform: translateX(0)
+}
+`;
+
+const appearFromLeft = keyframes`
+from {
+  opacity: 0;
+  transform: translateX(-20px)
+}
+to {
+  opacity: 1;
+  transform: translateX(0)
+}
+`;
+
 export const Container = styled.div`
   padding-top: 43px;
 
@@ -92,6 +114,10 @@ export const Box = styled.div`
     }
   }
 
+  :nth-child(1) {
+    animation: ${appearFromRight} 1.7s ease-in;
+  }
+
   :nth-child(4) {
     background-color: var(--purple);
     color: var(--white);
@@ -109,20 +135,20 @@ export const Box = styled.div`
   }
   :last-child::before {
     content: "";
-    top: -2%;
+    top: -5%;
     left: 0;
     width: 100%;
     position: absolute;
-    min-height: 60px;
+    height: 30px;
     background: url(${waves});
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
   }
 
   @media (min-width: 768px) {
     :last-child::before {
-      top: -7%;
-      min-height: 110px;
+      top: -10%;
+      min-height: 60px;
     }
     span {
       max-width: 1170px;

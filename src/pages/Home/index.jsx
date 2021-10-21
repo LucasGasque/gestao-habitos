@@ -12,7 +12,6 @@ import lucas from "../../img/devs/lucas.jpg";
 import DevInfo from "../../components/DevInfo/index";
 import Header from "../../components/Header/index";
 import { useHistory } from "react-router";
-import check_box from "../../img/svgs/check_box.svg";
 import joggingAnimationData from "../../img/svgs/lottie/jog.json";
 import groupAnimationData from "../../img/svgs/lottie/groupLottie.json";
 import evolveAnimationData from "../../img/svgs/lottie/evolveLottie.json";
@@ -114,20 +113,20 @@ const Home = () => {
                 Começar!
               </Button>
             </section>
-            <div data-aos="fade-left">
-              <LottieContainer>
+            <div>
+              <LottieContainer data-aos="zoom-in-up">
                 <Lottie speed={0.85} options={defaultOptionsJogging} />
               </LottieContainer>
             </div>
           </span>
         </BoxMain>
         <Box>
-          <span>
+          <span data-aos="zoom-in-up">
             <h2>Crie habitos</h2>
             <LottieContainer>
               <Lottie speed={0.85} options={defaultOptionsHabits} />
             </LottieContainer>
-            <Article data-aos="fade-right">
+            <Article>
               <h4>Organize-se!</h4>
               <h2>Crie habitos</h2>
               <p>
@@ -139,7 +138,7 @@ const Home = () => {
         </Box>
         <Ondas />
         <Box>
-          <span data-aos="fade-left">
+          <span data-aos="zoom-in-up">
             <h2>Participe de grupos</h2>
             <LottieContainer>
               <Lottie speed={0.85} options={defaultOptionsGroup} />
@@ -157,12 +156,12 @@ const Home = () => {
         </Box>
         <Ondas />
         <Box>
-          <span data-aos="fade-right">
+          <span data-aos="zoom-in-up">
             <h2>Mude sua vida</h2>
             <LottieContainer>
               <Lottie speed={0.85} options={defaultOptionsEvolve} />
             </LottieContainer>
-            <Article data-aos="fade-right">
+            <Article>
               <h4>Evolua!</h4>
               <h2>Mude sua vida</h2>
               <p>
