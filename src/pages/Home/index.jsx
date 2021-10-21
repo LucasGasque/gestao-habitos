@@ -14,7 +14,7 @@ const Home = () => {
     {name: 'Gyl Monteiro', img: 'https://ca.slack-edge.com/TQZR39SET-U01SDMECLGZ-d40f9dbb46b7-512' ,linkedin: 'https://www.linkedin.com/in/gyl-monteiro-dos-santos-73783b31/' , github: 'https://github.com/gylmonteiro'},
     {name: 'Heric Felix', img: 'https://ca.slack-edge.com/TQZR39SET-U02342JTFRQ-322ef95a552e-512' ,linkedin: 'https://www.linkedin.com/in/hericfelix/' , github: 'https://github.com/hericfelix'},
     {name: 'Lucas Gasque', img: lucas ,linkedin:'https://www.linkedin.com/in/lucasgasque/' , github: 'https://github.com/LucasGasque'},
-    {name: 'Pedro Kopsch', img: 'https://ca.slack-edge.com/TQZR39SET-U023KGX868Y-272454b993fa-512' ,linkedin: 'https://www.linkedin.com/in/pedro' , github: 'https://github.com/kopsch'},
+    {name: 'Pedro Kopsch', img: 'https://ca.slack-edge.com/TQZR39SET-U023KGX868Y-272454b993fa-512' ,linkedin: 'https://www.linkedin.com/in/pedro-kopsch' , github: 'https://github.com/kopsch'},
   ]
 
   return (

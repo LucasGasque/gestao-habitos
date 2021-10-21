@@ -47,7 +47,7 @@ const MenuBar = () => {
                     <BiSearchAlt size='2.5em'/>
                     <p>Pesquisar</p>
                 </Button>
-                <Button onClick={()=> history.push('/group')}>
+                <Button onClick={()=> history.push('/my-groups')}>
                     <HiUserGroup size='2.5em'/>
                     <p>Meus grupos</p>
                 </Button>
