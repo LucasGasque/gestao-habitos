@@ -9,18 +9,15 @@ import Autocomplete from "@mui/material/Autocomplete";
 import ActivityCard from "../ActivityCard/";
 import CardHabit from "../CardHabit";
 
-
 const CardsList = ({ type, pageType, groupData, children }) => {
   const [loadedContent, setLoadedContent] = useState([]);
   const [filteredContent, setFilteredContent] = useState([]);
-
   const { categories } = useContext(CategoriesContext);
-
   const [finished, setFinished] = useState(false);
   const [categoryFilter, setCategoryFilter] = useState(null);
-
   const { habits } = useContext(HabitsContext);
   const { subscriptions } = useContext(GroupContext);
+  console.log(habits)
 
   useEffect(() => {
     if (pageType === "user" && type === "habit") {
@@ -78,7 +75,7 @@ const CardsList = ({ type, pageType, groupData, children }) => {
   return (
     <Container>
       {type === "activity" ? (
-        "Calendar"
+        ""
       ) : (
         <FilterContainer type={type}>
           {finished ? (
@@ -120,13 +117,30 @@ const CardsList = ({ type, pageType, groupData, children }) => {
         </FilterContainer>
       )}
       <CardContainer>
-        {filteredContent?.map((content) => (
-          <div></div>
+        {type === 'habit' && 
+          filteredContent?.map((content, index) => (
+          <CardHabit 
+            key={index}
+            content={content}
+            type={type}
+          />
+        ))}
+        {type === "goal" &&
+          filteredContent?.map((content, index) => (
+          <CardHabit 
+            key={index}
+            content={content}
+            type={type}
+          />
         ))}
         {type === "activity" &&
-          filteredContent?.map((content) => (
-            <ActivityCard type={type} content={content} key={content.id} />
-          ))}
+          filteredContent?.map(content => (
+            <ActivityCard  
+              type={type}
+              content={content} 
+              key={content.id}
+            />
+        ))}
         {children}
       </CardContainer>
     </Container>
