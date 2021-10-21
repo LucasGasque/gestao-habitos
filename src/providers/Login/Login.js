@@ -119,15 +119,19 @@ export const LoginProvider = ({ children }) => {
     history.push("/login");
   };
 
-  const updateProfile = ({ username }, id) => {
+  const updateProfile = ({ username }) => {
     const data = { username };
+    console.log(data)
     api
-      .patch(`/users/${id}`, data, {
+      .patch(`/users/${userId}/`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => setUser(response.data))
+      .then((response) => {
+        setUser(response.data.username);
+        toast.success("Usuário atualizado");
+      })
       .catch((_) => toast.error("Algo deu errado."));
   };
 
