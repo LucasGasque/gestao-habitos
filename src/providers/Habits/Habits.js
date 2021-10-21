@@ -77,16 +77,16 @@ export const HabitsProvider = ({ children }) => {
   };
 
   const updateHabit = async (id, data) => {
-    const titleObj = {title: data.newTitle}
-    api
-      .patch(`/habits/${id}/`,titleObj, {
+    const titleObj = { title: data.newTitle };
+    await api
+      .patch(`/habits/${id}/`, titleObj, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((_) => toast.success('Hábito atualizado'))
       .catch((_) => toast.error("Algo deu errado."));
     getHabits();
+    toast.success("Hábito atualizado");
   };
 
   return (
