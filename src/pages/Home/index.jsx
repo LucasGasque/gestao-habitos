@@ -6,6 +6,8 @@ import Header from "../../components/Header/index";
 import { useHistory } from "react-router";
 import jogging from "../../img/svgs/jogging.svg";
 import check_box from "../../img/svgs/check_box.svg";
+import animationData from "../../img/svgs/lottie/jog.json";
+import Lottie from "react-lottie";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
@@ -41,6 +43,15 @@ const Home = () => {
     },
   ];
 
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
   return (
     <>
       <Header />
@@ -67,7 +78,12 @@ const Home = () => {
                 Começar!
               </Button>
             </section>
-            <Img data-aos="fade-left" src={jogging} alt="img" />
+            <Lottie
+              speed={0.85}
+              options={defaultOptions}
+              height={450}
+              width={500}
+            />
           </span>
         </BoxMain>
         <Box>
@@ -130,7 +146,6 @@ const Home = () => {
                   linkedin={dev.linkedin}
                   img={dev.img}
                   name={dev.name}
-                  animation={index < 2 ? "flip-left" : "flip-right"}
                 />
               ))}
             </ul>
