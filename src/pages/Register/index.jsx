@@ -1,5 +1,6 @@
 import { RegisterContext } from "../../providers/register/Register";
-import { useHistory, Redirect } from "react-router-dom";
+import { LoginContext } from "../../providers/Login/Login";
+import { Redirect } from "react-router-dom";
 import { TextField, Button } from "@mui/material";
 import { schema } from "../../validations/RegisterSchema";
 import { useContext } from "react";
@@ -14,6 +15,7 @@ import { useEffect } from "react";
 
 const Register = () => {
   const { handleRegister } = useContext(RegisterContext);
+  const { authenticated } = useContext(LoginContext);
 
   useEffect(() => Aos.init({ duration: 2000 }), []);
 
@@ -24,6 +26,8 @@ const Register = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  if (authenticated) return <Redirect to="/profile" />;
 
   return (
     <>

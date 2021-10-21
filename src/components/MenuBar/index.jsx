@@ -36,7 +36,7 @@ const MenuBar = () => {
           <HiUser size="2.5em" />
           <p>Dashboard</p>
         </Button>
-        <Button onClick={() => history.push("group-search")}>
+        <Button onClick={() => history.push("/group-search")}>
           <BiSearchAlt size="2.5em" />
           <p>Pesquisar</p>
         </Button>
