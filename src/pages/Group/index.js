@@ -29,10 +29,6 @@ const Group = () => {
     selectedGroup?.creator.id === userId
   );
 
-  console.log(selectedGroup?.creator);
-  console.log(user);
-  console.log(isCreator);
-
   useEffect(() => {
     if (selectedGroup?.users?.includes(user)) {
       setIsSub(true);

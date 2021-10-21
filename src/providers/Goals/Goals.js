@@ -20,7 +20,7 @@ export const GoalsProvider = ({ children }) => {
   };
 
   const createGoal = ({ title, difficulty }, group) => {
-    const data = { title, difficulty, how_much_achieved: 0, group};
+    const data = { title, difficulty, how_much_achieved: 0, group };
     api
       .post("/goals/", data, {
         headers: {

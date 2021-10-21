@@ -6,6 +6,7 @@ export const Form = styled.form`
   align-items: center;
   justify-content: space-around;
   box-shadow: 0px 0px 1px 2px #f5f5f5;
+  background-color: var(--white);
   border-radius: 5px;
   width: 300px;
   height: 460px;
