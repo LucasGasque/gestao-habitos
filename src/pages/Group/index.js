@@ -15,12 +15,13 @@ import ModalityContainer from "../../components/ModalityContainer";
 import CardsList from "../../components/CardsList";
 import { BsFillGearFill } from "react-icons/bs";
 import { LoginContext } from "../../providers/Login/Login";
+import {Redirect} from 'react-router-dom'
 
 const Group = () => {
   const { id } = useParams();
   const { getGroup, selectedGroup } = useContext(GroupContext);
   const { categoriesPictures } = useContext(CategoriesContext);
-  const { user, userId } = useContext(LoginContext);
+  const { user, userId, authenticated } = useContext(LoginContext);
 
   const { subscribeGroup, unsubscribeGroup } = useContext(GroupContext);
 
@@ -54,6 +55,8 @@ const Group = () => {
   useEffect(() => {
     getGroup(id);
   }, []);
+
+  if (!authenticated) return <Redirect to="/login" />;
 
   return (
     <>

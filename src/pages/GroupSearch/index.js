@@ -4,9 +4,12 @@ import { TextField } from "@mui/material";
 import { useContext, useState } from "react";
 import { GroupContext } from'../../providers/Group/Group';
 import GroupCard from '../../components/GroupCard'
+import {Redirect} from 'react-router-dom'
+import { LoginContext } from "../../providers/Login/Login";
 
 const GroupSearch = () => {
 
+  const { authenticated } = useContext(LoginContext);
   const { groups } = useContext(GroupContext);
   const [ filteredGroups, setFilteredGroups ] = useState([...groups]);
   const showGroups = (input) => {
@@ -17,6 +20,8 @@ const GroupSearch = () => {
   };
 
   console.log(groups)
+
+  if (!authenticated) return <Redirect to="/login" />;
 
   return (
     <>
