@@ -124,12 +124,12 @@ const Group = () => {
       <CardListContainer>
         <ModalityContainer pageType="Group" title="Objetivos">
           <CardsList type="goal" pageType="group" groupData={selectedGroup}>
-            {isSub && <AddNewCard type="goal" />}
+            {isSub && <AddNewCard type="goal" id={Number(id)} />}
           </CardsList>
         </ModalityContainer>
         <ModalityContainer pageType="Group" title="Atividades">
           <CardsList type="activity" pageType="group" groupData={selectedGroup}>
-            {isSub && <AddNewCard type="activity" />}
+            {isSub && <AddNewCard type="activity" id={Number(id)} />}
           </CardsList>
         </ModalityContainer>
       </CardListContainer>

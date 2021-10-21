@@ -6,7 +6,7 @@ import { schema } from "../../validations/CreateActivityScheme";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-const CreateActivity = () => {
+const CreateActivity = ({group}) => {
   const {
     register,
     handleSubmit,
@@ -18,10 +18,14 @@ const CreateActivity = () => {
   const { createActivities, newActivityVisible, setNewActivityVisible } =
     useContext(ActivitiesContext);
 
+    const handleActivity = (data) => {
+      createActivities(data, group);
+    };
+
   return (
     newActivityVisible && (
       <Container>
-        <Modal onSubmit={handleSubmit(createActivities)}>
+        <Modal onSubmit={handleSubmit(handleActivity)}>
           <h2>Criar nova atividade</h2>
 
           <TextField

@@ -119,6 +119,18 @@ export const LoginProvider = ({ children }) => {
     history.push("/login");
   };
 
+  const updateProfile = ({ username }, id) => {
+    const data = { username };
+    api
+      .patch(`/users/${id}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => setUser(response.data))
+      .catch((_) => toast.error("Algo deu errado."));
+  };
+
   return (
     <LoginContext.Provider
       value={{
@@ -129,6 +141,7 @@ export const LoginProvider = ({ children }) => {
         user,
         token,
         userId,
+        updateProfile,
       }}
     >
       {children}

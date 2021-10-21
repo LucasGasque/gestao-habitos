@@ -31,7 +31,7 @@ export const GoalsProvider = ({ children }) => {
         toast.info("Objetivo criado com sucesso!");
         setNewGoalVisible(false);
       })
-      .catch((_) => toast.error("Algo deu errado."));
+      .catch((_) => console.log(_));
   };
 
   const updateGoal = (id, data) => {
