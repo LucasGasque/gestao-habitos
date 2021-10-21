@@ -16,12 +16,14 @@ import { useState } from "react";
 import { CategoriesContext } from "../../providers/Categories/Categories";
 import DeleteModal from "../DeleteModal";
 import { GoalsContext } from "../../providers/Goals/Goals";
+import EditModal from '../EditModal/index'
+import { EditModalContext } from "../../providers/EditModal/EditModal";
 
 const CardHabit = ({ content, type }) => {
   const { updateHabit } = useContext(HabitsContext);
   const { updateGoal } = useContext(GoalsContext);
   const { categoriesPictures } = useContext(CategoriesContext);
-
+  const { editVisible, setEditVisible } = useContext(EditModalContext)
   const [progress, setProgress] = useState(
     content.how_much_achieved > 21
       ? Math.floor(content.how_much_achieved / 21)
@@ -76,7 +78,7 @@ const CardHabit = ({ content, type }) => {
             </CardButton>
             <CardButton>
               <SettingsIcon
-                onClick={() => updateHabit(content.id, content.data)}
+                onClick={() => setEditVisible(true)}
                 sx={{ width: "18px", color: "white"}}
               />
             </CardButton>
@@ -103,7 +105,11 @@ const CardHabit = ({ content, type }) => {
         setDeleteVisible={setDeleteVisible}
         type={type}
         id={content.id}
-      ></DeleteModal>
+      />
+      <EditModal 
+        id={content.id}
+        type={type}
+      />
     </>
   );
 };
