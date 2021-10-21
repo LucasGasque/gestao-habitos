@@ -9,7 +9,7 @@ import { HabitsContext } from "../../providers/Habits/Habits";
 import DeleteModal from '../../components/DeleteModal'
 import CreateActivity from '../../components/CreateActivity'
 import AddNewCard from "../../components/AddNewCard";
-import EditModal from '../../components/EditModal'
+import EditModal from '../../components/EditModal';
 
 const Profile = () => {
   const { habits } = useContext(HabitsContext);

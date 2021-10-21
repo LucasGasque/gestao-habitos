@@ -19,7 +19,8 @@ export const GoalsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const createGoal = (data) => {
+  const createGoal = ({ title, difficulty }, group) => {
+    const data = { title, difficulty, how_much_achieved: 0, group};
     api
       .post("/goals/", data, {
         headers: {

@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Profile from "../pages/Profile";
+import MyGroups from "../pages/MyGroups";
 
 const Routes = () => {
   return (
@@ -19,7 +20,10 @@ const Routes = () => {
         <Route path="/register">
           <Register />
         </Route>
-        <Route path="/group">
+        <Route path="/my-groups">
+          <MyGroups />
+        </Route>
+        <Route path="/group/:id">
           <Group />
         </Route>
         <Route path="/group-search">

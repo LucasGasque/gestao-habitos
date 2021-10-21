@@ -89,7 +89,7 @@ export const LoginProvider = ({ children }) => {
         setAuthenticated(true);
 
         setUser(username);
-        setAvatar(idAvatar);
+        idAvatar !== undefined && setAvatar(idAvatar);
         localStorage.setItem("@avatar", JSON.stringify(idAvatar));
         localStorage.setItem("@user", JSON.stringify(username));
 
