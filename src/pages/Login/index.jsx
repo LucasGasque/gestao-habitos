@@ -11,7 +11,7 @@ import loginSVG from "../../img/svgs/LoginSVG.svg";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import {Redirect} from 'react-router-dom'
+import { Redirect } from "react-router-dom";
 
 const Login = () => {
   const history = useHistory();
@@ -35,7 +35,7 @@ const Login = () => {
       <Container>
         <Box>
           <img data-aos="fade-right" src={loginSVG} alt="login" />
-          <form data-aos="fade-left" onSubmit={handleSubmit(handleLogin)}>
+          <form data-aos="zoom-in-up" onSubmit={handleSubmit(handleLogin)}>
             <h1>Login</h1>
             <TextField
               sx={{
