@@ -11,7 +11,7 @@ export const GroupProvider = ({ children }) => {
   const [loadingGroups, setLoadingGroups] = useState(false);
   const [infoGroup, setInfoGroup] = useState();
   const [newGroupVisible, setNewGroupVisible] = useState(false);
-  const [editGroupVisible, setEditGroupVisible] = useState(true);
+  const [editGroupVisible, setEditGroupVisible] = useState(false);
 
   const [subscriptions, setSubscriptions] = useState([]);
   const [groups, setGroups] = useState([]);

@@ -17,10 +17,11 @@ import { BsFillGearFill } from "react-icons/bs";
 import { LoginContext } from "../../providers/Login/Login";
 import { Redirect } from "react-router-dom";
 import AddNewCard from "../../components/AddNewCard";
+import EditGroup from "../../components/EditGroup";
 
 const Group = () => {
   const { id } = useParams();
-  const { getGroup, selectedGroup } = useContext(GroupContext);
+  const { getGroup, selectedGroup, setEditGroupVisible } = useContext(GroupContext);
   const { categoriesPictures } = useContext(CategoriesContext);
   const { userId, authenticated } = useContext(LoginContext);
   const { subscribeGroup, unsubscribeGroup } = useContext(GroupContext);
@@ -78,7 +79,7 @@ const Group = () => {
             </div>
             <h3>{selectedGroup?.name}</h3>
           </div>
-          {isCreator && <BsFillGearFill size="1.5em" />}
+          {isCreator && <BsFillGearFill size="1.5em" onClick={()=> setEditGroupVisible(true)}/>}
         </DesktopContainer>
         <ImgContainer>
           <img
@@ -90,7 +91,10 @@ const Group = () => {
             alt={selectedGroup?.category}
           />
         </ImgContainer>
-        {!isCreator && <BsFillGearFill size="1.5em" />}
+        {!isCreator && 
+          <BsFillGearFill 
+            size="1.5em" 
+          />}
       </Container>
       <Content>
         <h3>{selectedGroup?.name}</h3>
@@ -127,6 +131,7 @@ const Group = () => {
         </ModalityContainer>
       </CardListContainer>
       <MenuBar />
+      <EditGroup />
     </>
   );
 };
