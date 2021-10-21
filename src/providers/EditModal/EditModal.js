@@ -13,7 +13,7 @@ export const EditModalProvider = ({ children }) => {
   const { updateGoal } = useContext(GoalsContext);
   const { updateActivities } = useContext(ActivitiesContext);
 
-  const [editVisible, setEditVisible] = useState(true);
+  const [editVisible, setEditVisible] = useState(false);
 
   const ModalHabit = {
     schema: schemaHabit,
