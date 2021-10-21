@@ -76,7 +76,6 @@ export const HabitsProvider = ({ children }) => {
       .catch((_) => toast.error("Algo deu errado."));
   };
 
-
   const updateHabit = async (id, data) => {
     api
       .patch(`/habits/${id}/`,titleObj, {
