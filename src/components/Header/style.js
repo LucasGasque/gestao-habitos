@@ -38,30 +38,12 @@ export const Content = styled.div`
     flex-direction: row;
     justify-content: space-around;
 
-    .groundPurple {
-      background-color: var(--purple);
-      color: var(--white);
-      margin-right: 10px;
-      width: 50px;
-      height: 20px;
-      font-size: 12px;
-      text-transform: capitalize;
-      padding: 0;
-    }
-
-    .groundWhite {
-      width: 64px;
-      height: 20px;
-      font-size: 12px;
-      text-transform: capitalize;
-      padding: 0;
-    }
   }
   @media (min-width: 768px) {
     max-width: 1170px;
-    padding: 0;
+  
     h1 {
-      width: 239px;
+      width: auto;
       height: 35.73px;
       font-size: 36px;
       padding: 0;
@@ -70,18 +52,6 @@ export const Content = styled.div`
     div {
       max-width: 255px;
       height: 37.47px;
-
-      .groundPurple {
-        width: 85px;
-        height: 37.27px;
-        font-size: 18px;
-      }
-
-      .groundWhite {
-        width: 113px;
-        height: 37.27px;
-        font-size: 18px;
-      }
     }
   }
 `;

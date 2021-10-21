@@ -76,7 +76,7 @@ const Login = () => {
               Logar
             </Button>
             <p>
-              Já tem uma conta?
+              Não tem uma conta?
               <button onClick={() => history.push("/register")}>
                 Clique aqui!
               </button>
