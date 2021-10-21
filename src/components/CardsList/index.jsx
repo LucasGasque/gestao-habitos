@@ -6,6 +6,7 @@ import { GroupContext } from "../../providers/Group/Group";
 import { CategoriesContext } from "../../providers/Categories/Categories";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import ActivityCard from "../ActivityCard/";
 
 const CardsList = ({ type, pageType, groupData, children }) => {
   const [loadedContent, setLoadedContent] = useState([]);
@@ -116,6 +117,10 @@ const CardsList = ({ type, pageType, groupData, children }) => {
         {filteredContent?.map((content) => (
           <div></div>
         ))}
+        {type === "activity" &&
+          filteredContent?.map((content) => (
+            <ActivityCard type={type} content={content} key={content.id} />
+          ))}
         {children}
       </CardContainer>
     </Container>
