@@ -166,8 +166,9 @@ const Home = () => {
               <h4>Evolua!</h4>
               <h2>Mude sua vida</h2>
               <p>
-                Crie cards para cada hábito que deseja desenvolver, e acompanhe
-                seu desempenho com o passar dos dias.
+                Precisamos de 21 dias para criar um hábito!
+                Se você começar hoje,
+                até o final do mês terá mudado algo que deseja. 
               </p>
             </Article>
           </span>
