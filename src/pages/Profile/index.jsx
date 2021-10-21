@@ -14,7 +14,6 @@ import EditModal from '../../components/EditModal';
 import {Redirect} from 'react-router-dom';
 
 const Profile = () => {
-  const { habits } = useContext(HabitsContext);
   const { authenticated } = useContext(LoginContext);
 
   if (!authenticated) return <Redirect to="/login" />;
