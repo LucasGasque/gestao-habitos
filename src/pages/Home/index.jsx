@@ -4,16 +4,17 @@ import lucas from "../../img/devs/lucas.jpg";
 import DevInfo from "../../components/DevInfo/index";
 import Header from "../../components/Header/index";
 import { useHistory } from "react-router";
-import jogging from "../../img/svgs/jogging.svg";
 import check_box from "../../img/svgs/check_box.svg";
-import animationData from "../../img/svgs/lottie/jog.json";
+import joggingAnimationData from "../../img/svgs/lottie/jog.json";
+import groupAnimationData from "../../img/svgs/lottie/groupLottie.json";
+import evolveAnimationData from "../../img/svgs/lottie/evolveLottie.json";
 import Lottie from "react-lottie";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 
 const Home = () => {
-  useEffect(() => Aos.init({ duration: 2000 }), []);
+  useEffect(() => Aos.init({ duration: 1700 }), []);
 
   const history = useHistory();
   const devs = [
@@ -43,10 +44,27 @@ const Home = () => {
     },
   ];
 
-  const defaultOptions = {
+  const defaultOptionsJogging = {
     loop: true,
     autoplay: true,
-    animationData: animationData,
+    animationData: joggingAnimationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+  const defaultOptionsGroup = {
+    loop: true,
+    autoplay: true,
+    animationData: groupAnimationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
+  const defaultOptionsEvolve = {
+    loop: true,
+    autoplay: true,
+    animationData: evolveAnimationData,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
@@ -78,12 +96,14 @@ const Home = () => {
                 Começar!
               </Button>
             </section>
-            <Lottie
-              speed={0.85}
-              options={defaultOptions}
-              height={450}
-              width={500}
-            />
+            <div data-aos="fade-left">
+              <Lottie
+                speed={0.85}
+                options={defaultOptionsJogging}
+                height={450}
+                width={500}
+              />
+            </div>
           </span>
         </BoxMain>
         <Box>
@@ -104,7 +124,12 @@ const Home = () => {
         <Box>
           <span data-aos="fade-left">
             <h2>Participe de grupos</h2>
-            <Img src="" alt="img" />
+            <Lottie
+              speed={0.85}
+              options={defaultOptionsGroup}
+              height={450}
+              width={500}
+            />
             <Article>
               <h4>Interaja!</h4>
               <h2>Participe de grupos</h2>
@@ -118,9 +143,14 @@ const Home = () => {
         </Box>
         <Ondas />
         <Box>
-          <span>
+          <span data-aos="fade-right">
             <h2>Mude sua vida</h2>
-            <Img data-aos="fade-right" src="" alt="img" />
+            <Lottie
+              speed={0.85}
+              options={defaultOptionsEvolve}
+              height={450}
+              width={500}
+            />
             <Article data-aos="fade-right">
               <h4>Evolua!</h4>
               <h2>Mude sua vida</h2>
@@ -146,6 +176,7 @@ const Home = () => {
                   linkedin={dev.linkedin}
                   img={dev.img}
                   name={dev.name}
+                  animation={index < 2 ? "flip-right" : "flip-left"}
                 />
               ))}
             </ul>

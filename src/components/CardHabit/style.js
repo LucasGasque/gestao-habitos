@@ -4,7 +4,7 @@ export const ContainerCard = styled.div`
   margin: 0 auto;
   border-radius: 5px;
   width: 100%;
-  height: 117px;
+  min-height: 117px;
   background-color: var(--grey);
   display: flex;
   flex-direction: column;
@@ -26,6 +26,7 @@ export const ContainerImage = styled.div`
   height: 55px;
   border-radius: 50%;
   display: flex;
+  margin-left: 5px;
   justify-content: center;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.5);
@@ -59,13 +60,16 @@ export const ContainerDate = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 40px;
+  margin: 5px 0;
+  min-height: 40px;
   text-align: left;
-  margin-left: 10px;
+  margin-left: 5px;
 
   h3 {
     font-size: 18px;
     color: var(--white);
+    width: 80%;
+    word-break: break-all;
   }
 
   p {
@@ -74,6 +78,8 @@ export const ContainerDate = styled.div`
     text-align: left;
     line-height: 10px;
     font-weight: normal;
+    width: 80%;
+    word-break: break-all;
   }
 `;
 

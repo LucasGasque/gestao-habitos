@@ -1,10 +1,21 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Button } from "@material-ui/core";
+
+const zoomIn = keyframes`
+from {
+  opacity: 0;
+  transform: scale(75%)
+},
+to {
+  opacity: 1;
+  transform: scale(100%)
+}`;
 
 export const Container = styled.div`
   width: 254px;
   border-radius: 5px;
   border: 1px solid var(--black);
+  animation: ${zoomIn} 0.7s ease-in;
 
   p {
     font-weight: bold;
