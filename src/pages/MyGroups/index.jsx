@@ -1,3 +1,5 @@
+import {Redirect} from 'react-router-dom'
+import { LoginContext } from "../../providers/Login/Login";
 import { Container, SearchBox } from "./style";
 import MenuBar from "../../components/MenuBar";
 import { useContext } from "react";
@@ -6,6 +8,9 @@ import GroupCard from "../../components/GroupCard";
 
 const MyGroups = () => {
   const { subscriptions } = useContext(GroupContext);
+  const { authenticated } = useContext(LoginContext);
+
+   if (!authenticated) return <Redirect to="/login" />;
 
   return (
     <>

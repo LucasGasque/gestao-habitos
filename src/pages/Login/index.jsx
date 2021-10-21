@@ -8,10 +8,11 @@ import { TextField, Button } from "@mui/material";
 import { useHistory } from "react-router";
 import Header from "../../components/Header";
 import loginSVG from "../../img/svgs/LoginSVG.svg";
+import {Redirect} from 'react-router-dom'
 
 const Login = () => {
   const history = useHistory();
-  const { handleLogin } = useContext(LoginContext);
+  const { handleLogin, authenticated } = useContext(LoginContext);
 
   const {
     register,
@@ -20,6 +21,8 @@ const Login = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  if (authenticated) return <Redirect to="/profile" />;
 
   return (
     <>

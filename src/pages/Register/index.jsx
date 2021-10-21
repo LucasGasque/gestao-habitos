@@ -1,5 +1,6 @@
 import { RegisterContext } from "../../providers/register/Register";
-import { useHistory, Redirect } from "react-router-dom";
+import { LoginContext } from "../../providers/Login/Login";
+import { Redirect } from "react-router-dom";
 import { TextField, Button } from "@mui/material";
 import { schema } from "../../validations/RegisterSchema";
 import { useContext } from "react";
@@ -11,6 +12,7 @@ import registerSVG from "../../img/svgs/RegisterSVG.svg";
 
 const Register = () => {
   const { handleRegister } = useContext(RegisterContext);
+  const { authenticated } = useContext(LoginContext);
 
   const {
     register,
@@ -19,6 +21,8 @@ const Register = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  if (authenticated) return <Redirect to="/profile" />;
 
   return (
     <>

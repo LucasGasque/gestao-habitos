@@ -2,6 +2,8 @@ import { Container, SearchBox } from "./style";
 import MenuBar from "../../components/MenuBar";
 import { TextField } from "@mui/material";
 import { useContext, useState } from "react";
+import {Redirect} from 'react-router-dom'
+import { LoginContext } from "../../providers/Login/Login";
 import { GroupContext } from "../../providers/Group/Group";
 import GroupCard from "../../components/GroupCard";
 import { useEffect } from "react";
@@ -9,6 +11,7 @@ import useInfiniteScroll from "react-infinite-scroll-hook";
 import { CircularProgress } from "@mui/material";
 
 const GroupSearch = () => {
+  const { authenticated } = useContext(LoginContext);
   const { groups, loadingGroups, getNextPage, hasNextPage } =
     useContext(GroupContext);
   const [filteredGroups, setFilteredGroups] = useState([...groups]);
@@ -30,6 +33,8 @@ const GroupSearch = () => {
     rootMargin: "0px 0px 200px 0px",
     delayInMs: 1000,
   });
+
+  if (!authenticated) return <Redirect to="/login" />;
 
   return (
     <>
