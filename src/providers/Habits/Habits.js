@@ -40,7 +40,7 @@ export const HabitsProvider = ({ children }) => {
     }
   };
 
-  const createHabits = ({ title, category, difficulty, frequency }) => {
+  const createHabits = async ({ title, category, difficulty, frequency }) => {
     const data = {
       title,
       category,
@@ -51,7 +51,7 @@ export const HabitsProvider = ({ children }) => {
       user: userId,
     };
 
-    api
+    await api
       .post("/habits/", data, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -76,14 +76,17 @@ export const HabitsProvider = ({ children }) => {
       .catch((_) => toast.error("Algo deu errado."));
   };
 
-  const updateHabit = (id, data) => {
+
+  const updateHabit = async (id, data) => {
     api
-      .patch(`/habits/${id}/`, data, {
+      .patch(`/habits/${id}/`,titleObj, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
+      .then((_) => toast.success('Hábito atualizado'))
       .catch((_) => toast.error("Algo deu errado."));
+    getHabits();
   };
 
   return (

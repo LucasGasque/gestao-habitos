@@ -7,6 +7,8 @@ import { CategoriesContext } from "../../providers/Categories/Categories";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import ActivityCard from "../ActivityCard/";
+import CardHabit from "../CardHabit";
+
 
 const CardsList = ({ type, pageType, groupData, children }) => {
   const [loadedContent, setLoadedContent] = useState([]);
@@ -23,7 +25,7 @@ const CardsList = ({ type, pageType, groupData, children }) => {
   useEffect(() => {
     if (pageType === "user" && type === "habit") {
       setLoadedContent(habits);
-      setFilteredContent(habits.filter((habit) => habit.achieved === false));
+      handleFilter(habits);
     }
     if (pageType === "user" && type === "goal") {
       let goals = [];
@@ -32,7 +34,7 @@ const CardsList = ({ type, pageType, groupData, children }) => {
       });
 
       setLoadedContent(goals);
-      setFilteredContent(goals.filter((goal) => goal.achieved === false));
+      setFilteredContent(goals.filter((goal) => goal.achieved === finished));
     }
     if (pageType === "user" && type === "activity") {
       let activities = [];
@@ -45,7 +47,7 @@ const CardsList = ({ type, pageType, groupData, children }) => {
     if (pageType === "group" && type === "goal") {
       setLoadedContent(groupData?.goals);
       setFilteredContent(
-        groupData?.goals.filter((goal) => goal.achieved === false)
+        groupData?.goals.filter((goal) => goal.achieved === finished)
       );
     }
     if (pageType === "group" && type === "activity") {
@@ -54,8 +56,16 @@ const CardsList = ({ type, pageType, groupData, children }) => {
   }, [habits, subscriptions, groupData]);
 
   useEffect(() => {
+    handleFilter(loadedContent);
+  }, [finished, categoryFilter]);
+
+  const handleFinished = () => {
+    setFinished(!finished);
+  };
+
+  const handleFilter = (data) => {
     setFilteredContent(
-      loadedContent
+      data
         .filter((content) => content.achieved === finished)
         .filter((content) =>
           categoryFilter === null
@@ -63,10 +73,6 @@ const CardsList = ({ type, pageType, groupData, children }) => {
             : content.category === categoryFilter
         )
     );
-  }, [finished, categoryFilter]);
-
-  const handleFinished = () => {
-    setFinished(!finished);
   };
 
   return (
