@@ -8,9 +8,14 @@ import { Container, Form, RegisterTitle, Link, Image } from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import registerSVG from "../../img/svgs/RegisterSVG.svg";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const Register = () => {
   const { handleRegister } = useContext(RegisterContext);
+
+  useEffect(() => Aos.init({ duration: 2000 }), []);
 
   const {
     register,
@@ -24,8 +29,8 @@ const Register = () => {
     <>
       <Header />
       <Container>
-        <Image src={registerSVG} alt="register" />
-        <Form onSubmit={handleSubmit(handleRegister)}>
+        <Image data-aos="fade-left" src={registerSVG} alt="register" />
+        <Form data-aos="fade-right" onSubmit={handleSubmit(handleRegister)}>
           <RegisterTitle>Cadastro</RegisterTitle>
           <TextField
             {...register("username")}

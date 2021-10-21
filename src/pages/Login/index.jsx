@@ -8,10 +8,15 @@ import { TextField, Button } from "@mui/material";
 import { useHistory } from "react-router";
 import Header from "../../components/Header";
 import loginSVG from "../../img/svgs/LoginSVG.svg";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const Login = () => {
   const history = useHistory();
   const { handleLogin } = useContext(LoginContext);
+
+  useEffect(() => Aos.init({ duration: 2000 }), []);
 
   const {
     register,
@@ -26,8 +31,8 @@ const Login = () => {
       <Header />
       <Container>
         <Box>
-          <img src={loginSVG} alt="login" />
-          <form onSubmit={handleSubmit(handleLogin)}>
+          <img data-aos="fade-right" src={loginSVG} alt="login" />
+          <form data-aos="fade-left" onSubmit={handleSubmit(handleLogin)}>
             <h1>Login</h1>
             <TextField
               sx={{
