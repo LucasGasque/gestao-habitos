@@ -13,7 +13,6 @@ export const Container = styled.div`
   border-radius: 5px;
   padding: 10px 5px;
   box-shadow: 2px 2px 2px 2px var(--black);
-  cursor: pointer;
 
   :hover {
     transform: scale(105%);
@@ -39,6 +38,7 @@ export const Container = styled.div`
 export const Box = styled.div`
   display: flex;
   flex-direction: row;
+  background-color: red;
 
   h2 {
     font-size: 18px;
@@ -46,11 +46,10 @@ export const Box = styled.div`
   }
 
   img {
-    width: 50px;
+    width: 22px;
     margin: 0 10px;
-    height: 50px;
+    height: 22px;
     border-radius: 50%;
-    padding: 2px;
     background-color: var(--white);
   }
 

@@ -1,4 +1,14 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const rotate = keyframes`
+from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
 
 export const Container = styled.aside`
   width: 100%;
@@ -119,7 +129,8 @@ export const GearButton = styled.button`
     }
 
     :active {
-      transform: rotate(20deg);
+      animation: ${rotate} linear 1s;
+      animation-iteration-count: 1;
     }
   }
 `;

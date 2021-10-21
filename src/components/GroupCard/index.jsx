@@ -9,11 +9,9 @@ import { CategoriesContext } from "../../providers/Categories/Categories";
 
 const GroupCard = ({ name, users, goals, id, category }) => {
   const history = useHistory();
-
   const { subscribeGroup, unsubscribeGroup } = useContext(GroupContext);
-  const { userId } = useContext(LoginContext);
+  const { userId, user } = useContext(LoginContext);
   const { categoriesPictures } = useContext(CategoriesContext);
-
   const [isSub, setIsSub] = useState(users.some((user) => user.id === userId));
   const handleSubscribe = (evt) => {
     evt.stopPropagation();
