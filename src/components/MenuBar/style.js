@@ -71,7 +71,7 @@ export const Box = styled.section`
   }
 
   button:nth-child(${(props) => props.num}) {
-    color: var(--darkPurple);
+    color: var(--purple);
   }
 
   @media (min-width: 768px) {

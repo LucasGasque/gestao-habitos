@@ -1,13 +1,13 @@
-import {Redirect} from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 import { LoginContext } from "../../providers/Login/Login";
 import { Container, SearchBox } from "./style";
 import MenuBar from "../../components/MenuBar";
 import { useContext } from "react";
 import { GroupContext } from "../../providers/Group/Group";
 import GroupCard from "../../components/GroupCard";
-import { Button } from '@mui/material';
-import AddBoxIcon from '@mui/icons-material/AddBox';
-import CreateGroup from '../../components/CreateGroup'; 
+import { Button } from "@mui/material";
+import AddBoxIcon from "@mui/icons-material/AddBox";
+import CreateGroup from "../../components/CreateGroup";
 
 const MyGroups = () => {
   const { subscriptions, setNewGroupVisible } = useContext(GroupContext);
@@ -21,16 +21,18 @@ const MyGroups = () => {
         <SearchBox>
           <h1>Meus Grupos</h1>
           <Button
-            onClick={()=> setNewGroupVisible(true)}
-            variant='contained'
-            color='secondary'
-            endIcon={<AddBoxIcon/>}
-          >Criar Novo Grupo</Button>
+            onClick={() => setNewGroupVisible(true)}
+            variant="contained"
+            color="secondary"
+            endIcon={<AddBoxIcon />}
+          >
+            Criar Novo Grupo
+          </Button>
         </SearchBox>
         <ul>
-          {subscriptions.map((group, index) => (
+          {subscriptions.map((group) => (
             <GroupCard
-              key={index}
+              key={group.id}
               name={group.name}
               goals={group.goals}
               users={group.users_on_group}
@@ -41,7 +43,7 @@ const MyGroups = () => {
         </ul>
       </Container>
       <MenuBar />
-      <CreateGroup/>
+      <CreateGroup />
     </>
   );
 };
