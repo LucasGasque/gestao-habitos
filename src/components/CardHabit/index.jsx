@@ -33,7 +33,6 @@ const CardHabit = ({ content, type }) => {
           how_much_achieved: 210,
           achieved: true,
         });
-        console.log("achieved");
       } else {
         updateHabitProgress(content.id, {
           how_much_achieved: content.how_much_achieved + 10,
@@ -53,7 +52,6 @@ const CardHabit = ({ content, type }) => {
     }
   };
 
-  console.log(content);
 
   return (
     <>
