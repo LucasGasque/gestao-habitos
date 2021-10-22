@@ -118,11 +118,6 @@ export const GearButton = styled.button`
     :hover {
       color: var(--darkPurple);
     }
-
-    :active {
-      transform: rotate(20deg);
-      transition: 0.1s;
-    }
   }
 `;
 

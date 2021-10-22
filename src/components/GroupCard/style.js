@@ -13,6 +13,7 @@ export const Container = styled.div`
   border-radius: 5px;
   padding: 10px 5px;
   box-shadow: 2px 2px 2px 2px var(--black);
+  transition: 0.35s;
 
   :hover {
     transform: scale(105%);
@@ -38,7 +39,7 @@ export const Container = styled.div`
 export const Box = styled.div`
   display: flex;
   flex-direction: row;
-  
+
   h2 {
     font-size: 18px;
     font-weight: bold;
