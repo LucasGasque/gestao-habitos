@@ -26,7 +26,6 @@ export const Container = styled.div`
 
     ul {
       padding-top: 156.567px;
-      min-height: 100vh;
     }
   }
 `;
