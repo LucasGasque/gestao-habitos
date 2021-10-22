@@ -30,10 +30,6 @@ const MenuBar = () => {
         </GearButton>
       </User>
       <Box num={highlight[history.location.pathname]}>
-        <GraphButton>
-          <FiPieChart size="2.5em" />
-          <p>Gráficos</p>
-        </GraphButton>
         <Button onClick={() => history.push("/profile")}>
           <HiUser size="2.5em" />
           <p>Dashboard</p>

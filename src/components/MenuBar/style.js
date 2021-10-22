@@ -66,12 +66,8 @@ export const Box = styled.section`
   border-top: 1px solid var(--black);
   padding: 0 10%;
 
-  button{
+  button {
     cursor: pointer;
-  }
-
-  button:active {
-    transform: scale(95%);
   }
 
   button:nth-child(${(props) => props.num}) {
