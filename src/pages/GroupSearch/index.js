@@ -2,7 +2,7 @@ import { Container, SearchBox } from "./style";
 import MenuBar from "../../components/MenuBar";
 import { TextField } from "@mui/material";
 import { useContext, useState } from "react";
-import {Redirect} from 'react-router-dom'
+import { Redirect } from "react-router-dom";
 import { LoginContext } from "../../providers/Login/Login";
 import { GroupContext } from "../../providers/Group/Group";
 import GroupCard from "../../components/GroupCard";
@@ -21,9 +21,10 @@ const GroupSearch = () => {
       groups?.filter(({ name }) => name.toLowerCase().includes(loweredInput))
     );
   };
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
-    showGroups();
+    showGroups(searchValue);
   }, [groups]);
 
   const [sentryRef] = useInfiniteScroll({
@@ -46,7 +47,10 @@ const GroupSearch = () => {
             variant="outlined"
             size="small"
             color="secondary"
-            onChange={(e) => showGroups(e.target.value)}
+            onChange={(e) => {
+              showGroups(e.target.value);
+              setSearchValue(e.target.value);
+            }}
           />
         </SearchBox>
         <ul>
@@ -61,7 +65,7 @@ const GroupSearch = () => {
             />
           ))}
         </ul>
-        {(loadingGroups || hasNextPage) && (
+        {(loadingGroups || hasNextPage) && searchValue === "" && (
           <div ref={sentryRef}>
             <CircularProgress />
           </div>

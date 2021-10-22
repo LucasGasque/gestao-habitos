@@ -35,7 +35,7 @@ export const GoalsProvider = ({ children }) => {
   };
 
   const updateGoal = (id, data) => {
-    const titleObj = {title: data.newTitle}
+    const titleObj = { title: data.newTitle };
     api
       .patch(`/goals/${id}/`, titleObj, {
         headers: {
@@ -44,6 +44,16 @@ export const GoalsProvider = ({ children }) => {
       })
       .then((_) => {
         toast.info("Objetivo atualizado com sucesso!");
+      })
+      .catch((_) => toast.error("Algo deu errado."));
+  };
+
+  const updateGoalProgress = (id, data) => {
+    api
+      .patch(`/goals/${id}/`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
       .catch((_) => toast.error("Algo deu errado."));
   };
@@ -71,6 +81,7 @@ export const GoalsProvider = ({ children }) => {
         newGoalVisible,
         setNewGoalVisible,
         goal,
+        updateGoalProgress,
       }}
     >
       {children}

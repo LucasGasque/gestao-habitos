@@ -91,6 +91,17 @@ export const HabitsProvider = ({ children }) => {
     toast.success("Hábito atualizado");
   };
 
+  const updateHabitProgress = async (id, data) => {
+    await api
+      .patch(`/habits/${id}/`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .catch((_) => toast.error("Algo deu errado."));
+    getHabits();
+  };
+
   return (
     <HabitsContext.Provider
       value={{
@@ -102,6 +113,7 @@ export const HabitsProvider = ({ children }) => {
         habits,
         newHabitVisible,
         setNewHabitVisible,
+        updateHabitProgress,
       }}
     >
       {children}
