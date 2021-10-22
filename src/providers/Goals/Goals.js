@@ -37,9 +37,9 @@ export const GoalsProvider = ({ children }) => {
       .catch((_) => console.log(_));
   };
 
-  const updateGoal = (id, data) => {
+  const updateGoal = async (id, data) => {
     const titleObj = { title: data.newTitle };
-    api
+    await api
       .patch(`/goals/${id}/`, titleObj, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -52,8 +52,8 @@ export const GoalsProvider = ({ children }) => {
       .catch((_) => toast.error("Algo deu errado."));
   };
 
-  const updateGoalProgress = (id, data) => {
-    api
+  const updateGoalProgress = async (id, data) => {
+    await api
       .patch(`/goals/${id}/`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
