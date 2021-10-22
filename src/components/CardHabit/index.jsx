@@ -52,7 +52,6 @@ const CardHabit = ({ content, type }) => {
     }
   };
 
-
   return (
     <>
       <ContainerCard>

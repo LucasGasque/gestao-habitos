@@ -13,8 +13,8 @@ const Providers = ({ children }) => {
     <RegisterProvider>
       <LoginProvider>
         <HabitsProvider>
-          <GoalsProvider>
-            <GroupProvider>
+          <GroupProvider>
+            <GoalsProvider>
               <ActivitiesProvider>
                 <CategoriesProvider>
                   <DeleteModalProvider>
@@ -22,8 +22,8 @@ const Providers = ({ children }) => {
                   </DeleteModalProvider>
                 </CategoriesProvider>
               </ActivitiesProvider>
-            </GroupProvider>
-          </GoalsProvider>
+            </GoalsProvider>
+          </GroupProvider>
         </HabitsProvider>
       </LoginProvider>
     </RegisterProvider>

@@ -57,12 +57,6 @@ const Group = () => {
 
   if (!authenticated) return <Redirect to="/login" />;
 
-  console.log(
-    categoriesPictures[selectedGroup?.category] === undefined
-      ? "undefined"
-      : "não undefined"
-  );
-
   return (
     <>
       <Container>
@@ -90,9 +84,9 @@ const Group = () => {
         <ImgContainer>
           <img
             src={
-              categoriesPictures[selectedGroup?.category]
-                ? categoriesPictures[selectedGroup?.category]
-                : categoriesPictures.estudo
+              categoriesPictures[selectedGroup?.category] === undefined
+                ? categoriesPictures["Estudo"]
+                : categoriesPictures[selectedGroup.category]
             }
             alt={selectedGroup?.category}
           />
