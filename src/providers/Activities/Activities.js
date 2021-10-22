@@ -2,6 +2,7 @@ import { createContext } from "react";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../services/api";
+import { GroupContext } from "../Group/Group";
 import { LoginContext } from "../Login/Login";
 
 export const ActivitiesContext = createContext();
@@ -10,10 +11,11 @@ export const ActivitiesProvider = ({ children }) => {
   const [newActivityVisible, setNewActivityVisible] = useState(false);
 
   const { token } = useContext(LoginContext);
+  const { getSubscriptions } = useContext(GroupContext);
 
-  const createActivities = ({ title, date }, group) => {
+  const createActivities = async ({ title, date }, group) => {
     const data = { title, realization_time: date, group };
-    api
+    await api
       .post("/activities/", data, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -24,11 +26,12 @@ export const ActivitiesProvider = ({ children }) => {
         setNewActivityVisible(false);
       })
       .catch((_) => toast.error("Algo deu errado."));
+    getSubscriptions();
   };
 
-  const updateActivities = (id, data) => {
-    const titleObj = {title: data.newTitle}
-    api
+  const updateActivities = async (id, data) => {
+    const titleObj = { title: data.newTitle };
+    await api
       .patch(`/activities/${id}/`, titleObj, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -38,10 +41,11 @@ export const ActivitiesProvider = ({ children }) => {
         toast.success("Atividade atualizada com sucesso!");
       })
       .catch((_) => toast.error("Algo deu errado."));
+    getSubscriptions();
   };
 
-  const deleteActivity = (id) => {
-    api
+  const deleteActivity = async (id) => {
+    await api
       .delete(`/activities/${id}/`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -51,6 +55,7 @@ export const ActivitiesProvider = ({ children }) => {
         toast.success("Atividade deletada com sucesso!");
       })
       .catch((_) => toast.error("Algo deu errado."));
+    getSubscriptions();
   };
 
   return (

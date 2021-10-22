@@ -22,9 +22,9 @@ export const GoalsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const createGoal = ({ title, difficulty }, group) => {
+  const createGoal = async ({ title, difficulty }, group) => {
     const data = { title, difficulty, how_much_achieved: 0, group };
-    api
+    await api
       .post("/goals/", data, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -35,6 +35,7 @@ export const GoalsProvider = ({ children }) => {
         setNewGoalVisible(false);
       })
       .catch((_) => console.log(_));
+    getSubscriptions();
   };
 
   const updateGoal = async (id, data) => {
@@ -46,10 +47,10 @@ export const GoalsProvider = ({ children }) => {
         },
       })
       .then((_) => {
-        getSubscriptions();
         toast.success("Objetivo atualizado com sucesso!");
       })
       .catch((_) => toast.error("Algo deu errado."));
+    getSubscriptions();
   };
 
   const updateGoalProgress = async (id, data) => {
@@ -63,8 +64,8 @@ export const GoalsProvider = ({ children }) => {
     getSubscriptions();
   };
 
-  const deleteGoal = (id) => {
-    api
+  const deleteGoal = async (id) => {
+    await api
       .delete(`/goals/${id}/`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -74,6 +75,7 @@ export const GoalsProvider = ({ children }) => {
         toast.success("Objetivo deletado com sucesso!");
       })
       .catch((_) => toast.error("Algo deu errado."));
+    getSubscriptions();
   };
 
   return (

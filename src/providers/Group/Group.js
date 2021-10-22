@@ -97,8 +97,8 @@ export const GroupProvider = ({ children }) => {
       .catch((_) => toast.error("Algo deu errado."));
   };
 
-  const subscribeGroup = (id) => {
-    api
+  const subscribeGroup = async (id) => {
+    await api
       .post(
         `/groups/${id}/subscribe/`,
         {},
@@ -115,8 +115,8 @@ export const GroupProvider = ({ children }) => {
       .catch((_) => toast.error("Algo deu errado."));
   };
 
-  const unsubscribeGroup = (id) => {
-    api
+  const unsubscribeGroup = async (id) => {
+    await api
       .delete(`/groups/${id}/unsubscribe/`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -127,6 +127,7 @@ export const GroupProvider = ({ children }) => {
         toast.success("Se desinscreveu com sucesso!");
       })
       .catch((_) => toast.error("Algo deu errado."));
+    getSubscriptions();
   };
 
   const getNextPage = () => {

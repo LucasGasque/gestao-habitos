@@ -27,7 +27,11 @@ const CardsList = ({ type, pageType, groupData, children }) => {
         goals = [...goals, ...group.goals];
       });
 
-      setFilteredContent(goals.filter((goal) => goal.achieved === finished));
+      setFilteredContent(
+        goals
+          .filter((goal) => goal.achieved === finished)
+          .sort((a, b) => a.id < b.id)
+      );
     }
     if (pageType === "user" && type === "activity") {
       let activities = [];
@@ -35,7 +39,7 @@ const CardsList = ({ type, pageType, groupData, children }) => {
         activities = [...activities, ...group.activities];
       });
 
-      setFilteredContent(activities);
+      setFilteredContent(activities.sort((a, b) => a.id < b.id));
     }
     if (pageType === "group" && type === "goal") {
       setFilteredContent(
@@ -43,7 +47,7 @@ const CardsList = ({ type, pageType, groupData, children }) => {
       );
     }
     if (pageType === "group" && type === "activity") {
-      setFilteredContent(groupData?.activities);
+      setFilteredContent(groupData?.activities.sort((a, b) => a.id < b.id));
     }
   }, [habits, subscriptions, groupData, finished, categoryFilter]);
 
@@ -109,17 +113,23 @@ const CardsList = ({ type, pageType, groupData, children }) => {
       )}
       <CardContainer>
         {type === "habit" &&
-          filteredContent?.map((content, index) => (
-            <CardHabit key={index} content={content} type={type} />
-          ))}
+          filteredContent
+            ?.sort((a, b) => a.id < b.id)
+            .map((content, index) => (
+              <CardHabit key={index} content={content} type={type} />
+            ))}
         {type === "goal" &&
-          filteredContent?.map((content, index) => (
-            <CardHabit key={index} content={content} type={type} />
-          ))}
+          filteredContent
+            ?.sort((a, b) => a.id < b.id)
+            .map((content, index) => (
+              <CardHabit key={index} content={content} type={type} />
+            ))}
         {type === "activity" &&
-          filteredContent?.map((content) => (
-            <ActivityCard type={type} content={content} key={content.id} />
-          ))}
+          filteredContent
+            ?.sort((a, b) => a.id < b.id)
+            .map((content) => (
+              <ActivityCard type={type} content={content} key={content.id} />
+            ))}
         {children}
       </CardContainer>
     </Container>

@@ -1,10 +1,10 @@
 import { LoginContext } from "../../providers/Login/Login";
-import { Container, Box, Button, GraphButton, GearButton, User } from "./style";
+import { Container, Box, Button, GearButton, User } from "./style";
 import { useContext, useState } from "react";
 import { HiUserGroup, HiUser } from "react-icons/hi";
 import { BiSearchAlt } from "react-icons/bi";
 import { IoMdLogOut } from "react-icons/io";
-import { FiPieChart } from "react-icons/fi";
+
 import { BsFillGearFill } from "react-icons/bs";
 import { useHistory } from "react-router";
 import EditUser from "../EditUser";
