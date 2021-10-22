@@ -3,11 +3,14 @@ import api from "../../services/api";
 import { toast } from "react-toastify";
 import { useContext } from "react";
 import { LoginContext } from "../Login/Login";
+import { GroupContext } from "../Group/Group";
 
 export const GoalsContext = createContext();
 
 export const GoalsProvider = ({ children }) => {
   const { token } = useContext(LoginContext);
+
+  const { getSubscriptions } = useContext(GroupContext);
 
   const [goal, setGoal] = useState();
   const [newGoalVisible, setNewGoalVisible] = useState(false);
@@ -43,6 +46,7 @@ export const GoalsProvider = ({ children }) => {
         },
       })
       .then((_) => {
+        getSubscriptions();
         toast.success("Objetivo atualizado com sucesso!");
       })
       .catch((_) => toast.error("Algo deu errado."));
@@ -56,6 +60,7 @@ export const GoalsProvider = ({ children }) => {
         },
       })
       .catch((_) => toast.error("Algo deu errado."));
+    getSubscriptions();
   };
 
   const deleteGoal = (id) => {
