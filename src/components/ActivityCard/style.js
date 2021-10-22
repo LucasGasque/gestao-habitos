@@ -55,11 +55,11 @@ export const CardButton = styled.div`
     cursor: pointer;
   }
 
-  :hover{
-    background-color:var(--purple);
+  :hover {
+    background-color: var(--purple);
   }
 
-  :active{
+  :active {
     transform: scale(95%);
   }
 `;
@@ -84,5 +84,6 @@ export const ContainerDate = styled.div`
     line-height: 10px;
     width: 80%;
     font-weight: normal;
+    margin-top: 5px;
   }
 `;
