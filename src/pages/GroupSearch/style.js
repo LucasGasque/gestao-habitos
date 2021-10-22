@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   padding-bottom: 65px;
   text-align: center;
-    
+
   ul {
     margin: 20px 10px;
     display: flex;
@@ -14,18 +14,19 @@ export const Container = styled.div`
     list-style: none;
     max-width: 1000px;
     margin: 0 auto;
-    padding-top: 68px ;
+    padding-top: 68px;
   }
 
   li {
     margin: 5px 0;
   }
-  
+
   @media (min-width: 768px) {
     padding-left: 268px;
 
-    ul{
-      padding-top:156.567px;
+    ul {
+      padding-top: 156.567px;
+      min-height: 100vh;
     }
   }
 `;
@@ -41,7 +42,6 @@ export const SearchBox = styled.div`
   position: fixed;
   z-index: 1;
 
-        
   h1 {
     display: none;
   }

@@ -2,7 +2,7 @@ import { Container, SearchBox } from "./style";
 import MenuBar from "../../components/MenuBar";
 import { TextField } from "@mui/material";
 import { useContext, useState } from "react";
-import {Redirect} from 'react-router-dom'
+import { Redirect } from "react-router-dom";
 import { LoginContext } from "../../providers/Login/Login";
 import { GroupContext } from "../../providers/Group/Group";
 import GroupCard from "../../components/GroupCard";
