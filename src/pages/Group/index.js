@@ -53,7 +53,7 @@ const Group = () => {
 
   useEffect(() => {
     getGroup(id);
-  }, []);
+  }, [selectedGroup]);
 
   if (!authenticated) return <Redirect to="/login" />;
 
