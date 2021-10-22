@@ -54,9 +54,9 @@ const GroupSearch = () => {
           />
         </SearchBox>
         <ul>
-          {filteredGroups.map((group, index) => (
+          {filteredGroups.map((group) => (
             <GroupCard
-              key={index}
+              key={group.id}
               name={group.name}
               goals={group.goals}
               users={group.users_on_group}

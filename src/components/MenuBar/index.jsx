@@ -10,15 +10,16 @@ import { useHistory } from "react-router";
 import EditUser from "../EditUser";
 
 const MenuBar = () => {
+  const history = useHistory();
+
+  const highlight = {
+    "/profile": 1,
+    "/group-search": 2,
+    "/my-groups": 3,
+  };
+
   const [userVisible, setUserVisible] = useState(false);
   const { avatar, handleLogOut, user } = useContext(LoginContext);
-  const history = useHistory();
-  const highlight = {
-    "": 1,
-    "/profile": 2,
-    "/group-search": 3,
-    "/group": 4,
-  };
 
   return (
     <Container>
