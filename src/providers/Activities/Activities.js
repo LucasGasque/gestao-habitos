@@ -20,7 +20,7 @@ export const ActivitiesProvider = ({ children }) => {
         },
       })
       .then((_) => {
-        toast.info("Atividade criada com sucesso!");
+        toast.success("Atividade criada com sucesso!");
         setNewActivityVisible(false);
       })
       .catch((_) => toast.error("Algo deu errado."));
@@ -35,7 +35,7 @@ export const ActivitiesProvider = ({ children }) => {
         },
       })
       .then((_) => {
-        toast.info("Atividade atualizada com sucesso!");
+        toast.success("Atividade atualizada com sucesso!");
       })
       .catch((_) => toast.error("Algo deu errado."));
   };
@@ -48,7 +48,7 @@ export const ActivitiesProvider = ({ children }) => {
         },
       })
       .then((_) => {
-        toast.info("Atividade deletada com sucesso!");
+        toast.success("Atividade deletada com sucesso!");
       })
       .catch((_) => toast.error("Algo deu errado."));
   };

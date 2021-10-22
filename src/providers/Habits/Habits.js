@@ -60,7 +60,7 @@ export const HabitsProvider = ({ children }) => {
         },
       })
       .then((_) => {
-        toast.info("Hábito criado com sucesso!");
+        toast.success("Hábito criado com sucesso!");
         setNewHabitVisible(false);
         getHabits();
       })

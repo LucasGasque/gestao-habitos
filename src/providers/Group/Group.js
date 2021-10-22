@@ -78,9 +78,9 @@ export const GroupProvider = ({ children }) => {
         setInfoGroup(response.data);
         getSubscriptions();
         setNewGroupVisible(false);
-        toast.info("Grupo criado com sucesso!");
+        toast.success("Grupo criado com sucesso!");
       })
-      .catch((_) => toast.info("Algo deu errado."));
+      .catch((_) => toast.error("Algo deu errado."));
   };
 
   const updateGroup = ({ id }, data) => {
@@ -91,10 +91,10 @@ export const GroupProvider = ({ children }) => {
         },
       })
       .then((_) => {
-        toast.info("Grupo atualizado com sucesso!");
+        toast.success("Grupo atualizado com sucesso!");
         setEditGroupVisible(false);
       })
-      .catch((_) => toast.info("Algo deu errado."));
+      .catch((_) => toast.error("Algo deu errado."));
   };
 
   const subscribeGroup = (id) => {
@@ -110,9 +110,9 @@ export const GroupProvider = ({ children }) => {
       )
       .then((_) => {
         getSubscriptions();
-        toast.info("Foi inscrito com sucesso!");
+        toast.success("Foi inscrito com sucesso!");
       })
-      .catch((_) => toast.info("Algo deu errado."));
+      .catch((_) => toast.error("Algo deu errado."));
   };
 
   const unsubscribeGroup = (id) => {
@@ -124,9 +124,9 @@ export const GroupProvider = ({ children }) => {
       })
       .then((_) => {
         getSubscriptions();
-        toast.info("Se desinscreveu com sucesso!");
+        toast.success("Se desinscreveu com sucesso!");
       })
-      .catch((_) => toast.info("Algo deu errado."));
+      .catch((_) => toast.error("Algo deu errado."));
   };
 
   const getNextPage = () => {
