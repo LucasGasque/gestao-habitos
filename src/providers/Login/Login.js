@@ -121,7 +121,6 @@ export const LoginProvider = ({ children }) => {
 
   const updateProfile = ({ username }) => {
     const data = { username };
-    console.log(data)
     api
       .patch(`/users/${userId}/`, data, {
         headers: {

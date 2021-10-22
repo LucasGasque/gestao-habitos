@@ -28,7 +28,7 @@ export const GoalsProvider = ({ children }) => {
         },
       })
       .then((_) => {
-        toast.info("Objetivo criado com sucesso!");
+        toast.success("Objetivo criado com sucesso!");
         setNewGoalVisible(false);
       })
       .catch((_) => console.log(_));
@@ -43,7 +43,7 @@ export const GoalsProvider = ({ children }) => {
         },
       })
       .then((_) => {
-        toast.info("Objetivo atualizado com sucesso!");
+        toast.success("Objetivo atualizado com sucesso!");
       })
       .catch((_) => toast.error("Algo deu errado."));
   };
@@ -56,7 +56,7 @@ export const GoalsProvider = ({ children }) => {
         },
       })
       .then((_) => {
-        toast.info("Objetivo deletado com sucesso!");
+        toast.success("Objetivo deletado com sucesso!");
       })
       .catch((_) => toast.error("Algo deu errado."));
   };
